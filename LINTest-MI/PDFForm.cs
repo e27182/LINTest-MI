@@ -127,7 +127,7 @@ public class PDFForm : FormEx
     this.label1.Name = "label1";
     this.label1.Size = new Size(121, 20);
     this.label1.TabIndex = 9;
-    this.label1.Text = "通信协议文件丢失";
+    this.label1.Text = "Communication protocol file is lost";
     this.imageButton1.BackColor = Color.Transparent;
     this.imageButton1.BackgroundImageLayout = ImageLayout.Center;
     this.imageButton1.DownImage = (Image) componentResourceManager.GetObject("imageButton1.DownImage");
@@ -142,7 +142,7 @@ public class PDFForm : FormEx
     this.imageButton1.NormalImage = (Image) componentResourceManager.GetObject("imageButton1.NormalImage");
     this.imageButton1.Size = new Size(101, 36);
     this.imageButton1.TabIndex = 51;
-    this.imageButton1.Text = "确定";
+    this.imageButton1.Text = "Fix";
     this.imageButton1.UseVisualStyleBackColor = false;
     this.imageButton1.Click += new EventHandler(this.imageButton1_Click_1);
     this.dS容器1.BackColor = SystemColors.ScrollBar;
@@ -175,7 +175,7 @@ public class PDFForm : FormEx
     this.MinimumSize = new Size(300, 174);
     this.Name = nameof (PDFForm);
     this.StartPosition = FormStartPosition.CenterScreen;
-    this.Text = "提示";
+    this.Text = "Prompt";
     this.FormClosing += new FormClosingEventHandler(this.PDFForm_FormClosing);
     this.Load += new EventHandler(this.Form2_Load);
     this.dS容器1.ResumeLayout(false);

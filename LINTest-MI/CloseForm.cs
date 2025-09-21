@@ -150,7 +150,7 @@ public class CloseForm : FormEx
     this.imageButton2.NormalImage = (Image) componentResourceManager.GetObject("imageButton2.NormalImage");
     this.imageButton2.Size = new Size(69, 32 /*0x20*/);
     this.imageButton2.TabIndex = 62;
-    this.imageButton2.Text = "否";
+    this.imageButton2.Text = "No";
     this.imageButton2.UseVisualStyleBackColor = false;
     this.imageButton2.Click += new EventHandler(this.imageButton2_Click);
     this.imageButton1.BackColor = SystemColors.ScrollBar;
@@ -167,7 +167,7 @@ public class CloseForm : FormEx
     this.imageButton1.NormalImage = (Image) componentResourceManager.GetObject("imageButton1.NormalImage");
     this.imageButton1.Size = new Size(69, 32 /*0x20*/);
     this.imageButton1.TabIndex = 61;
-    this.imageButton1.Text = "是";
+    this.imageButton1.Text = "Yes";
     this.imageButton1.UseVisualStyleBackColor = false;
     this.imageButton1.Click += new EventHandler(this.imageButton1_Click);
     this.label1.AutoSize = true;
@@ -178,7 +178,7 @@ public class CloseForm : FormEx
     this.label1.Name = "label1";
     this.label1.Size = new Size(93, 20);
     this.label1.TabIndex = 60;
-    this.label1.Text = "是否关闭软件";
+    this.label1.Text = "Do you want to exit?";
     this.AutoScaleDimensions = new SizeF(8f, 20f);
     this.AutoScaleMode = AutoScaleMode.Font;
     this.BackColor = Color.Green;
@@ -196,7 +196,7 @@ public class CloseForm : FormEx
     this.MinimumSize = new Size(300, 174);
     this.Name = nameof (CloseForm);
     this.StartPosition = FormStartPosition.CenterScreen;
-    this.Text = "提示";
+    this.Text = "Prompt";
     this.FormClosing += new FormClosingEventHandler(this.CloseForm_FormClosing);
     this.Load += new EventHandler(this.CloseForm_Load);
     this.dS容器1.ResumeLayout(false);

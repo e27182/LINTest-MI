@@ -61,7 +61,7 @@ public class Form1 : FormEx
   public static bool Chang_Data_Error_flag = false;
   public static bool System_UART_RX_Rrror_flag = false;
   public static bool Device_switch_flag = false;
-  public static string CheckSum_Type = "增强型校验和";
+  public static string CheckSum_Type = "Enhanced CSum";
   public static int Port_Number = 0;
   public static string PortName = "";
   public static byte[] Send_Frame_Data = new byte[(int) byte.MaxValue];
@@ -1181,35 +1181,35 @@ public class Form1 : FormEx
         fileStream.Close();
         if (index1 != 151)
         {
-          init_Configuration.Output_Message = "读取配置文件失败！";
+          init_Configuration.Output_Message = "Failed to read configuration file!";
           int num = (int) init_Configuration.PDF_Interface.ShowDialog();
           return;
         }
       }
       else
       {
-        init_Configuration.Output_Message = "配置文件丢失！";
+        init_Configuration.Output_Message = "Configuration file missing!";
         int num = (int) init_Configuration.PDF_Interface.ShowDialog();
       }
     }
     catch
     {
-      init_Configuration.Output_Message = "读取配置文件失败！";
+      init_Configuration.Output_Message = "Failed to read configuration file!";
       int num = (int) init_Configuration.PDF_Interface.ShowDialog();
       return;
     }
     this.dS数字输入框1.Text = strArray1[0, 0];
-    if (strArray1[1, 0] == "增强型校验和")
+    if (strArray1[1, 0] == "Enhanced CSum")
     {
       this.qqRadioButton1.Checked = true;
       this.qqRadioButton2.Checked = false;
-      Form1.CheckSum_Type = "增强型校验和";
+      Form1.CheckSum_Type = "Enhanced CSum";
     }
     else
     {
       this.qqRadioButton1.Checked = false;
       this.qqRadioButton2.Checked = true;
-      Form1.CheckSum_Type = "标准型校验和";
+      Form1.CheckSum_Type = "Standard CSum";
     }
     this.qqTextBox1.Text = strArray1[2, 0];
     this.qqTextBox2.Text = strArray1[2, 1];
@@ -1221,7 +1221,7 @@ public class Form1 : FormEx
     this.qqTextBox8.Text = strArray1[4, 1];
     this.qqTextBox9.Text = strArray1[4, 2];
     this.qqTextBox10.Text = strArray1[5, 0];
-    if (strArray1[5, 1] == "单帧发送")
+    if (strArray1[5, 1] == "Send frame:")
     {
       this.qqRadioButton3.Checked = true;
       this.qqRadioButton4.Checked = false;
@@ -1238,7 +1238,7 @@ public class Form1 : FormEx
     this.qqTextBox15.Text = strArray1[8, 0];
     this.qqTextBox16.Text = strArray1[8, 1];
     this.qqTextBox17.Text = strArray1[9, 0];
-    if (strArray1[9, 1] == "单帧接收")
+    if (strArray1[9, 1] == "Single frame")
     {
       this.qqRadioButton5.Checked = true;
       this.qqRadioButton6.Checked = false;
@@ -1260,7 +1260,7 @@ public class Form1 : FormEx
     this.qqTextBox27.Text = strArray1[49, 3];
     this.qqTextBox28.Text = strArray1[49, 4];
     this.qqTextBox29.Text = strArray1[49, 5];
-    if (strArray1[50, 0] == "总线监听")
+    if (strArray1[50, 0] == "Bus Monitor")
     {
       this.qqRadioButton11.Checked = false;
       this.qqRadioButton12.Checked = true;
@@ -1270,7 +1270,7 @@ public class Form1 : FormEx
       this.qqRadioButton11.Checked = true;
       this.qqRadioButton12.Checked = false;
     }
-    if (strArray1[50, 1] == "动态显示")
+    if (strArray1[50, 1] == "Dynamic")
     {
       this.qqRadioButton13.Checked = true;
       this.qqRadioButton14.Checked = false;
@@ -1373,10 +1373,10 @@ public class Form1 : FormEx
     ((DataGridView) this.dataGridViewX1).Columns[1].ReadOnly = true;
     for (int index6 = 0; index6 < 20; ++index6)
     {
-      if (strArray1[index6 + 10, 0] == "发送")
-        ((DataGridView) this.dataGridViewX1).Rows[index6].Cells[2].Value = (object) "发送";
+      if (strArray1[index6 + 10, 0] == "Send")
+        ((DataGridView) this.dataGridViewX1).Rows[index6].Cells[2].Value = (object) "Send";
       else
-        ((DataGridView) this.dataGridViewX1).Rows[index6].Cells[2].Value = (object) "接收";
+        ((DataGridView) this.dataGridViewX1).Rows[index6].Cells[2].Value = (object) "Receive";
     }
     for (int index7 = 0; index7 < 20; ++index7)
       ((DataGridView) this.dataGridViewX1).Rows[index7].Cells[3].Value = (object) strArray1[index7 + 10, 1];
@@ -1386,7 +1386,7 @@ public class Form1 : FormEx
       ((DataGridView) this.dataGridViewX1).Rows[index9].Cells[5].Value = (object) strArray1[index9 + 10, 3];
     for (int index10 = 0; index10 < 20; ++index10)
       ((DataGridView) this.dataGridViewX1).Rows[index10].Cells[6].Value = (object) strArray1[index10 + 10, 4];
-    if (strArray1[30, 0] == "动态显示")
+    if (strArray1[30, 0] == "Dynamic")
     {
       this.qqRadioButton7.Checked = true;
       this.qqRadioButton8.Checked = false;
@@ -1422,10 +1422,10 @@ public class Form1 : FormEx
     ((DataGridView) this.dataGridViewX2).Columns[1].ReadOnly = true;
     for (int index14 = 0; index14 < 16 /*0x10*/; ++index14)
     {
-      if (strArray1[index14 + 31 /*0x1F*/, 0] == "发送")
-        ((DataGridView) this.dataGridViewX2).Rows[index14].Cells[2].Value = (object) "发送";
+      if (strArray1[index14 + 31 /*0x1F*/, 0] == "Send")
+        ((DataGridView) this.dataGridViewX2).Rows[index14].Cells[2].Value = (object) "Send";
       else
-        ((DataGridView) this.dataGridViewX2).Rows[index14].Cells[2].Value = (object) "接收";
+        ((DataGridView) this.dataGridViewX2).Rows[index14].Cells[2].Value = (object) "Receive";
     }
     for (int index15 = 0; index15 < 16 /*0x10*/; ++index15)
       ((DataGridView) this.dataGridViewX2).Rows[index15].Cells[3].Value = (object) strArray1[index15 + 31 /*0x1F*/, 1];
@@ -1435,12 +1435,12 @@ public class Form1 : FormEx
       ((DataGridView) this.dataGridViewX2).Rows[index17].Cells[5].Value = (object) strArray1[index17 + 31 /*0x1F*/, 3];
     for (int index18 = 0; index18 < 16 /*0x10*/; ++index18)
     {
-      if (strArray1[index18 + 31 /*0x1F*/, 4] == "增强型校验和")
-        ((DataGridView) this.dataGridViewX2).Rows[index18].Cells[6].Value = (object) "增强型校验和";
+      if (strArray1[index18 + 31 /*0x1F*/, 4] == "Enhanced CSum")
+        ((DataGridView) this.dataGridViewX2).Rows[index18].Cells[6].Value = (object) "Enhanced CSum";
       else
-        ((DataGridView) this.dataGridViewX2).Rows[index18].Cells[6].Value = (object) "标准型校验和";
+        ((DataGridView) this.dataGridViewX2).Rows[index18].Cells[6].Value = (object) "Standard CSum";
     }
-    if (strArray1[47, 0] == "动态显示")
+    if (strArray1[47, 0] == "Dynamic")
     {
       this.qqRadioButton9.Checked = true;
       this.qqRadioButton10.Checked = false;
@@ -1481,10 +1481,10 @@ public class Form1 : FormEx
     ((DataGridView) this.dataGridViewX3).Columns[2].ReadOnly = false;
     for (int index22 = 0; index22 < 16 /*0x10*/; ++index22)
     {
-      if (strArray1[index22 + 51, 1].ToString() == "发送")
-        ((DataGridView) this.dataGridViewX3).Rows[index22].Cells[2].Value = (object) "发送";
+      if (strArray1[index22 + 51, 1].ToString() == "Send")
+        ((DataGridView) this.dataGridViewX3).Rows[index22].Cells[2].Value = (object) "Send";
       else
-        ((DataGridView) this.dataGridViewX3).Rows[index22].Cells[2].Value = (object) "接收";
+        ((DataGridView) this.dataGridViewX3).Rows[index22].Cells[2].Value = (object) "Receive";
     }
     for (int index23 = 0; index23 < 16 /*0x10*/; ++index23)
       ((DataGridView) this.dataGridViewX3).Rows[index23].Cells[3].Value = (object) strArray1[index23 + 51, 2];
@@ -1494,17 +1494,17 @@ public class Form1 : FormEx
       ((DataGridView) this.dataGridViewX3).Rows[index25].Cells[5].Value = (object) strArray1[index25 + 51, 4];
     for (int index26 = 0; index26 < 16 /*0x10*/; ++index26)
     {
-      if (strArray1[index26 + 51, 5] == "增强型校验和")
-        ((DataGridView) this.dataGridViewX3).Rows[index26].Cells[6].Value = (object) "增强型校验和";
+      if (strArray1[index26 + 51, 5] == "Enhanced CSum")
+        ((DataGridView) this.dataGridViewX3).Rows[index26].Cells[6].Value = (object) "Enhanced CSum";
       else
-        ((DataGridView) this.dataGridViewX3).Rows[index26].Cells[6].Value = (object) "标准型校验和";
+        ((DataGridView) this.dataGridViewX3).Rows[index26].Cells[6].Value = (object) "Standard CSum";
     }
     this.dS数字输入框2.Text = strArray1[141, 1];
     this.dS数字输入框3.Text = strArray1[141, 2];
-    if (strArray1[141, 0].ToString() == "主机")
-      this.comboBox2.Text = "主机";
+    if (strArray1[141, 0].ToString() == "Host")
+      this.comboBox2.Text = "Host";
     else
-      this.comboBox2.Text = "从机";
+      this.comboBox2.Text = "Slave";
     if (strArray1[142, 0].ToString() == "1")
       this.qqCheckBox22.Checked = true;
     else
@@ -1556,10 +1556,10 @@ public class Form1 : FormEx
     ((DataGridView) this.dataGridViewX4).Columns[2].ReadOnly = false;
     for (int index30 = 0; index30 < 18; ++index30)
     {
-      if (strArray1[index30 + 69, 1].ToString() == "发送")
-        ((DataGridView) this.dataGridViewX4).Rows[index30].Cells[2].Value = (object) "发送";
+      if (strArray1[index30 + 69, 1].ToString() == "Send")
+        ((DataGridView) this.dataGridViewX4).Rows[index30].Cells[2].Value = (object) "Send";
       else
-        ((DataGridView) this.dataGridViewX4).Rows[index30].Cells[2].Value = (object) "接收";
+        ((DataGridView) this.dataGridViewX4).Rows[index30].Cells[2].Value = (object) "Receive";
     }
     for (int index31 = 0; index31 < 18; ++index31)
       ((DataGridView) this.dataGridViewX4).Rows[index31].Cells[3].Value = (object) strArray1[index31 + 69, 2];
@@ -1569,10 +1569,10 @@ public class Form1 : FormEx
       ((DataGridView) this.dataGridViewX4).Rows[index33].Cells[5].Value = (object) strArray1[index33 + 69, 4];
     for (int index34 = 0; index34 < 18; ++index34)
     {
-      if (strArray1[index34 + 69, 5] == "增强型校验和")
-        ((DataGridView) this.dataGridViewX4).Rows[index34].Cells[6].Value = (object) "增强型校验和";
+      if (strArray1[index34 + 69, 5] == "Enhanced CSum")
+        ((DataGridView) this.dataGridViewX4).Rows[index34].Cells[6].Value = (object) "Enhanced CSum";
       else
-        ((DataGridView) this.dataGridViewX4).Rows[index34].Cells[6].Value = (object) "标准型校验和";
+        ((DataGridView) this.dataGridViewX4).Rows[index34].Cells[6].Value = (object) "Standard CSum";
     }
     ((DataGridView) this.dataGridViewX5).AllowUserToAddRows = false;
     ((DataGridView) this.dataGridViewX5).AllowUserToAddRows = false;
@@ -1605,10 +1605,10 @@ public class Form1 : FormEx
     ((DataGridView) this.dataGridViewX5).Columns[2].ReadOnly = false;
     for (int index38 = 0; index38 < 18; ++index38)
     {
-      if (strArray1[index38 + 87, 1].ToString() == "发送")
-        ((DataGridView) this.dataGridViewX5).Rows[index38].Cells[2].Value = (object) "发送";
+      if (strArray1[index38 + 87, 1].ToString() == "Send")
+        ((DataGridView) this.dataGridViewX5).Rows[index38].Cells[2].Value = (object) "Send";
       else
-        ((DataGridView) this.dataGridViewX5).Rows[index38].Cells[2].Value = (object) "接收";
+        ((DataGridView) this.dataGridViewX5).Rows[index38].Cells[2].Value = (object) "Receive";
     }
     for (int index39 = 0; index39 < 18; ++index39)
       ((DataGridView) this.dataGridViewX5).Rows[index39].Cells[3].Value = (object) strArray1[index39 + 87, 2];
@@ -1618,10 +1618,10 @@ public class Form1 : FormEx
       ((DataGridView) this.dataGridViewX5).Rows[index41].Cells[5].Value = (object) strArray1[index41 + 87, 4];
     for (int index42 = 0; index42 < 18; ++index42)
     {
-      if (strArray1[index42 + 87, 5] == "增强型校验和")
-        ((DataGridView) this.dataGridViewX5).Rows[index42].Cells[6].Value = (object) "增强型校验和";
+      if (strArray1[index42 + 87, 5] == "Enhanced CSum")
+        ((DataGridView) this.dataGridViewX5).Rows[index42].Cells[6].Value = (object) "Enhanced CSum";
       else
-        ((DataGridView) this.dataGridViewX5).Rows[index42].Cells[6].Value = (object) "标准型校验和";
+        ((DataGridView) this.dataGridViewX5).Rows[index42].Cells[6].Value = (object) "Standard CSum";
     }
     ((DataGridView) this.dataGridViewX6).AllowUserToAddRows = false;
     ((DataGridView) this.dataGridViewX6).AllowUserToAddRows = false;
@@ -1654,10 +1654,10 @@ public class Form1 : FormEx
     ((DataGridView) this.dataGridViewX6).Columns[2].ReadOnly = false;
     for (int index46 = 0; index46 < 18; ++index46)
     {
-      if (strArray1[index46 + 105, 1].ToString() == "发送")
-        ((DataGridView) this.dataGridViewX6).Rows[index46].Cells[2].Value = (object) "发送";
+      if (strArray1[index46 + 105, 1].ToString() == "Send")
+        ((DataGridView) this.dataGridViewX6).Rows[index46].Cells[2].Value = (object) "Send";
       else
-        ((DataGridView) this.dataGridViewX6).Rows[index46].Cells[2].Value = (object) "接收";
+        ((DataGridView) this.dataGridViewX6).Rows[index46].Cells[2].Value = (object) "Receive";
     }
     for (int index47 = 0; index47 < 18; ++index47)
       ((DataGridView) this.dataGridViewX6).Rows[index47].Cells[3].Value = (object) strArray1[index47 + 105, 2];
@@ -1667,10 +1667,10 @@ public class Form1 : FormEx
       ((DataGridView) this.dataGridViewX6).Rows[index49].Cells[5].Value = (object) strArray1[index49 + 105, 4];
     for (int index50 = 0; index50 < 18; ++index50)
     {
-      if (strArray1[index50 + 105, 5] == "增强型校验和")
-        ((DataGridView) this.dataGridViewX6).Rows[index50].Cells[6].Value = (object) "增强型校验和";
+      if (strArray1[index50 + 105, 5] == "Enhanced CSum")
+        ((DataGridView) this.dataGridViewX6).Rows[index50].Cells[6].Value = (object) "Enhanced CSum";
       else
-        ((DataGridView) this.dataGridViewX6).Rows[index50].Cells[6].Value = (object) "标准型校验和";
+        ((DataGridView) this.dataGridViewX6).Rows[index50].Cells[6].Value = (object) "Standard CSum";
     }
     ((DataGridView) this.dataGridViewX7).AllowUserToAddRows = false;
     ((DataGridView) this.dataGridViewX7).AllowUserToAddRows = false;
@@ -1703,10 +1703,10 @@ public class Form1 : FormEx
     ((DataGridView) this.dataGridViewX7).Columns[2].ReadOnly = false;
     for (int index54 = 0; index54 < 18; ++index54)
     {
-      if (strArray1[index54 + 123, 1].ToString() == "发送")
-        ((DataGridView) this.dataGridViewX7).Rows[index54].Cells[2].Value = (object) "发送";
+      if (strArray1[index54 + 123, 1].ToString() == "Send")
+        ((DataGridView) this.dataGridViewX7).Rows[index54].Cells[2].Value = (object) "Send";
       else
-        ((DataGridView) this.dataGridViewX7).Rows[index54].Cells[2].Value = (object) "接收";
+        ((DataGridView) this.dataGridViewX7).Rows[index54].Cells[2].Value = (object) "Receive";
     }
     for (int index55 = 0; index55 < 18; ++index55)
       ((DataGridView) this.dataGridViewX7).Rows[index55].Cells[3].Value = (object) strArray1[index55 + 123, 2];
@@ -1716,10 +1716,10 @@ public class Form1 : FormEx
       ((DataGridView) this.dataGridViewX7).Rows[index57].Cells[5].Value = (object) strArray1[index57 + 123, 4];
     for (int index58 = 0; index58 < 18; ++index58)
     {
-      if (strArray1[index58 + 123, 5] == "增强型校验和")
-        ((DataGridView) this.dataGridViewX7).Rows[index58].Cells[6].Value = (object) "增强型校验和";
+      if (strArray1[index58 + 123, 5] == "Enhanced CSum")
+        ((DataGridView) this.dataGridViewX7).Rows[index58].Cells[6].Value = (object) "Enhanced CSum";
       else
-        ((DataGridView) this.dataGridViewX7).Rows[index58].Cells[6].Value = (object) "标准型校验和";
+        ((DataGridView) this.dataGridViewX7).Rows[index58].Cells[6].Value = (object) "Standard CSum";
     }
     this.qqTextBox44.Text = strArray1[148, 0].ToString();
     this.qqTextBox48.Text = strArray1[148, 1].ToString();
@@ -1854,7 +1854,7 @@ public class Form1 : FormEx
       if ((num & 65280U) > 0U)
         num = (uint) (((int) num & (int) byte.MaxValue) + 1);
     }
-    if (Form1.CheckSum_Type == "增强型校验和")
+    if (Form1.CheckSum_Type == "Enhanced CSum")
     {
       num += (uint) Form1.LINCalcParity(Check_ID);
       if ((num & 65280U) > 0U)
@@ -2047,7 +2047,7 @@ public class Form1 : FormEx
           strArray[index1] = text1;
           int index2 = index1 + 1;
           str1 = "";
-          string str2 = !this.qqRadioButton1.Checked ? "标准型校验和" : "增强型校验和";
+          string str2 = !this.qqRadioButton1.Checked ? "Standard CSum" : "Enhanced CSum";
           strArray[index2] = str2;
           int index3 = index2 + 1;
           str1 = "";
@@ -2066,14 +2066,14 @@ public class Form1 : FormEx
           if (this.qqRadioButton3.Checked)
           {
             str1 = "";
-            string str6 = this.qqTextBox10.Text + ",单帧发送";
+            string str6 = this.qqTextBox10.Text + ",single frame sending";
             strArray[index6] = str6;
             index7 = index6 + 1;
           }
           else
           {
             str1 = "";
-            string str7 = this.qqTextBox10.Text + ",多帧发送";
+            string str7 = this.qqTextBox10.Text + ",Multi-frame sending";
             strArray[index6] = str7;
             index7 = index6 + 1;
           }
@@ -2093,14 +2093,14 @@ public class Form1 : FormEx
           if (this.qqRadioButton5.Checked)
           {
             str1 = "";
-            string str11 = this.qqTextBox17.Text + ",单帧接收";
+            string str11 = this.qqTextBox17.Text + ",Single frame reception";
             strArray[index10] = str11;
             index11 = index10 + 1;
           }
           else
           {
             str1 = "";
-            string str12 = this.qqTextBox17.Text + ",多帧接收";
+            string str12 = this.qqTextBox17.Text + ",Multi-frame reception";
             strArray[index10] = str12;
             index11 = index10 + 1;
           }
@@ -2128,14 +2128,14 @@ public class Form1 : FormEx
           if (this.qqRadioButton7.Checked)
           {
             str1 = "";
-            string str14 = "动态显示";
+            string str14 = "Dynamic";
             strArray[index11] = str14;
             index14 = index11 + 1;
           }
           else
           {
             str1 = "";
-            string str15 = "静态显示";
+            string str15 = "Static";
             strArray[index11] = str15;
             index14 = index11 + 1;
           }
@@ -2163,14 +2163,14 @@ public class Form1 : FormEx
           if (this.qqRadioButton9.Checked)
           {
             str1 = "";
-            string str17 = "动态显示";
+            string str17 = "Dynamic";
             strArray[index14] = str17;
             index17 = index14 + 1;
           }
           else
           {
             str1 = "";
-            string str18 = "静态显示";
+            string str18 = "Static";
             strArray[index14] = str18;
             index17 = index14 + 1;
           }
@@ -2186,14 +2186,14 @@ public class Form1 : FormEx
           if (this.qqRadioButton11.Checked)
           {
             str1 = "";
-            str21 = "固定ID,";
+            str21 = "Fixed ID,";
           }
           else
           {
             str1 = "";
-            str21 = "总线监听,";
+            str21 = "Bus monitoring,";
           }
-          string str22 = !this.qqRadioButton13.Checked ? str21 + "静态显示" : str21 + "动态显示";
+          string str22 = !this.qqRadioButton13.Checked ? str21 + "Static" : str21 + "Dynamic";
           strArray[index19] = str22;
           int index20 = index19 + 1;
           for (int index21 = 0; index21 < 16 /*0x10*/; ++index21)
@@ -2382,14 +2382,14 @@ public class Form1 : FormEx
         }
         catch
         {
-          init_Configuration.Output_Message = "保存配置文件失败！";
+          init_Configuration.Output_Message = "Failed to save configuration file!";
           int num3 = (int) init_Configuration.PDF_Interface.ShowDialog();
         }
         streamWriter.Close();
       }
       else
       {
-        init_Configuration.Output_Message = "配置文件丢失！";
+        init_Configuration.Output_Message = "Configuration file missing!";
         int num4 = (int) init_Configuration.PDF_Interface.ShowDialog();
       }
       init_Configuration.CloseForm_Main_flag = false;
@@ -2409,34 +2409,34 @@ public class Form1 : FormEx
     // ISSUE: reference to a compiler-generated method
     switch (text)
     {
-      case "开发者选项":
+      case "Dev opts":
         this.tabControl1.SelectedTab = this.tabPage7;
         break;
-      case "单机模式":
+      case "Standalone":
         this.tabControl1.SelectedTab = this.tabPage1;
         break;
-      case "从机模式":
+      case "Slave":
         this.tabControl1.SelectedTab = this.tabPage3;
         break;
-      case "LDF解析":
+      case "LDF Parsing":
         this.tabControl1.SelectedTab = this.tabPage10;
         break;
-      case "监听模式":
+      case "Monitoring":
         this.tabControl1.SelectedTab = this.tabPage4;
         break;
-      case "关于":
+      case "About":
         this.tabControl1.SelectedTab = this.tabPage8;
         break;
-      case "Boot升级":
+      case "BOOT Upgrade":
         this.tabControl1.SelectedTab = this.tabPage6;
         break;
-      case "离线模式":
+      case "Offline":
         this.tabControl1.SelectedTab = this.tabPage5;
         break;
-      case "波特率识别":
+      case "Baud rate detection":
         this.tabControl1.SelectedTab = this.tabPage9;
         break;
-      case "列表模式":
+      case "List":
         this.tabControl1.SelectedTab = this.tabPage2;
         break;
     }
@@ -2446,7 +2446,7 @@ public class Form1 : FormEx
   {
     string[] strArray = new string[(int) byte.MaxValue];
     int index1 = 0;
-    this.imageButton1.Text = "正在搜索";
+    this.imageButton1.Text = "Searching";
     ManagementObjectSearcher managementObjectSearcher = new ManagementObjectSearcher("Select * From Win32_PnPEntity");
     try
     {
@@ -2486,7 +2486,7 @@ public class Form1 : FormEx
     }
     catch
     {
-      init_Configuration.Output_Message = "搜索失败，请安装驱动！！";
+      init_Configuration.Output_Message = "Search failed, please install the driver!!";
       int num = (int) init_Configuration.PDF_Interface.ShowDialog();
       return;
     }
@@ -2514,15 +2514,15 @@ public class Form1 : FormEx
       }
       Form1.PortName = this.comboBox1.Text.ToString();
     }
-    this.imageButton1.Text = "搜索完成";
+    this.imageButton1.Text = "Found";
   }
 
   private void qqRadioButton1_CheckedChanged(object sender, EventArgs e)
   {
     if (this.qqRadioButton1.Checked)
-      Form1.CheckSum_Type = "增强型校验和";
+      Form1.CheckSum_Type = "Enhanced CSum";
     else
-      Form1.CheckSum_Type = "标准型校验和";
+      Form1.CheckSum_Type = "Standard CSum";
   }
 
   private async void ClearMemory_Thread() => await Form1.ClearMemory_Task();
@@ -2561,7 +2561,7 @@ public class Form1 : FormEx
   private void imageButton18_Click(object sender, EventArgs e)
   {
     Process.Start("https://pan.baidu.com/s/1iFgqTA2NluoxE8mNDfy3Ag");
-    init_Configuration.Output_Message = "提取码:yxkg";
+    init_Configuration.Output_Message = "Extraction code: yxkg";
     int num = (int) init_Configuration.PDF_Interface.ShowDialog();
   }
 
@@ -2584,7 +2584,7 @@ public class Form1 : FormEx
     }
     else
     {
-      init_Configuration.Output_Message = "驱动文件丢失";
+      init_Configuration.Output_Message = "Driver file is missing";
       int num = (int) init_Configuration.PDF_Interface.ShowDialog();
     }
   }
@@ -2609,7 +2609,7 @@ public class Form1 : FormEx
     }
     catch
     {
-      init_Configuration.Output_Message = "ID格式不正确！";
+      init_Configuration.Output_Message = "The ID format is incorrect!";
       int num = (int) init_Configuration.PDF_Interface.ShowDialog();
       return;
     }
@@ -2622,14 +2622,14 @@ public class Form1 : FormEx
       }
       else
       {
-        init_Configuration.Output_Message = "数据长度超出范围(1--8字节)";
+        init_Configuration.Output_Message = "Data length exceeds the range (1-8 bytes)";
         int num = (int) init_Configuration.PDF_Interface.ShowDialog();
         return;
       }
     }
     catch
     {
-      init_Configuration.Output_Message = "数据长度格式不正确！";
+      init_Configuration.Output_Message = "The data length format is incorrect!";
       int num = (int) init_Configuration.PDF_Interface.ShowDialog();
       return;
     }
@@ -2646,7 +2646,7 @@ public class Form1 : FormEx
     }
     catch
     {
-      init_Configuration.Output_Message = "数据格式不正确！";
+      init_Configuration.Output_Message = "The data format is incorrect!";
       int num = (int) init_Configuration.PDF_Interface.ShowDialog();
       return;
     }
@@ -2661,7 +2661,7 @@ public class Form1 : FormEx
     {
       if (this.comboBox1.Text.ToString() == "")
       {
-        init_Configuration.Output_Message = "请连接LINTest-M设备";
+        init_Configuration.Output_Message = "Please connect the LINTest-M device";
         int num = (int) init_Configuration.PDF_Interface.ShowDialog();
       }
       else
@@ -2671,18 +2671,18 @@ public class Form1 : FormEx
           Form1.Baud_rate = Convert.ToInt32(this.dS数字输入框1.Text);
           if (Form1.Baud_rate < 4800 || Form1.Baud_rate > 115200)
           {
-            init_Configuration.Output_Message = "波特率超出范围！";
+            init_Configuration.Output_Message = "Baud rate out of range!";
             int num = (int) init_Configuration.PDF_Interface.ShowDialog();
             return;
           }
         }
         catch
         {
-          init_Configuration.Output_Message = "波特率格式不正确！";
+          init_Configuration.Output_Message = "The baud rate format is incorrect!";
           int num = (int) init_Configuration.PDF_Interface.ShowDialog();
           return;
         }
-        Form1.CheckSum_Type = !this.qqRadioButton1.Checked ? "标准型校验和" : "增强型校验和";
+        Form1.CheckSum_Type = !this.qqRadioButton1.Checked ? "Standard CSum" : "Enhanced CSum";
         Form1.PortName = this.comboBox1.Text;
         this.serialPort1.PortName = Form1.PortName;
         this.serialPort1.BaudRate = 460800 /*0x070800*/;
@@ -2703,7 +2703,7 @@ public class Form1 : FormEx
         {
           this.comboBox1.Items.Clear();
           Form1.Port_Number = 0;
-          init_Configuration.Output_Message = "请连接LINTest-MI设备！！";
+          init_Configuration.Output_Message = "Please connect the LINTest-MI device!!";
           int num = (int) init_Configuration.PDF_Interface.ShowDialog();
           return;
         }
@@ -2789,7 +2789,7 @@ public class Form1 : FormEx
         }
         else
         {
-          init_Configuration.Output_Message = "打开设备失败或设备正在使用！";
+          init_Configuration.Output_Message = "Failed to open the device or the device is in use!";
           int num = (int) init_Configuration.PDF_Interface.ShowDialog();
         }
       }
@@ -2813,7 +2813,7 @@ public class Form1 : FormEx
       }
       catch
       {
-        init_Configuration.Output_Message = "关闭设备过程中出现异常！";
+        init_Configuration.Output_Message = "An exception occurred during device shutdown!";
         int num = (int) init_Configuration.PDF_Interface.ShowDialog();
       }
       try
@@ -2880,13 +2880,13 @@ public class Form1 : FormEx
         }
         else
         {
-          init_Configuration.Output_Message = "关闭设备失败！";
+          init_Configuration.Output_Message = "Failed to shut down the device!";
           int num = (int) init_Configuration.PDF_Interface.ShowDialog();
         }
       }
       catch
       {
-        this.imageButton1.Text = "搜索设备";
+        this.imageButton1.Text = "Search\nDevices";
         Form1.Device_switch_flag = false;
         this.imageButton2.NormalImage = (Image) Resources.关闭;
         this.imageButton2.Enabled = true;
@@ -2966,7 +2966,7 @@ public class Form1 : FormEx
   {
     if (this.listViewNF1.Items.Count == 0)
     {
-      init_Configuration.Output_Message = "无数据可保存！";
+      init_Configuration.Output_Message = "No data to save!";
       int num = (int) init_Configuration.PDF_Interface.ShowDialog();
     }
     else
@@ -2974,7 +2974,7 @@ public class Form1 : FormEx
       this.progressBarEx1.Value = 0;
       this.progressBarEx1.Maximum = Form1.Single_count;
       this.progressBarEx1.Text = "0%";
-      this.saveFileDialog1.Title = "另存为";
+      this.saveFileDialog1.Title = "Save As";
       this.saveFileDialog1.FileName = "Data for 1";
       this.saveFileDialog1.Filter = "CSV File(*.csv)|*.csv";
       this.saveFileDialog1.ShowHelp = false;
@@ -3268,14 +3268,14 @@ public class Form1 : FormEx
           dec = (byte) Form1.HEXstr_to_DEC(this.qqTextBox1.Text);
           if (dec > (byte) 63 /*0x3F*/)
           {
-            init_Configuration.Output_Message = "发送1-ID超出范围！";
+            init_Configuration.Output_Message = "Send 1 - ID out of range!";
             int num = (int) init_Configuration.PDF_Interface.ShowDialog();
             return;
           }
         }
         catch
         {
-          init_Configuration.Output_Message = "发送1-ID格式不正确！";
+          init_Configuration.Output_Message = "Send 1-ID format is incorrect!";
           int num = (int) init_Configuration.PDF_Interface.ShowDialog();
           return;
         }
@@ -3285,14 +3285,14 @@ public class Form1 : FormEx
           Length = Convert.ToByte(this.qqTextBox3.Text);
           if (Length == (byte) 0 || Length > (byte) 8)
           {
-            init_Configuration.Output_Message = "发送1-数据长度超出范围！";
+            init_Configuration.Output_Message = "Send 1 - Data length out of range!";
             int num = (int) init_Configuration.PDF_Interface.ShowDialog();
             return;
           }
         }
         catch
         {
-          init_Configuration.Output_Message = "发送1-数据长度格式不正确！";
+          init_Configuration.Output_Message = "Send 1 - Data length format is incorrect!";
           int num = (int) init_Configuration.PDF_Interface.ShowDialog();
           return;
         }
@@ -3302,18 +3302,18 @@ public class Form1 : FormEx
           text = this.qqTextBox2.Text;
           if (text.Length < (int) Length * 3 - 1)
           {
-            init_Configuration.Output_Message = "发送1-数据格式不正确！";
+            init_Configuration.Output_Message = "Send 1 - Data format is incorrect!";
             int num = (int) init_Configuration.PDF_Interface.ShowDialog();
             return;
           }
         }
         catch
         {
-          init_Configuration.Output_Message = "发送1-数据格式不正确！";
+          init_Configuration.Output_Message = "Send 1 - Data format is incorrect!";
           int num = (int) init_Configuration.PDF_Interface.ShowDialog();
           return;
         }
-        if (Form1.CheckSum_Type == "增强型校验和")
+        if (Form1.CheckSum_Type == "Enhanced CSum")
         {
           try
           {
@@ -3321,7 +3321,7 @@ public class Form1 : FormEx
           }
           catch
           {
-            init_Configuration.Output_Message = "发送1-数据格式不正确！";
+            init_Configuration.Output_Message = "Send 1 - Data format is incorrect!";
             int num = (int) init_Configuration.PDF_Interface.ShowDialog();
             return;
           }
@@ -3341,7 +3341,7 @@ public class Form1 : FormEx
           }
           catch
           {
-            init_Configuration.Output_Message = "发送1-数据格式不正确！";
+            init_Configuration.Output_Message = "Send 1 - Data format is incorrect!";
             int num = (int) init_Configuration.PDF_Interface.ShowDialog();
             return;
           }
@@ -3362,14 +3362,14 @@ public class Form1 : FormEx
           dec = (byte) Form1.HEXstr_to_DEC(this.qqTextBox4.Text);
           if (dec > (byte) 63 /*0x3F*/)
           {
-            init_Configuration.Output_Message = "发送2-ID超出范围！";
+            init_Configuration.Output_Message = "Send 2 - ID out of range!";
             int num = (int) init_Configuration.PDF_Interface.ShowDialog();
             return;
           }
         }
         catch
         {
-          init_Configuration.Output_Message = "发送2-ID格式不正确！";
+          init_Configuration.Output_Message = "Send 2 - ID format is incorrect!";
           int num = (int) init_Configuration.PDF_Interface.ShowDialog();
           return;
         }
@@ -3379,14 +3379,14 @@ public class Form1 : FormEx
           Length = Convert.ToByte(this.qqTextBox6.Text);
           if (Length == (byte) 0 || Length > (byte) 8)
           {
-            init_Configuration.Output_Message = "发送2-数据长度超出范围！";
+            init_Configuration.Output_Message = "Send 2 - Data length out of range!";
             int num = (int) init_Configuration.PDF_Interface.ShowDialog();
             return;
           }
         }
         catch
         {
-          init_Configuration.Output_Message = "发送2-数据长度格式不正确！";
+          init_Configuration.Output_Message = "Send 2 - Data length format is incorrect!";
           int num = (int) init_Configuration.PDF_Interface.ShowDialog();
           return;
         }
@@ -3396,18 +3396,18 @@ public class Form1 : FormEx
           text = this.qqTextBox5.Text;
           if (text.Length < (int) Length * 3 - 1)
           {
-            init_Configuration.Output_Message = "发送2-数据格式不正确！";
+            init_Configuration.Output_Message = "Send 2 - Data format is incorrect!";
             int num = (int) init_Configuration.PDF_Interface.ShowDialog();
             return;
           }
         }
         catch
         {
-          init_Configuration.Output_Message = "发送2-数据格式不正确！";
+          init_Configuration.Output_Message = "Send 2 - Data format is incorrect!";
           int num = (int) init_Configuration.PDF_Interface.ShowDialog();
           return;
         }
-        if (Form1.CheckSum_Type == "增强型校验和")
+        if (Form1.CheckSum_Type == "Enhanced CSum")
         {
           try
           {
@@ -3415,7 +3415,7 @@ public class Form1 : FormEx
           }
           catch
           {
-            init_Configuration.Output_Message = "发送2-数据格式不正确！";
+            init_Configuration.Output_Message = "Send 2 - Data format is incorrect!";
             int num = (int) init_Configuration.PDF_Interface.ShowDialog();
             return;
           }
@@ -3435,7 +3435,7 @@ public class Form1 : FormEx
           }
           catch
           {
-            init_Configuration.Output_Message = "发送2-数据格式不正确！";
+            init_Configuration.Output_Message = "Send 2 - Data format is incorrect!";
             int num = (int) init_Configuration.PDF_Interface.ShowDialog();
             return;
           }
@@ -3456,14 +3456,14 @@ public class Form1 : FormEx
         dec1 = (byte) Form1.HEXstr_to_DEC(this.qqTextBox7.Text);
         if (dec1 > (byte) 63 /*0x3F*/)
         {
-          init_Configuration.Output_Message = "发送3-ID超出范围！";
+          init_Configuration.Output_Message = "Sending 3-ID out of range!";
           int num = (int) init_Configuration.PDF_Interface.ShowDialog();
           return;
         }
       }
       catch
       {
-        init_Configuration.Output_Message = "发送3-ID格式不正确！";
+        init_Configuration.Output_Message = "Send 3-ID format is incorrect!";
         int num = (int) init_Configuration.PDF_Interface.ShowDialog();
         return;
       }
@@ -3473,14 +3473,14 @@ public class Form1 : FormEx
         Length1 = Convert.ToByte(this.qqTextBox9.Text);
         if (Length1 == (byte) 0 || Length1 > (byte) 8)
         {
-          init_Configuration.Output_Message = "发送3-数据长度超出范围！";
+          init_Configuration.Output_Message = "Send 3 - Data length out of range!";
           int num = (int) init_Configuration.PDF_Interface.ShowDialog();
           return;
         }
       }
       catch
       {
-        init_Configuration.Output_Message = "发送3-数据长度格式不正确！";
+        init_Configuration.Output_Message = "Send 3 - Data length format is incorrect!";
         int num = (int) init_Configuration.PDF_Interface.ShowDialog();
         return;
       }
@@ -3490,18 +3490,18 @@ public class Form1 : FormEx
         text1 = this.qqTextBox8.Text;
         if (text1.Length < (int) Length1 * 3 - 1)
         {
-          init_Configuration.Output_Message = "发送3-数据格式不正确！";
+          init_Configuration.Output_Message = "Send 3 - Data format is incorrect!";
           int num = (int) init_Configuration.PDF_Interface.ShowDialog();
           return;
         }
       }
       catch
       {
-        init_Configuration.Output_Message = "发送3-数据格式不正确！";
+        init_Configuration.Output_Message = "Send 3 - Data format is incorrect!";
         int num = (int) init_Configuration.PDF_Interface.ShowDialog();
         return;
       }
-      if (Form1.CheckSum_Type == "增强型校验和")
+      if (Form1.CheckSum_Type == "Enhanced CSum")
       {
         try
         {
@@ -3509,7 +3509,7 @@ public class Form1 : FormEx
         }
         catch
         {
-          init_Configuration.Output_Message = "发送3-数据格式不正确！";
+          init_Configuration.Output_Message = "Send 3 - Data format is incorrect!";
           int num = (int) init_Configuration.PDF_Interface.ShowDialog();
           return;
         }
@@ -3529,7 +3529,7 @@ public class Form1 : FormEx
         }
         catch
         {
-          init_Configuration.Output_Message = "发送3-数据格式不正确！";
+          init_Configuration.Output_Message = "Send 3 - Data format is incorrect!";
           int num = (int) init_Configuration.PDF_Interface.ShowDialog();
           return;
         }
@@ -3556,7 +3556,7 @@ public class Form1 : FormEx
         {
           if (Form1.Single_time_value < 10 || Form1.Single_time_value > 5000)
           {
-            init_Configuration.Output_Message = "定时时间超出范围！";
+            init_Configuration.Output_Message = "The timer is out of range!";
             int num = (int) init_Configuration.PDF_Interface.ShowDialog();
             return;
           }
@@ -3565,21 +3565,21 @@ public class Form1 : FormEx
         {
           if (Form1.Single_time_value < 20 || Form1.Single_time_value > 5000)
           {
-            init_Configuration.Output_Message = "定时时间超出范围！";
+            init_Configuration.Output_Message = "The timer is out of range!";
             int num = (int) init_Configuration.PDF_Interface.ShowDialog();
             return;
           }
         }
         else if (Form1.Single_time_value < 30 || Form1.Single_time_value > 5000)
         {
-          init_Configuration.Output_Message = "定时时间超出范围！";
+          init_Configuration.Output_Message = "The timer is out of range!";
           int num = (int) init_Configuration.PDF_Interface.ShowDialog();
           return;
         }
       }
       catch
       {
-        init_Configuration.Output_Message = "定时时间格式不正确！";
+        init_Configuration.Output_Message = "The timing time format is incorrect!";
         int num = (int) init_Configuration.PDF_Interface.ShowDialog();
         return;
       }
@@ -3591,14 +3591,14 @@ public class Form1 : FormEx
           dec = (byte) Form1.HEXstr_to_DEC(this.qqTextBox1.Text);
           if (dec > (byte) 63 /*0x3F*/)
           {
-            init_Configuration.Output_Message = "发送1-ID超出范围！";
+            init_Configuration.Output_Message = "Send 1 - ID out of range!";
             int num = (int) init_Configuration.PDF_Interface.ShowDialog();
             return;
           }
         }
         catch
         {
-          init_Configuration.Output_Message = "发送1-ID格式不正确！";
+          init_Configuration.Output_Message = "Send 1-ID format is incorrect!";
           int num = (int) init_Configuration.PDF_Interface.ShowDialog();
           return;
         }
@@ -3608,14 +3608,14 @@ public class Form1 : FormEx
           Length = Convert.ToByte(this.qqTextBox3.Text);
           if (Length == (byte) 0 || Length > (byte) 8)
           {
-            init_Configuration.Output_Message = "发送1-数据长度超出范围！";
+            init_Configuration.Output_Message = "Send 1 - Data length out of range!";
             int num = (int) init_Configuration.PDF_Interface.ShowDialog();
             return;
           }
         }
         catch
         {
-          init_Configuration.Output_Message = "发送1-数据长度格式不正确！";
+          init_Configuration.Output_Message = "Send 1 - Data length format is incorrect!";
           int num = (int) init_Configuration.PDF_Interface.ShowDialog();
           return;
         }
@@ -3624,11 +3624,11 @@ public class Form1 : FormEx
           string text = this.qqTextBox2.Text;
           if (text.Length < (int) Length * 3 - 1)
           {
-            init_Configuration.Output_Message = "发送1-数据格式不正确！";
+            init_Configuration.Output_Message = "Send 1 - Data format is incorrect!";
             int num = (int) init_Configuration.PDF_Interface.ShowDialog();
             return;
           }
-          if (Form1.CheckSum_Type == "增强型校验和")
+          if (Form1.CheckSum_Type == "Enhanced CSum")
           {
             Form1.Single_Set_Send_Data(Form1.Single_Send_i, dec, text, (int) Length, "V2");
             ++Form1.Single_Send_i;
@@ -3641,7 +3641,7 @@ public class Form1 : FormEx
         }
         catch
         {
-          init_Configuration.Output_Message = "发送1-数据格式不正确！";
+          init_Configuration.Output_Message = "Send 1 - Data format is incorrect!";
           int num = (int) init_Configuration.PDF_Interface.ShowDialog();
           return;
         }
@@ -3654,14 +3654,14 @@ public class Form1 : FormEx
           dec = (byte) Form1.HEXstr_to_DEC(this.qqTextBox4.Text);
           if (dec > (byte) 63 /*0x3F*/)
           {
-            init_Configuration.Output_Message = "发送2-ID超出范围！";
+            init_Configuration.Output_Message = "Send 2 - ID out of range!";
             int num = (int) init_Configuration.PDF_Interface.ShowDialog();
             return;
           }
         }
         catch
         {
-          init_Configuration.Output_Message = "发送2-ID格式不正确！";
+          init_Configuration.Output_Message = "Send 2 - ID format is incorrect!";
           int num = (int) init_Configuration.PDF_Interface.ShowDialog();
           return;
         }
@@ -3671,14 +3671,14 @@ public class Form1 : FormEx
           Length = Convert.ToByte(this.qqTextBox6.Text);
           if (Length == (byte) 0 || Length > (byte) 8)
           {
-            init_Configuration.Output_Message = "发送2-数据长度超出范围！";
+            init_Configuration.Output_Message = "Send 2 - Data length out of range!";
             int num = (int) init_Configuration.PDF_Interface.ShowDialog();
             return;
           }
         }
         catch
         {
-          init_Configuration.Output_Message = "发送2-数据长度格式不正确！";
+          init_Configuration.Output_Message = "Send 2 - Data length format is incorrect!";
           int num = (int) init_Configuration.PDF_Interface.ShowDialog();
           return;
         }
@@ -3687,11 +3687,11 @@ public class Form1 : FormEx
           string text = this.qqTextBox5.Text;
           if (text.Length < (int) Length * 3 - 1)
           {
-            init_Configuration.Output_Message = "发送2-数据格式不正确！";
+            init_Configuration.Output_Message = "Send 2 - Data format is incorrect!";
             int num = (int) init_Configuration.PDF_Interface.ShowDialog();
             return;
           }
-          if (Form1.CheckSum_Type == "增强型校验和")
+          if (Form1.CheckSum_Type == "Enhanced CSum")
           {
             Form1.Single_Set_Send_Data(Form1.Single_Send_i, dec, text, (int) Length, "V2");
             ++Form1.Single_Send_i;
@@ -3704,7 +3704,7 @@ public class Form1 : FormEx
         }
         catch
         {
-          init_Configuration.Output_Message = "发送2-数据格式不正确！";
+          init_Configuration.Output_Message = "Send 2 - Data format is incorrect!";
           int num = (int) init_Configuration.PDF_Interface.ShowDialog();
           return;
         }
@@ -3717,14 +3717,14 @@ public class Form1 : FormEx
           dec = (byte) Form1.HEXstr_to_DEC(this.qqTextBox7.Text);
           if (dec > (byte) 63 /*0x3F*/)
           {
-            init_Configuration.Output_Message = "发送3-ID超出范围！";
+            init_Configuration.Output_Message = "Sending 3-ID out of range!";
             int num = (int) init_Configuration.PDF_Interface.ShowDialog();
             return;
           }
         }
         catch
         {
-          init_Configuration.Output_Message = "发送3-ID格式不正确！";
+          init_Configuration.Output_Message = "Send 3-ID format is incorrect!";
           int num = (int) init_Configuration.PDF_Interface.ShowDialog();
           return;
         }
@@ -3734,14 +3734,14 @@ public class Form1 : FormEx
           Length = Convert.ToByte(this.qqTextBox9.Text);
           if (Length == (byte) 0 || Length > (byte) 8)
           {
-            init_Configuration.Output_Message = "发送3-数据长度超出范围！";
+            init_Configuration.Output_Message = "Send 3 - Data length out of range!";
             int num = (int) init_Configuration.PDF_Interface.ShowDialog();
             return;
           }
         }
         catch
         {
-          init_Configuration.Output_Message = "发送3-数据长度格式不正确！";
+          init_Configuration.Output_Message = "Send 3 - Data length format is incorrect!";
           int num = (int) init_Configuration.PDF_Interface.ShowDialog();
           return;
         }
@@ -3750,11 +3750,11 @@ public class Form1 : FormEx
           string text = this.qqTextBox8.Text;
           if (text.Length < (int) Length * 3 - 1)
           {
-            init_Configuration.Output_Message = "发送3-数据格式不正确！";
+            init_Configuration.Output_Message = "Send 3 - Data format is incorrect!";
             int num = (int) init_Configuration.PDF_Interface.ShowDialog();
             return;
           }
-          if (Form1.CheckSum_Type == "增强型校验和")
+          if (Form1.CheckSum_Type == "Enhanced CSum")
           {
             Form1.Single_Set_Send_Data(Form1.Single_Send_i, dec, text, (int) Length, "V2");
             ++Form1.Single_Send_i;
@@ -3767,7 +3767,7 @@ public class Form1 : FormEx
         }
         catch
         {
-          init_Configuration.Output_Message = "发送3-数据格式不正确！";
+          init_Configuration.Output_Message = "Send 3 - Data format is incorrect!";
           int num = (int) init_Configuration.PDF_Interface.ShowDialog();
           return;
         }
@@ -4000,14 +4000,14 @@ public class Form1 : FormEx
           dec = (byte) Form1.HEXstr_to_DEC(this.qqTextBox11.Text);
           if (dec > (byte) 63 /*0x3F*/)
           {
-            init_Configuration.Output_Message = "接收1-ID超出范围！";
+            init_Configuration.Output_Message = "Receive1-ID超出范围！";
             int num = (int) init_Configuration.PDF_Interface.ShowDialog();
             return;
           }
         }
         catch
         {
-          init_Configuration.Output_Message = "接收1-ID格式不正确！";
+          init_Configuration.Output_Message = "Receive1-ID格式不正确！";
           int num = (int) init_Configuration.PDF_Interface.ShowDialog();
           return;
         }
@@ -4017,18 +4017,18 @@ public class Form1 : FormEx
           Length = Convert.ToByte(this.qqTextBox12.Text);
           if (Length == (byte) 0 || Length > (byte) 8)
           {
-            init_Configuration.Output_Message = "接收1-数据长度超出范围！";
+            init_Configuration.Output_Message = "Receive1-数据长度超出范围！";
             int num = (int) init_Configuration.PDF_Interface.ShowDialog();
             return;
           }
         }
         catch
         {
-          init_Configuration.Output_Message = "接收1数据长度格式不正确！";
+          init_Configuration.Output_Message = "Receive1数据长度格式不正确！";
           int num = (int) init_Configuration.PDF_Interface.ShowDialog();
           return;
         }
-        if (Form1.CheckSum_Type == "增强型校验和")
+        if (Form1.CheckSum_Type == "Enhanced CSum")
         {
           Form1.Read_Slave_Data(dec, (int) Length, "V2");
           this.serialPort1.Write(Form1.Send_Frame_Data, 0, 16 /*0x10*/);
@@ -4047,14 +4047,14 @@ public class Form1 : FormEx
           dec = (byte) Form1.HEXstr_to_DEC(this.qqTextBox13.Text);
           if (dec > (byte) 63 /*0x3F*/)
           {
-            init_Configuration.Output_Message = "接收2-ID超出范围！";
+            init_Configuration.Output_Message = "Receive2-ID超出范围！";
             int num = (int) init_Configuration.PDF_Interface.ShowDialog();
             return;
           }
         }
         catch
         {
-          init_Configuration.Output_Message = "接收2-ID格式不正确！";
+          init_Configuration.Output_Message = "Receive2-ID格式不正确！";
           int num = (int) init_Configuration.PDF_Interface.ShowDialog();
           return;
         }
@@ -4064,18 +4064,18 @@ public class Form1 : FormEx
           Length = Convert.ToByte(this.qqTextBox14.Text);
           if (Length == (byte) 0 || Length > (byte) 8)
           {
-            init_Configuration.Output_Message = "接收2-数据长度超出范围！";
+            init_Configuration.Output_Message = "Receive2-数据长度超出范围！";
             int num = (int) init_Configuration.PDF_Interface.ShowDialog();
             return;
           }
         }
         catch
         {
-          init_Configuration.Output_Message = "接收2数据长度格式不正确！";
+          init_Configuration.Output_Message = "Receive2数据长度格式不正确！";
           int num = (int) init_Configuration.PDF_Interface.ShowDialog();
           return;
         }
-        if (Form1.CheckSum_Type == "增强型校验和")
+        if (Form1.CheckSum_Type == "Enhanced CSum")
         {
           Form1.Read_Slave_Data(dec, (int) Length, "V2");
           this.serialPort1.Write(Form1.Send_Frame_Data, 0, 16 /*0x10*/);
@@ -4094,14 +4094,14 @@ public class Form1 : FormEx
         dec1 = (byte) Form1.HEXstr_to_DEC(this.qqTextBox15.Text);
         if (dec1 > (byte) 63 /*0x3F*/)
         {
-          init_Configuration.Output_Message = "接收3-ID超出范围！";
+          init_Configuration.Output_Message = "Receive3-ID超出范围！";
           int num = (int) init_Configuration.PDF_Interface.ShowDialog();
           return;
         }
       }
       catch
       {
-        init_Configuration.Output_Message = "接收3-ID格式不正确！";
+        init_Configuration.Output_Message = "Receive3-ID格式不正确！";
         int num = (int) init_Configuration.PDF_Interface.ShowDialog();
         return;
       }
@@ -4111,18 +4111,18 @@ public class Form1 : FormEx
         Length1 = Convert.ToByte(this.qqTextBox16.Text);
         if (Length1 == (byte) 0 || Length1 > (byte) 8)
         {
-          init_Configuration.Output_Message = "接收3-数据长度超出范围！";
+          init_Configuration.Output_Message = "Receive3-数据长度超出范围！";
           int num = (int) init_Configuration.PDF_Interface.ShowDialog();
           return;
         }
       }
       catch
       {
-        init_Configuration.Output_Message = "接收3数据长度格式不正确！";
+        init_Configuration.Output_Message = "Receive3数据长度格式不正确！";
         int num = (int) init_Configuration.PDF_Interface.ShowDialog();
         return;
       }
-      if (Form1.CheckSum_Type == "增强型校验和")
+      if (Form1.CheckSum_Type == "Enhanced CSum")
       {
         Form1.Read_Slave_Data(dec1, (int) Length1, "V2");
         this.serialPort1.Write(Form1.Send_Frame_Data, 0, 16 /*0x10*/);
@@ -4147,7 +4147,7 @@ public class Form1 : FormEx
         {
           if (Form1.Single_time_value < 10 || Form1.Single_time_value > 5000)
           {
-            init_Configuration.Output_Message = "定时时间超出范围！";
+            init_Configuration.Output_Message = "The timer is out of range!";
             int num = (int) init_Configuration.PDF_Interface.ShowDialog();
             return;
           }
@@ -4156,21 +4156,21 @@ public class Form1 : FormEx
         {
           if (Form1.Single_time_value < 20 || Form1.Single_time_value > 5000)
           {
-            init_Configuration.Output_Message = "定时时间超出范围！";
+            init_Configuration.Output_Message = "The timer is out of range!";
             int num = (int) init_Configuration.PDF_Interface.ShowDialog();
             return;
           }
         }
         else if (Form1.Single_time_value < 30 || Form1.Single_time_value > 5000)
         {
-          init_Configuration.Output_Message = "定时时间超出范围！";
+          init_Configuration.Output_Message = "The timer is out of range!";
           int num = (int) init_Configuration.PDF_Interface.ShowDialog();
           return;
         }
       }
       catch
       {
-        init_Configuration.Output_Message = "定时时间格式不正确！";
+        init_Configuration.Output_Message = "The timing time format is incorrect!";
         int num = (int) init_Configuration.PDF_Interface.ShowDialog();
         return;
       }
@@ -4182,14 +4182,14 @@ public class Form1 : FormEx
           dec = (byte) Form1.HEXstr_to_DEC(this.qqTextBox11.Text);
           if (dec > (byte) 63 /*0x3F*/)
           {
-            init_Configuration.Output_Message = "接收1-ID超出范围！";
+            init_Configuration.Output_Message = "Receive1-ID超出范围！";
             int num = (int) init_Configuration.PDF_Interface.ShowDialog();
             return;
           }
         }
         catch
         {
-          init_Configuration.Output_Message = "接收1-ID格式不正确！";
+          init_Configuration.Output_Message = "Receive1-ID格式不正确！";
           int num = (int) init_Configuration.PDF_Interface.ShowDialog();
           return;
         }
@@ -4199,18 +4199,18 @@ public class Form1 : FormEx
           Length = Convert.ToByte(this.qqTextBox12.Text);
           if (Length == (byte) 0 || Length > (byte) 8)
           {
-            init_Configuration.Output_Message = "接收1-数据长度超出范围！";
+            init_Configuration.Output_Message = "Receive1-数据长度超出范围！";
             int num = (int) init_Configuration.PDF_Interface.ShowDialog();
             return;
           }
         }
         catch
         {
-          init_Configuration.Output_Message = "接收1-数据长度格式不正确！";
+          init_Configuration.Output_Message = "Receive1-数据长度格式不正确！";
           int num = (int) init_Configuration.PDF_Interface.ShowDialog();
           return;
         }
-        if (Form1.CheckSum_Type == "增强型校验和")
+        if (Form1.CheckSum_Type == "Enhanced CSum")
         {
           Form1.Single_Set_Read_Data(Form1.Single_Send_i, dec, (int) Length, "V2");
           ++Form1.Single_Send_i;
@@ -4229,14 +4229,14 @@ public class Form1 : FormEx
           dec = (byte) Form1.HEXstr_to_DEC(this.qqTextBox13.Text);
           if (dec > (byte) 63 /*0x3F*/)
           {
-            init_Configuration.Output_Message = "接收2-ID超出范围！";
+            init_Configuration.Output_Message = "Receive2-ID超出范围！";
             int num = (int) init_Configuration.PDF_Interface.ShowDialog();
             return;
           }
         }
         catch
         {
-          init_Configuration.Output_Message = "接收2-ID格式不正确！";
+          init_Configuration.Output_Message = "Receive2-ID格式不正确！";
           int num = (int) init_Configuration.PDF_Interface.ShowDialog();
           return;
         }
@@ -4246,18 +4246,18 @@ public class Form1 : FormEx
           Length = Convert.ToByte(this.qqTextBox14.Text);
           if (Length == (byte) 0 || Length > (byte) 8)
           {
-            init_Configuration.Output_Message = "接收2-数据长度超出范围！";
+            init_Configuration.Output_Message = "Receive2-数据长度超出范围！";
             int num = (int) init_Configuration.PDF_Interface.ShowDialog();
             return;
           }
         }
         catch
         {
-          init_Configuration.Output_Message = "接收2-数据长度格式不正确！";
+          init_Configuration.Output_Message = "Receive2-数据长度格式不正确！";
           int num = (int) init_Configuration.PDF_Interface.ShowDialog();
           return;
         }
-        if (Form1.CheckSum_Type == "增强型校验和")
+        if (Form1.CheckSum_Type == "Enhanced CSum")
         {
           Form1.Single_Set_Read_Data(Form1.Single_Send_i, dec, (int) Length, "V2");
           ++Form1.Single_Send_i;
@@ -4276,14 +4276,14 @@ public class Form1 : FormEx
           dec = (byte) Form1.HEXstr_to_DEC(this.qqTextBox15.Text);
           if (dec > (byte) 63 /*0x3F*/)
           {
-            init_Configuration.Output_Message = "接收3-ID超出范围！";
+            init_Configuration.Output_Message = "Receive3-ID超出范围！";
             int num = (int) init_Configuration.PDF_Interface.ShowDialog();
             return;
           }
         }
         catch
         {
-          init_Configuration.Output_Message = "接收3-ID格式不正确！";
+          init_Configuration.Output_Message = "Receive3-ID格式不正确！";
           int num = (int) init_Configuration.PDF_Interface.ShowDialog();
           return;
         }
@@ -4293,18 +4293,18 @@ public class Form1 : FormEx
           Length = Convert.ToByte(this.qqTextBox16.Text);
           if (Length == (byte) 0 || Length > (byte) 8)
           {
-            init_Configuration.Output_Message = "接收3-数据长度超出范围！";
+            init_Configuration.Output_Message = "Receive3-数据长度超出范围！";
             int num = (int) init_Configuration.PDF_Interface.ShowDialog();
             return;
           }
         }
         catch
         {
-          init_Configuration.Output_Message = "接收3-数据长度格式不正确！";
+          init_Configuration.Output_Message = "Receive3-数据长度格式不正确！";
           int num = (int) init_Configuration.PDF_Interface.ShowDialog();
           return;
         }
-        if (Form1.CheckSum_Type == "增强型校验和")
+        if (Form1.CheckSum_Type == "Enhanced CSum")
         {
           Form1.Single_Set_Read_Data(Form1.Single_Send_i, dec, (int) Length, "V2");
           ++Form1.Single_Send_i;
@@ -4546,7 +4546,7 @@ public class Form1 : FormEx
     Form1.LI_Static_i = 0;
     if (this.listViewNF2.Items.Count == 0)
     {
-      init_Configuration.Output_Message = "无数据可保存！";
+      init_Configuration.Output_Message = "No data to save!";
       int num = (int) init_Configuration.PDF_Interface.ShowDialog();
     }
     else
@@ -4576,7 +4576,7 @@ public class Form1 : FormEx
         this.progressBarEx1.Maximum = Form1.List_count;
         this.progressBarEx1.Text = "0%";
       }
-      this.saveFileDialog2.Title = "另存为";
+      this.saveFileDialog2.Title = "Save As";
       this.saveFileDialog2.FileName = "Data for 1";
       this.saveFileDialog2.Filter = "CSV File(*.csv)|*.csv";
       this.saveFileDialog2.ShowHelp = false;
@@ -4732,14 +4732,14 @@ public class Form1 : FormEx
         {
           if ((byte) Form1.HEXstr_to_DEC(((DataGridView) this.dataGridViewX1).Rows[index].Cells[3].Value.ToString()) > (byte) 63 /*0x3F*/)
           {
-            init_Configuration.Output_Message = $"第{index.ToString()}行ID超出范围！";
+            init_Configuration.Output_Message = $"Line {index.ToString()} ID is out of range!";
             int num = (int) init_Configuration.PDF_Interface.ShowDialog();
             return;
           }
         }
         catch
         {
-          init_Configuration.Output_Message = $"第{index.ToString()}行的ID格式不正确！";
+          init_Configuration.Output_Message = $"The ID format of line {index.ToString()} is incorrect!";
           int num = (int) init_Configuration.PDF_Interface.ShowDialog();
           return;
         }
@@ -4749,14 +4749,14 @@ public class Form1 : FormEx
           int16_1 = (int) (byte) Convert.ToInt16(((DataGridView) this.dataGridViewX1).Rows[index].Cells[5].Value.ToString());
           if (int16_1 > 8 || int16_1 == 0)
           {
-            init_Configuration.Output_Message = $"第{index.ToString()}行数据长度超出范围！";
+            init_Configuration.Output_Message = $"The data length of line {index.ToString()} is out of range!";
             int num = (int) init_Configuration.PDF_Interface.ShowDialog();
             return;
           }
         }
         catch
         {
-          init_Configuration.Output_Message = $"第{index.ToString()}行的ID数据长度不正确！";
+          init_Configuration.Output_Message = $"The ID data length of line {index.ToString()} is incorrect!";
           int num = (int) init_Configuration.PDF_Interface.ShowDialog();
           return;
         }
@@ -4764,14 +4764,14 @@ public class Form1 : FormEx
         {
           if (((DataGridView) this.dataGridViewX1).Rows[index].Cells[4].Value.ToString().Length < int16_1 * 3 - 1)
           {
-            init_Configuration.Output_Message = $"第{index.ToString()}行数据格式不正确！";
+            init_Configuration.Output_Message = $"The data format of line {index.ToString()} is incorrect!";
             int num = (int) init_Configuration.PDF_Interface.ShowDialog();
             return;
           }
         }
         catch
         {
-          init_Configuration.Output_Message = $"第{index.ToString()}行数据格式不正确！";
+          init_Configuration.Output_Message = $"The data format of line {index.ToString()} is incorrect!";
           int num = (int) init_Configuration.PDF_Interface.ShowDialog();
           return;
         }
@@ -4782,7 +4782,7 @@ public class Form1 : FormEx
           {
             if (int16_2 < 10 || int16_2 > 5000)
             {
-              init_Configuration.Output_Message = $"第{index.ToString()}行定时时间超出范围！";
+              init_Configuration.Output_Message = $"The timing time of line {index.ToString()} is out of range!";
               int num = (int) init_Configuration.PDF_Interface.ShowDialog();
               return;
             }
@@ -4791,21 +4791,21 @@ public class Form1 : FormEx
           {
             if (int16_2 < 20 || int16_2 > 5000)
             {
-              init_Configuration.Output_Message = $"第{index.ToString()}行定时时间超出范围！";
+              init_Configuration.Output_Message = $"The timing time of line {index.ToString()} is out of range!";
               int num = (int) init_Configuration.PDF_Interface.ShowDialog();
               return;
             }
           }
           else if (int16_2 < 30 || int16_2 > 5000)
           {
-            init_Configuration.Output_Message = $"第{index.ToString()}行定时时间超出范围！";
+            init_Configuration.Output_Message = $"The timing time of line {index.ToString()} is out of range!";
             int num = (int) init_Configuration.PDF_Interface.ShowDialog();
             return;
           }
         }
         catch
         {
-          init_Configuration.Output_Message = $"第{index.ToString()}行定时时间格式不正确！";
+          init_Configuration.Output_Message = $"The timing time format of line {index.ToString()} is incorrect!";
           int num = (int) init_Configuration.PDF_Interface.ShowDialog();
           return;
         }
@@ -4862,7 +4862,7 @@ public class Form1 : FormEx
     {
       if (((DataGridView) this.dataGridViewX1).Rows[index].Cells[0].Value.ToString() == "True")
       {
-        if (((DataGridView) this.dataGridViewX1).Rows[index].Cells[2].Value.ToString() == "发送")
+        if (((DataGridView) this.dataGridViewX1).Rows[index].Cells[2].Value.ToString() == "Send")
         {
           Form1.List_Send_Data[Form1.List_Send_i, 0] = (byte) 34;
           Form1.List_Send_Data[Form1.List_Send_i, 1] = (byte) 0;
@@ -4870,7 +4870,7 @@ public class Form1 : FormEx
           Form1.List_Send_Data[Form1.List_Send_i, 3] = (byte) 0;
           Form1.List_EN[index, 0] = (byte) 1;
           Form1.List_EN[index, 1] = (byte) 0;
-          Form1.List_Send_Data[Form1.List_Send_i, 4] = !(Form1.CheckSum_Type == "增强型校验和") ? (byte) 1 : (byte) 2;
+          Form1.List_Send_Data[Form1.List_Send_i, 4] = !(Form1.CheckSum_Type == "Enhanced CSum") ? (byte) 1 : (byte) 2;
           Form1.List_Send_Data[Form1.List_Send_i, 5] = (byte) Convert.ToInt16(((DataGridView) this.dataGridViewX1).Rows[index].Cells[5].Value.ToString());
           str1 = "";
           string str2 = ((DataGridView) this.dataGridViewX1).Rows[index].Cells[4].Value.ToString();
@@ -4978,7 +4978,7 @@ public class Form1 : FormEx
           }
           catch
           {
-            init_Configuration.Output_Message = $"第{index.ToString()}行数据内容不正确！";
+            init_Configuration.Output_Message = $"The data content of line {index.ToString()} is incorrect!";
             int num2 = (int) init_Configuration.PDF_Interface.ShowDialog();
             return;
           }
@@ -4994,7 +4994,7 @@ public class Form1 : FormEx
           Form1.List_Send_Data[Form1.List_Send_i, 3] = (byte) 1;
           Form1.List_EN[index, 0] = (byte) 1;
           Form1.List_EN[index, 1] = (byte) 1;
-          Form1.List_Send_Data[Form1.List_Send_i, 4] = !(Form1.CheckSum_Type == "增强型校验和") ? (byte) 1 : (byte) 2;
+          Form1.List_Send_Data[Form1.List_Send_i, 4] = !(Form1.CheckSum_Type == "Enhanced CSum") ? (byte) 1 : (byte) 2;
           Form1.List_Send_Data[Form1.List_Send_i, 5] = (byte) Convert.ToInt16(((DataGridView) this.dataGridViewX1).Rows[index].Cells[5].Value.ToString());
           Form1.List_time_value[Form1.List_Send_i, 0] = (int) Convert.ToInt16(((DataGridView) this.dataGridViewX1).Rows[index].Cells[6].Value.ToString());
           ++Form1.List_Send_i;
@@ -5014,7 +5014,7 @@ public class Form1 : FormEx
       {
         if (Convert.ToInt32(this.qqTextBox51.Text) > (int) ushort.MaxValue)
         {
-          init_Configuration.Output_Message = "最大65535帧！";
+          init_Configuration.Output_Message = "Maximum 65535 frames!";
           int num3 = (int) init_Configuration.PDF_Interface.ShowDialog();
           return;
         }
@@ -5024,13 +5024,13 @@ public class Form1 : FormEx
     }
     catch
     {
-      init_Configuration.Output_Message = "输入帧数格式不正确！";
+      init_Configuration.Output_Message = "The input frame number format is incorrect!";
       int num4 = (int) init_Configuration.PDF_Interface.ShowDialog();
       return;
     }
     if (num1 == 0)
     {
-      init_Configuration.Output_Message = "请使能任意一个通道！";
+      init_Configuration.Output_Message = "Please enable any channel!";
       int num5 = (int) init_Configuration.PDF_Interface.ShowDialog();
     }
     else
@@ -5256,7 +5256,7 @@ public class Form1 : FormEx
     Form1.S_Static_i = 0;
     if (this.listViewNF3.Items.Count == 0)
     {
-      init_Configuration.Output_Message = "无数据可保存！";
+      init_Configuration.Output_Message = "No data to save!";
       int num = (int) init_Configuration.PDF_Interface.ShowDialog();
     }
     else
@@ -5286,7 +5286,7 @@ public class Form1 : FormEx
         this.progressBarEx1.Maximum = Form1.Slave_count;
         this.progressBarEx1.Text = "0%";
       }
-      this.saveFileDialog3.Title = "另存为";
+      this.saveFileDialog3.Title = "Save As";
       this.saveFileDialog3.FileName = "Data for 1";
       this.saveFileDialog3.Filter = "CSV File(*.csv)|*.csv";
       this.saveFileDialog3.ShowHelp = false;
@@ -5440,7 +5440,7 @@ public class Form1 : FormEx
         {
           if ((byte) Form1.HEXstr_to_DEC(((DataGridView) this.dataGridViewX2).Rows[index].Cells[3].Value.ToString()) > (byte) 63 /*0x3F*/)
           {
-            init_Configuration.Output_Message = $"第{index.ToString()}行ID超出范围！";
+            init_Configuration.Output_Message = $"Line {index.ToString()} ID is out of range!";
             int num = (int) init_Configuration.PDF_Interface.ShowDialog();
             return;
           }
@@ -5457,7 +5457,7 @@ public class Form1 : FormEx
           int16 = (int) (byte) Convert.ToInt16(((DataGridView) this.dataGridViewX2).Rows[index].Cells[5].Value.ToString());
           if (int16 > 8 || int16 == 0)
           {
-            init_Configuration.Output_Message = $"第{index.ToString()}行数据长度超出范围！";
+            init_Configuration.Output_Message = $"The data length of line {index.ToString()} is out of range!";
             int num = (int) init_Configuration.PDF_Interface.ShowDialog();
             return;
           }
@@ -5470,11 +5470,11 @@ public class Form1 : FormEx
         }
         try
         {
-          if (((DataGridView) this.dataGridViewX2).Rows[index].Cells[2].Value.ToString() == "发送")
+          if (((DataGridView) this.dataGridViewX2).Rows[index].Cells[2].Value.ToString() == "Send")
           {
             if (((DataGridView) this.dataGridViewX2).Rows[index].Cells[4].Value.ToString().Length < int16 * 3 - 1)
             {
-              init_Configuration.Output_Message = $"第{index.ToString()}行数据格式不正确！";
+              init_Configuration.Output_Message = $"The data format of line {index.ToString()} is incorrect!";
               int num = (int) init_Configuration.PDF_Interface.ShowDialog();
               return;
             }
@@ -5482,7 +5482,7 @@ public class Form1 : FormEx
         }
         catch
         {
-          init_Configuration.Output_Message = $"第{index.ToString()}行数据格式不正确！";
+          init_Configuration.Output_Message = $"The data format of line {index.ToString()} is incorrect!";
           int num = (int) init_Configuration.PDF_Interface.ShowDialog();
           return;
         }
@@ -5546,7 +5546,7 @@ public class Form1 : FormEx
         Form1.Slave_Send_Data[Form1.Slave_Send_i, 0] = (byte) 85;
         Form1.Slave_Send_Data[Form1.Slave_Send_i, 1] = (byte) Convert.ToInt16(((DataGridView) this.dataGridViewX2).Rows[index].Cells[1].Value.ToString());
         Form1.Slave_Send_Data[Form1.Slave_Send_i, 2] = (byte) Form1.HEXstr_to_DEC(((DataGridView) this.dataGridViewX2).Rows[index].Cells[3].Value.ToString());
-        if (((DataGridView) this.dataGridViewX2).Rows[index].Cells[2].Value.ToString() == "发送")
+        if (((DataGridView) this.dataGridViewX2).Rows[index].Cells[2].Value.ToString() == "Send")
         {
           Form1.Slave_Send_Data[Form1.Slave_Send_i, 3] = (byte) 0;
           Form1.Slave_EN[index, 0] = (byte) 1;
@@ -5558,11 +5558,11 @@ public class Form1 : FormEx
           Form1.Slave_EN[index, 0] = (byte) 1;
           Form1.Slave_EN[index, 1] = (byte) 1;
         }
-        Form1.Slave_Send_Data[Form1.Slave_Send_i, 4] = !(((DataGridView) this.dataGridViewX2).Rows[index].Cells[6].Value.ToString() == "增强型校验和") ? (byte) 1 : (byte) 2;
+        Form1.Slave_Send_Data[Form1.Slave_Send_i, 4] = !(((DataGridView) this.dataGridViewX2).Rows[index].Cells[6].Value.ToString() == "Enhanced CSum") ? (byte) 1 : (byte) 2;
         Form1.Slave_Send_Data[Form1.Slave_Send_i, 5] = (byte) Convert.ToInt16(((DataGridView) this.dataGridViewX2).Rows[index].Cells[5].Value.ToString());
         try
         {
-          if (((DataGridView) this.dataGridViewX2).Rows[index].Cells[2].Value.ToString() == "发送")
+          if (((DataGridView) this.dataGridViewX2).Rows[index].Cells[2].Value.ToString() == "Send")
           {
             str1 = "";
             string str2 = ((DataGridView) this.dataGridViewX2).Rows[index].Cells[4].Value.ToString();
@@ -5669,7 +5669,7 @@ public class Form1 : FormEx
         }
         catch
         {
-          init_Configuration.Output_Message = $"第{index.ToString()}行数据格式不正确！";
+          init_Configuration.Output_Message = $"The data format of line {index.ToString()} is incorrect!";
           int num2 = (int) init_Configuration.PDF_Interface.ShowDialog();
           return;
         }
@@ -5701,7 +5701,7 @@ public class Form1 : FormEx
     }
     if (num1 == 0)
     {
-      init_Configuration.Output_Message = "请使能任意一个通道！";
+      init_Configuration.Output_Message = "Please enable any channel!";
       int num3 = (int) init_Configuration.PDF_Interface.ShowDialog();
     }
     else
@@ -5921,7 +5921,7 @@ public class Form1 : FormEx
                   byte dec = (byte) Form1.HEXstr_to_DEC(this.qqTextBox1.Text);
                   string text = this.qqTextBox2.Text;
                   int Length = (int) Convert.ToByte(this.qqTextBox3.Text);
-                  if (Form1.CheckSum_Type == "增强型校验和")
+                  if (Form1.CheckSum_Type == "Enhanced CSum")
                     Form1.Single_Set_Send_Data(0, dec, text, Length, "V2");
                   else
                     Form1.Single_Set_Send_Data(0, dec, text, Length, "V1");
@@ -5931,7 +5931,7 @@ public class Form1 : FormEx
                   byte dec = (byte) Form1.HEXstr_to_DEC(this.qqTextBox4.Text);
                   string text = this.qqTextBox5.Text;
                   int Length = (int) Convert.ToByte(this.qqTextBox6.Text);
-                  if (Form1.CheckSum_Type == "增强型校验和")
+                  if (Form1.CheckSum_Type == "Enhanced CSum")
                     Form1.Single_Set_Send_Data(0, dec, text, Length, "V2");
                   else
                     Form1.Single_Set_Send_Data(0, dec, text, Length, "V1");
@@ -5941,7 +5941,7 @@ public class Form1 : FormEx
                   byte dec = (byte) Form1.HEXstr_to_DEC(this.qqTextBox7.Text);
                   string text = this.qqTextBox8.Text;
                   int Length = (int) Convert.ToByte(this.qqTextBox9.Text);
-                  if (Form1.CheckSum_Type == "增强型校验和")
+                  if (Form1.CheckSum_Type == "Enhanced CSum")
                     Form1.Single_Set_Send_Data(0, dec, text, Length, "V2");
                   else
                     Form1.Single_Set_Send_Data(0, dec, text, Length, "V1");
@@ -5963,7 +5963,7 @@ public class Form1 : FormEx
                   byte dec = (byte) Form1.HEXstr_to_DEC(this.qqTextBox1.Text);
                   string text = this.qqTextBox2.Text;
                   int Length = (int) Convert.ToByte(this.qqTextBox3.Text);
-                  if (Form1.CheckSum_Type == "增强型校验和")
+                  if (Form1.CheckSum_Type == "Enhanced CSum")
                     Form1.Single_Set_Send_Data(number, dec, text, Length, "V2");
                   else
                     Form1.Single_Set_Send_Data(number, dec, text, Length, "V1");
@@ -5974,7 +5974,7 @@ public class Form1 : FormEx
                   byte dec = (byte) Form1.HEXstr_to_DEC(this.qqTextBox4.Text);
                   string text = this.qqTextBox5.Text;
                   int Length = (int) Convert.ToByte(this.qqTextBox6.Text);
-                  if (Form1.CheckSum_Type == "增强型校验和")
+                  if (Form1.CheckSum_Type == "Enhanced CSum")
                     Form1.Single_Set_Send_Data(number, dec, text, Length, "V2");
                   else
                     Form1.Single_Set_Send_Data(number, dec, text, Length, "V1");
@@ -5985,7 +5985,7 @@ public class Form1 : FormEx
                   byte dec = (byte) Form1.HEXstr_to_DEC(this.qqTextBox7.Text);
                   string text = this.qqTextBox8.Text;
                   int Length = (int) Convert.ToByte(this.qqTextBox9.Text);
-                  if (Form1.CheckSum_Type == "增强型校验和")
+                  if (Form1.CheckSum_Type == "Enhanced CSum")
                     Form1.Single_Set_Send_Data(number, dec, text, Length, "V2");
                   else
                     Form1.Single_Set_Send_Data(number, dec, text, Length, "V1");
@@ -6008,7 +6008,7 @@ public class Form1 : FormEx
                   byte dec = (byte) Form1.HEXstr_to_DEC(this.qqTextBox1.Text);
                   string text = this.qqTextBox2.Text;
                   int Length = (int) Convert.ToByte(this.qqTextBox3.Text);
-                  if (Form1.CheckSum_Type == "增强型校验和")
+                  if (Form1.CheckSum_Type == "Enhanced CSum")
                     Form1.Single_Set_Send_Data(0, dec, text, Length, "V2");
                   else
                     Form1.Single_Set_Send_Data(0, dec, text, Length, "V1");
@@ -6018,7 +6018,7 @@ public class Form1 : FormEx
                   byte dec = (byte) Form1.HEXstr_to_DEC(this.qqTextBox4.Text);
                   string text = this.qqTextBox5.Text;
                   int Length = (int) Convert.ToByte(this.qqTextBox6.Text);
-                  if (Form1.CheckSum_Type == "增强型校验和")
+                  if (Form1.CheckSum_Type == "Enhanced CSum")
                     Form1.Single_Set_Send_Data(1, dec, text, Length, "V2");
                   else
                     Form1.Single_Set_Send_Data(1, dec, text, Length, "V1");
@@ -6028,7 +6028,7 @@ public class Form1 : FormEx
                   byte dec = (byte) Form1.HEXstr_to_DEC(this.qqTextBox7.Text);
                   string text = this.qqTextBox8.Text;
                   int Length = (int) Convert.ToByte(this.qqTextBox9.Text);
-                  if (Form1.CheckSum_Type == "增强型校验和")
+                  if (Form1.CheckSum_Type == "Enhanced CSum")
                     Form1.Single_Set_Send_Data(2, dec, text, Length, "V2");
                   else
                     Form1.Single_Set_Send_Data(2, dec, text, Length, "V1");
@@ -6195,7 +6195,7 @@ public class Form1 : FormEx
               int int16 = (int) (byte) Convert.ToInt16(((DataGridView) this.dataGridViewX2).Rows[index].Cells[5].Value.ToString());
               if (Send_str.Length >= int16 * 3 - 1)
               {
-                string check_type = !(((DataGridView) this.dataGridViewX2).Rows[index].Cells[6].Value.ToString() == "增强型校验和") ? "V1" : "V2";
+                string check_type = !(((DataGridView) this.dataGridViewX2).Rows[index].Cells[6].Value.ToString() == "Enhanced CSum") ? "V1" : "V2";
                 Form1.Slave_Update_Data(dec, index, Send_str, int16, check_type);
                 this.serialPort1.Write(Form1.Send_Frame_Data, 0, 16 /*0x10*/);
                 this.label4.Text = $"参数设置：成功更改第{index.ToString()}行数据:{Send_str.Substring(0, int16 * 3 - 1)}";
@@ -6292,7 +6292,7 @@ public class Form1 : FormEx
     Form1.M_Static_i = 0;
     if (this.listViewNF4.Items.Count == 0)
     {
-      init_Configuration.Output_Message = "无数据可保存！";
+      init_Configuration.Output_Message = "No data to save!";
       int num = (int) init_Configuration.PDF_Interface.ShowDialog();
     }
     else
@@ -6322,7 +6322,7 @@ public class Form1 : FormEx
         this.progressBarEx1.Maximum = Form1.Monitor_count;
         this.progressBarEx1.Text = "0%";
       }
-      this.saveFileDialog4.Title = "另存为";
+      this.saveFileDialog4.Title = "Save As";
       this.saveFileDialog4.FileName = "Data for 1";
       this.saveFileDialog4.Filter = "CSV File(*.csv)|*.csv";
       this.saveFileDialog4.ShowHelp = false;
@@ -6902,14 +6902,14 @@ public class Form1 : FormEx
       Form1.Volume_value = (int) Convert.ToInt16(this.dS数字输入框2.Text);
       if (Form1.Volume_value > 30)
       {
-        init_Configuration.Output_Message = "语音音量最大30！";
+        init_Configuration.Output_Message = "Voice volume max 30!";
         int num = (int) init_Configuration.PDF_Interface.ShowDialog();
         return;
       }
     }
     catch
     {
-      init_Configuration.Output_Message = "语音音量格式不正确！";
+      init_Configuration.Output_Message = "The voice volume format is incorrect!";
       int num = (int) init_Configuration.PDF_Interface.ShowDialog();
       return;
     }
@@ -6920,7 +6920,7 @@ public class Form1 : FormEx
       {
         if (Form1.Line_time < 10 || Form1.Line_time > 30000)
         {
-          init_Configuration.Output_Message = "定时时间超出范围！";
+          init_Configuration.Output_Message = "The timer is out of range!";
           int num = (int) init_Configuration.PDF_Interface.ShowDialog();
           return;
         }
@@ -6929,21 +6929,21 @@ public class Form1 : FormEx
       {
         if (Form1.Line_time < 20 || Form1.Line_time > 30000)
         {
-          init_Configuration.Output_Message = "定时时间超出范围！";
+          init_Configuration.Output_Message = "The timer is out of range!";
           int num = (int) init_Configuration.PDF_Interface.ShowDialog();
           return;
         }
       }
       else if (Form1.Line_time < 30 || Form1.Line_time > 30000)
       {
-        init_Configuration.Output_Message = "定时时间超出范围！";
+        init_Configuration.Output_Message = "The timer is out of range!";
         int num = (int) init_Configuration.PDF_Interface.ShowDialog();
         return;
       }
     }
     catch
     {
-      init_Configuration.Output_Message = "定时时间格式不正确！";
+      init_Configuration.Output_Message = "The timing time format is incorrect!";
       int num = (int) init_Configuration.PDF_Interface.ShowDialog();
       return;
     }
@@ -6953,7 +6953,7 @@ public class Form1 : FormEx
       {
         if (((DataGridView) this.dataGridViewX3).Rows[index1].Cells[0].Value.ToString() == "True" && (byte) Form1.HEXstr_to_DEC(((DataGridView) this.dataGridViewX3).Rows[index1].Cells[3].Value.ToString()) > (byte) 63 /*0x3F*/)
         {
-          init_Configuration.Output_Message = $"通道{index1.ToString()}的ID超出范围！";
+          init_Configuration.Output_Message = $"ID of channel {index1.ToString()} is out of range!";
           int num = (int) init_Configuration.PDF_Interface.ShowDialog();
           return;
         }
@@ -6961,7 +6961,7 @@ public class Form1 : FormEx
     }
     catch
     {
-      init_Configuration.Output_Message = $"通道{index1.ToString()}的ID格式不正确！";
+      init_Configuration.Output_Message = $"The ID format of channel {index1.ToString()} is incorrect!";
       int num = (int) init_Configuration.PDF_Interface.ShowDialog();
       return;
     }
@@ -6974,7 +6974,7 @@ public class Form1 : FormEx
           byte int16 = (byte) Convert.ToInt16(((DataGridView) this.dataGridViewX3).Rows[index1].Cells[5].Value.ToString());
           if (int16 > (byte) 8 || int16 == (byte) 0)
           {
-            init_Configuration.Output_Message = $"通道{index1.ToString()}的数据长度超出范围！";
+            init_Configuration.Output_Message = $"The data length of channel {index1.ToString()} is out of range!";
             int num = (int) init_Configuration.PDF_Interface.ShowDialog();
             return;
           }
@@ -6983,7 +6983,7 @@ public class Form1 : FormEx
     }
     catch
     {
-      init_Configuration.Output_Message = $"通道{index1.ToString()}的数据长度格式不正确！";
+      init_Configuration.Output_Message = $"The data length format of channel {index1.ToString()} is incorrect!";
       int num = (int) init_Configuration.PDF_Interface.ShowDialog();
       return;
     }
@@ -6991,12 +6991,12 @@ public class Form1 : FormEx
     {
       for (index1 = 0; index1 < 16 /*0x10*/; ++index1)
       {
-        if (((DataGridView) this.dataGridViewX3).Rows[index1].Cells[0].Value.ToString() == "True" && ((DataGridView) this.dataGridViewX3).Rows[index1].Cells[2].Value.ToString() == "发送")
+        if (((DataGridView) this.dataGridViewX3).Rows[index1].Cells[0].Value.ToString() == "True" && ((DataGridView) this.dataGridViewX3).Rows[index1].Cells[2].Value.ToString() == "Send")
         {
           int int16 = (int) (byte) Convert.ToInt16(((DataGridView) this.dataGridViewX3).Rows[index1].Cells[5].Value.ToString());
           if (((DataGridView) this.dataGridViewX3).Rows[index1].Cells[4].Value.ToString().Length < int16 * 3 - 1)
           {
-            init_Configuration.Output_Message = $"通道{index1.ToString()}的数据格式不正确！";
+            init_Configuration.Output_Message = $"The data format of channel {index1.ToString()} is incorrect!";
             int num = (int) init_Configuration.PDF_Interface.ShowDialog();
             return;
           }
@@ -7005,7 +7005,7 @@ public class Form1 : FormEx
     }
     catch
     {
-      init_Configuration.Output_Message = $"通道{index1.ToString()}的数据格式不正确！";
+      init_Configuration.Output_Message = $"The data format of channel {index1.ToString()} is incorrect!";
       int num = (int) init_Configuration.PDF_Interface.ShowDialog();
       return;
     }
@@ -7036,10 +7036,10 @@ public class Form1 : FormEx
           Form1.Off_line_Date[Form1.Off_line_count, 0] = (byte) 119;
           Form1.Off_line_Date[Form1.Off_line_count, 1] = (byte) num1;
           Form1.Off_line_Date[Form1.Off_line_count, 2] = (byte) Form1.HEXstr_to_DEC(((DataGridView) this.dataGridViewX3).Rows[index3].Cells[3].Value.ToString());
-          Form1.Off_line_Date[Form1.Off_line_count, 3] = !(((DataGridView) this.dataGridViewX3).Rows[index3].Cells[2].Value.ToString() == "发送") ? (byte) 1 : (byte) 0;
-          Form1.Off_line_Date[Form1.Off_line_count, 4] = !(((DataGridView) this.dataGridViewX3).Rows[index3].Cells[6].Value.ToString() == "增强型校验和") ? (byte) 1 : (byte) 2;
+          Form1.Off_line_Date[Form1.Off_line_count, 3] = !(((DataGridView) this.dataGridViewX3).Rows[index3].Cells[2].Value.ToString() == "Send") ? (byte) 1 : (byte) 0;
+          Form1.Off_line_Date[Form1.Off_line_count, 4] = !(((DataGridView) this.dataGridViewX3).Rows[index3].Cells[6].Value.ToString() == "Enhanced CSum") ? (byte) 1 : (byte) 2;
           Form1.Off_line_Date[Form1.Off_line_count, 5] = (byte) Convert.ToInt16(((DataGridView) this.dataGridViewX3).Rows[index3].Cells[5].Value.ToString());
-          if (((DataGridView) this.dataGridViewX3).Rows[index3].Cells[2].Value.ToString() == "发送")
+          if (((DataGridView) this.dataGridViewX3).Rows[index3].Cells[2].Value.ToString() == "Send")
           {
             string str = ((DataGridView) this.dataGridViewX3).Rows[index3].Cells[4].Value.ToString();
             for (int index4 = 0; index4 < (int) Form1.Off_line_Date[Form1.Off_line_count, 5]; ++index4)
@@ -7063,7 +7063,7 @@ public class Form1 : FormEx
       }
       catch
       {
-        init_Configuration.Output_Message = $"通道{index3.ToString()}的数据格式不正确！";
+        init_Configuration.Output_Message = $"The data format of channel {index3.ToString()} is incorrect!";
         int num3 = (int) init_Configuration.PDF_Interface.ShowDialog();
         return;
       }
@@ -7082,7 +7082,7 @@ public class Form1 : FormEx
     ++Form1.Off_line_count;
     if (num2 == 0)
     {
-      init_Configuration.Output_Message = "请使能任意一个通道！";
+      init_Configuration.Output_Message = "Please enable any channel!";
       int num4 = (int) init_Configuration.PDF_Interface.ShowDialog();
     }
     else
@@ -7123,7 +7123,7 @@ public class Form1 : FormEx
     if (!this.serialPort1.IsOpen)
       return;
     this.serialPort1.Write(Form1.Send_Frame_Data, 0, 16 /*0x10*/);
-    init_Configuration.Output_Message = "已退出离线模式！";
+    init_Configuration.Output_Message = "Exited offline mode!";
     int num = (int) init_Configuration.PDF_Interface.ShowDialog();
   }
 
@@ -7179,7 +7179,7 @@ public class Form1 : FormEx
     }
     else
     {
-      init_Configuration.Output_Message = "请先关闭当前工作模式！";
+      init_Configuration.Output_Message = "Please close the current working mode first!";
       int num = (int) init_Configuration.PDF_Interface.ShowDialog();
     }
   }
@@ -7235,7 +7235,7 @@ public class Form1 : FormEx
         Form1.Mask_ID1 = (byte) Form1.HEXstr_to_DEC(this.qqTextBox45.Text);
         if (Form1.Mask_ID1 > (byte) 63 /*0x3F*/)
         {
-          init_Configuration.Output_Message = "ID超出范围(00-3F)！";
+          init_Configuration.Output_Message = "ID is out of range (00-3F)!";
           int num = (int) init_Configuration.PDF_Interface.ShowDialog();
         }
         else
@@ -7243,7 +7243,7 @@ public class Form1 : FormEx
       }
       catch
       {
-        init_Configuration.Output_Message = "屏蔽ID1格式不正确！";
+        init_Configuration.Output_Message = "Shield ID1 format is incorrect!";
         int num = (int) init_Configuration.PDF_Interface.ShowDialog();
       }
     }
@@ -7260,7 +7260,7 @@ public class Form1 : FormEx
         Form1.Mask_ID2 = (byte) Form1.HEXstr_to_DEC(this.qqTextBox46.Text);
         if (Form1.Mask_ID2 > (byte) 63 /*0x3F*/)
         {
-          init_Configuration.Output_Message = "ID超出范围(00-3F)！";
+          init_Configuration.Output_Message = "ID is out of range (00-3F)!";
           int num = (int) init_Configuration.PDF_Interface.ShowDialog();
         }
         else
@@ -7268,7 +7268,7 @@ public class Form1 : FormEx
       }
       catch
       {
-        init_Configuration.Output_Message = "屏蔽ID2格式不正确！";
+        init_Configuration.Output_Message = "The format of shield ID2 is incorrect!";
         int num = (int) init_Configuration.PDF_Interface.ShowDialog();
       }
     }
@@ -7285,7 +7285,7 @@ public class Form1 : FormEx
         Form1.Mask_ID3 = (byte) Form1.HEXstr_to_DEC(this.qqTextBox47.Text);
         if (Form1.Mask_ID3 > (byte) 63 /*0x3F*/)
         {
-          init_Configuration.Output_Message = "ID超出范围(00-3F)！";
+          init_Configuration.Output_Message = "ID is out of range (00-3F)!";
           int num = (int) init_Configuration.PDF_Interface.ShowDialog();
         }
         else
@@ -7293,7 +7293,7 @@ public class Form1 : FormEx
       }
       catch
       {
-        init_Configuration.Output_Message = "屏蔽ID3格式不正确！";
+        init_Configuration.Output_Message = "The shielded ID3 format is incorrect!";
         int num = (int) init_Configuration.PDF_Interface.ShowDialog();
       }
     }
@@ -7303,7 +7303,7 @@ public class Form1 : FormEx
 
   private void myButton1_Click(object sender, EventArgs e)
   {
-    this.openFileDialog1.Title = "打开文件";
+    this.openFileDialog1.Title = "Open FIle";
     this.openFileDialog1.Filter = "CSV File(*.csv)|*.csv";
     this.openFileDialog1.FileName = "";
     if (this.openFileDialog1.ShowDialog() != DialogResult.OK)
@@ -7322,7 +7322,7 @@ public class Form1 : FormEx
         {
           string[] strArray = str1.Split(',');
           int length = strArray.Length;
-          if (length == 9 && strArray[2] == "接收" && (strArray[8] == "V2" || strArray[8] == "V1"))
+          if (length == 9 && strArray[2] == "Receive" && (strArray[8] == "V2" || strArray[8] == "V1"))
           {
             Form1.Play_Back_Data[(int) Form1.Play_cnt, 0] = (byte) 34;
             Form1.Play_Back_Data[(int) Form1.Play_cnt, 1] = (byte) 0;
@@ -7347,7 +7347,7 @@ public class Form1 : FormEx
             if (Form1.Play_cnt >= (uint) ushort.MaxValue)
               break;
           }
-          else if (length == 9 && strArray[8] == "帧头")
+          else if (length == 9 && strArray[8] == "Frame header")
           {
             Form1.Play_Back_Data[(int) Form1.Play_cnt, 0] = (byte) 51;
             Form1.Play_Back_Data[(int) Form1.Play_cnt, 1] = (byte) 1;
@@ -7389,7 +7389,7 @@ public class Form1 : FormEx
       {
         streamReader.Close();
         fileStream.Close();
-        init_Configuration.Output_Message = "导入数据失败！";
+        init_Configuration.Output_Message = "Failed to import data!";
         int num = (int) init_Configuration.PDF_Interface.ShowDialog();
         return;
       }
@@ -7397,7 +7397,7 @@ public class Form1 : FormEx
       fileStream.Close();
       if (Form1.Play_cnt == 0U)
       {
-        init_Configuration.Output_Message = "导入数据失败！";
+        init_Configuration.Output_Message = "Failed to import data!";
         int num = (int) init_Configuration.PDF_Interface.ShowDialog();
       }
       else
@@ -7414,7 +7414,7 @@ public class Form1 : FormEx
   {
     if (Form1.Play_cnt == 0U)
     {
-      init_Configuration.Output_Message = "请导入数据！";
+      init_Configuration.Output_Message = "Please import data!";
       int num = (int) init_Configuration.PDF_Interface.ShowDialog();
     }
     else
@@ -7426,7 +7426,7 @@ public class Form1 : FormEx
           Form1.Mask_ID1 = (byte) Form1.HEXstr_to_DEC(this.qqTextBox45.Text);
           if (Form1.Mask_ID1 > (byte) 63 /*0x3F*/)
           {
-            init_Configuration.Output_Message = "ID超出范围(00-3F)！";
+            init_Configuration.Output_Message = "ID is out of range (00-3F)!";
             int num = (int) init_Configuration.PDF_Interface.ShowDialog();
             return;
           }
@@ -7434,7 +7434,7 @@ public class Form1 : FormEx
         }
         catch
         {
-          init_Configuration.Output_Message = "屏蔽ID1格式不正确！";
+          init_Configuration.Output_Message = "Shield ID1 format is incorrect!";
           int num = (int) init_Configuration.PDF_Interface.ShowDialog();
           return;
         }
@@ -7448,7 +7448,7 @@ public class Form1 : FormEx
           Form1.Mask_ID2 = (byte) Form1.HEXstr_to_DEC(this.qqTextBox46.Text);
           if (Form1.Mask_ID2 > (byte) 63 /*0x3F*/)
           {
-            init_Configuration.Output_Message = "ID超出范围(00-3F)！";
+            init_Configuration.Output_Message = "ID is out of range (00-3F)!";
             int num = (int) init_Configuration.PDF_Interface.ShowDialog();
             return;
           }
@@ -7456,7 +7456,7 @@ public class Form1 : FormEx
         }
         catch
         {
-          init_Configuration.Output_Message = "屏蔽ID2格式不正确！";
+          init_Configuration.Output_Message = "The format of shield ID2 is incorrect!";
           int num = (int) init_Configuration.PDF_Interface.ShowDialog();
           return;
         }
@@ -7470,7 +7470,7 @@ public class Form1 : FormEx
           Form1.Mask_ID3 = (byte) Form1.HEXstr_to_DEC(this.qqTextBox47.Text);
           if (Form1.Mask_ID3 > (byte) 63 /*0x3F*/)
           {
-            init_Configuration.Output_Message = "ID超出范围(00-3F)！";
+            init_Configuration.Output_Message = "ID is out of range (00-3F)!";
             int num = (int) init_Configuration.PDF_Interface.ShowDialog();
             return;
           }
@@ -7478,7 +7478,7 @@ public class Form1 : FormEx
         }
         catch
         {
-          init_Configuration.Output_Message = "屏蔽ID3格式不正确！";
+          init_Configuration.Output_Message = "The shielded ID3 format is incorrect!";
           int num = (int) init_Configuration.PDF_Interface.ShowDialog();
           return;
         }
@@ -7492,7 +7492,7 @@ public class Form1 : FormEx
         {
           if (Form1.Play_time < 10U)
           {
-            init_Configuration.Output_Message = "发送间隔超出范围(10-1000ms)！";
+            init_Configuration.Output_Message = "Sending interval is out of range (10-1000ms)!";
             int num = (int) init_Configuration.PDF_Interface.ShowDialog();
             return;
           }
@@ -7501,21 +7501,21 @@ public class Form1 : FormEx
         {
           if (Form1.Play_time < 20U)
           {
-            init_Configuration.Output_Message = "发送间隔超出范围(20-1000ms)！";
+            init_Configuration.Output_Message = "Sending interval is out of range (20-1000ms)!";
             int num = (int) init_Configuration.PDF_Interface.ShowDialog();
             return;
           }
         }
         else if (Form1.Play_time < 30U)
         {
-          init_Configuration.Output_Message = "发送间隔超出范围(30-1000ms)！";
+          init_Configuration.Output_Message = "Sending interval is out of range (30-1000ms)!";
           int num = (int) init_Configuration.PDF_Interface.ShowDialog();
           return;
         }
       }
       catch
       {
-        init_Configuration.Output_Message = "发送间隔格式不正确！";
+        init_Configuration.Output_Message = "The sending interval format is incorrect!";
         int num = (int) init_Configuration.PDF_Interface.ShowDialog();
         return;
       }
@@ -7524,20 +7524,20 @@ public class Form1 : FormEx
         Form1.Play_number = Convert.ToUInt32(this.qqTextBox48.Text);
         if (Form1.Play_number > (uint) ushort.MaxValue)
         {
-          init_Configuration.Output_Message = "回放次数超出范围(0-65535)！";
+          init_Configuration.Output_Message = "The number of playbacks exceeds the range (0-65535)!";
           int num = (int) init_Configuration.PDF_Interface.ShowDialog();
           return;
         }
       }
       catch
       {
-        init_Configuration.Output_Message = "回放次数格式不正确！";
+        init_Configuration.Output_Message = "The playback times format is incorrect!";
         int num = (int) init_Configuration.PDF_Interface.ShowDialog();
         return;
       }
       if (this.imageButton6.Enabled || this.imageButton8.Enabled || this.dS按钮2.Enabled || this.dS按钮4.Enabled || this.dS按钮6.Enabled || !this.imageButton15.Enabled)
       {
-        init_Configuration.Output_Message = "软件正在工作中，暂无法启动！";
+        init_Configuration.Output_Message = "The software is working and cannot be started!";
         int num = (int) init_Configuration.PDF_Interface.ShowDialog();
       }
       else
@@ -7685,10 +7685,10 @@ label_11:;
     }
     else
     {
-      this.dS标签15.Text = $"发送状态:  {Form1.Play_i.ToString()}/{Form1.Play_cnt.ToString()}   {Form1.Play_number_cnt.ToString()}次循环";
+      this.dS标签15.Text = $"Sending Status:  {Form1.Play_i.ToString()}/{Form1.Play_cnt.ToString()}   {Form1.Play_number_cnt.ToString()} loop(s)";
       if (Form1.Play_flash_flag)
       {
-        init_Configuration.Output_Message = "数据回放执行完成！";
+        init_Configuration.Output_Message = "Data playback completed!";
         int num = (int) init_Configuration.PDF_Interface.ShowDialog();
         Form1.Play_flash_flag = false;
       }
@@ -7768,7 +7768,7 @@ label_11:;
         this.qqTextBox53.Enabled = true;
         this.qqTextBox54.Enabled = true;
         this.qqTextBox55.Enabled = true;
-        init_Configuration.Output_Message = "离线模式设置成功！";
+        init_Configuration.Output_Message = "Offline mode set successfully!";
         int num = (int) init_Configuration.PDF_Interface.ShowDialog();
         Form1.mode4_flag = false;
       }
@@ -7812,7 +7812,7 @@ label_11:;
         this.qqTextBox53.Enabled = true;
         this.qqTextBox54.Enabled = true;
         this.qqTextBox55.Enabled = true;
-        init_Configuration.Output_Message = "离线模式设置成功！";
+        init_Configuration.Output_Message = "Offline mode set successfully!";
         int num = (int) init_Configuration.PDF_Interface.ShowDialog();
         Form1.mode4_flag = false;
       }
@@ -7840,7 +7840,7 @@ label_11:;
         this.qqTextBox53.Enabled = true;
         this.qqTextBox54.Enabled = true;
         this.qqTextBox55.Enabled = true;
-        init_Configuration.Output_Message = "设置失败，请检查芯片是否损坏！";
+        init_Configuration.Output_Message = "Setup failed, please check if the chip is damaged!";
         int num = (int) init_Configuration.PDF_Interface.ShowDialog();
         Form1.mode4_flag = false;
       }
@@ -8024,11 +8024,11 @@ label_11:;
       if (Form1.System_UART_RX_Rrror_flag)
       {
         Form1.System_UART_RX_Rrror_flag = false;
-        init_Configuration.Output_Message = "设备被强行拔出USB，请重新启动软件！";
+        init_Configuration.Output_Message = "The device was forcibly unplugged from USB. Please restart the software!";
         int num = (int) init_Configuration.PDF_Interface.ShowDialog();
         this.comboBox1.Items.Clear();
         Form1.Port_Number = 0;
-        this.imageButton1.Text = "搜索设备";
+        this.imageButton1.Text = "Search";
         Form1.Exit_Task_flag = true;
         this.myToolBar1.Enabled = true;
         Form1.Device_switch_flag = false;
@@ -8213,14 +8213,14 @@ label_11:;
       Form1.M_Length = 0;
       Form1.M_ID = Form1.DECstr_to_HEXstr(Form1.Monitor_Data[Form1.Monitor_Display_count, 2].ToString());
       Form1.M_ID = $"{Form1.M_ID}[{Form1.LIN_PID_Parity(Form1.M_ID)}]";
-      Form1.M_State = Form1.Monitor_Data[Form1.Monitor_Display_count, 4] != (byte) 0 ? (Form1.Monitor_Data[Form1.Monitor_Display_count, 4] != (byte) 1 ? (Form1.Monitor_Data[Form1.Monitor_Display_count, 4] != (byte) 2 ? "帧头" : "V2") : "V1") : "校验和错误";
+      Form1.M_State = Form1.Monitor_Data[Form1.Monitor_Display_count, 4] != (byte) 0 ? (Form1.Monitor_Data[Form1.Monitor_Display_count, 4] != (byte) 1 ? (Form1.Monitor_Data[Form1.Monitor_Display_count, 4] != (byte) 2 ? "Frame header" : "V2") : "V1") : "Checksum error";
       Form1.M_Length = (int) Form1.Monitor_Data[Form1.Monitor_Display_count, 5];
       for (int index = 6; index < Form1.M_Length + 6; ++index)
         Form1.M_Str = $"{Form1.M_Str}{Form1.DECstr_to_HEXstr(Form1.Monitor_Data[Form1.Monitor_Display_count, index].ToString())} ";
       Form1.M_Check = Form1.DECstr_to_HEXstr(Form1.Monitor_Data[Form1.Monitor_Display_count, 14].ToString());
       Form1.M_Static_Save[Form1.Monitor_Display_count, 0] = Form1.Monitor_Display_count.ToString();
       Form1.M_Static_Save[Form1.Monitor_Display_count, 1] = "2";
-      Form1.M_Static_Save[Form1.Monitor_Display_count, 2] = "接收";
+      Form1.M_Static_Save[Form1.Monitor_Display_count, 2] = "Receive";
       Form1.M_Static_Save[Form1.Monitor_Display_count, 3] = Form1.Monitor_time[Form1.Monitor_Display_count, 0];
       Form1.M_Static_Save[Form1.Monitor_Display_count, 4] = Form1.M_ID;
       Form1.M_Static_Save[Form1.Monitor_Display_count, 5] = Form1.M_Length.ToString();
@@ -8229,7 +8229,7 @@ label_11:;
       Form1.M_Static_Save[Form1.Monitor_Display_count, 8] = Form1.M_State;
       this.listViewNF4.Items.Add(Form1.Monitor_Display_count.ToString());
       this.listViewNF4.Items[Form1.Monitor_Display_count].SubItems.Add("2");
-      this.listViewNF4.Items[Form1.Monitor_Display_count].SubItems.Add("接收");
+      this.listViewNF4.Items[Form1.Monitor_Display_count].SubItems.Add("Receive");
       this.listViewNF4.Items[Form1.Monitor_Display_count].SubItems.Add(Form1.Monitor_time[Form1.Monitor_Display_count, 0]);
       this.listViewNF4.Items[Form1.Monitor_Display_count].SubItems.Add(Form1.M_ID);
       this.listViewNF4.Items[Form1.Monitor_Display_count].SubItems.Add(Form1.M_Length.ToString());
@@ -8260,7 +8260,7 @@ label_11:;
         Form1.M_Length = 0;
         Form1.M_ID = Form1.DECstr_to_HEXstr(Form1.Monitor_Data[Form1.Monitor_Display_count, 2].ToString());
         Form1.M_ID = $"{Form1.M_ID}[{Form1.LIN_PID_Parity(Form1.M_ID)}]";
-        Form1.M_State = Form1.Monitor_Data[Form1.Monitor_Display_count, 4] != (byte) 0 ? (Form1.Monitor_Data[Form1.Monitor_Display_count, 4] != (byte) 1 ? (Form1.Monitor_Data[Form1.Monitor_Display_count, 4] != (byte) 2 ? "帧头" : "V2") : "V1") : "校验和错误";
+        Form1.M_State = Form1.Monitor_Data[Form1.Monitor_Display_count, 4] != (byte) 0 ? (Form1.Monitor_Data[Form1.Monitor_Display_count, 4] != (byte) 1 ? (Form1.Monitor_Data[Form1.Monitor_Display_count, 4] != (byte) 2 ? "Frame header" : "V2") : "V1") : "Checksum error";
         Form1.M_Length = (int) Form1.Monitor_Data[Form1.Monitor_Display_count, 5];
         for (int index = 6; index < Form1.M_Length + 6; ++index)
           Form1.M_Str = $"{Form1.M_Str}{Form1.DECstr_to_HEXstr(Form1.Monitor_Data[Form1.Monitor_Display_count, index].ToString())} ";
@@ -8269,7 +8269,7 @@ label_11:;
         int count = this.listViewNF4.Items.Count;
         Form1.M_Static_Save[Form1.Monitor_Display_count, 0] = Form1.Monitor_Display_count.ToString();
         Form1.M_Static_Save[Form1.Monitor_Display_count, 1] = "2";
-        Form1.M_Static_Save[Form1.Monitor_Display_count, 2] = "接收";
+        Form1.M_Static_Save[Form1.Monitor_Display_count, 2] = "Receive";
         Form1.M_Static_Save[Form1.Monitor_Display_count, 3] = Form1.Monitor_time[Form1.Monitor_Display_count, 0];
         Form1.M_Static_Save[Form1.Monitor_Display_count, 4] = Form1.M_ID;
         Form1.M_Static_Save[Form1.Monitor_Display_count, 5] = Form1.M_Length.ToString();
@@ -8278,7 +8278,7 @@ label_11:;
         Form1.M_Static_Save[Form1.Monitor_Display_count, 8] = Form1.M_State;
         this.listViewNF4.Items.Add(count.ToString());
         this.listViewNF4.Items[count].SubItems.Add("2");
-        this.listViewNF4.Items[count].SubItems.Add("接收");
+        this.listViewNF4.Items[count].SubItems.Add("Receive");
         this.listViewNF4.Items[count].SubItems.Add(Form1.Monitor_time[Form1.Monitor_Display_count, 0]);
         this.listViewNF4.Items[count].SubItems.Add(Form1.M_ID);
         this.listViewNF4.Items[count].SubItems.Add(Form1.M_Length.ToString());
@@ -8299,14 +8299,14 @@ label_11:;
         Form1.M_Length = 0;
         Form1.M_ID = Form1.DECstr_to_HEXstr(Form1.Monitor_Data[Form1.Monitor_Display_count, 2].ToString());
         Form1.M_ID = $"{Form1.M_ID}[{Form1.LIN_PID_Parity(Form1.M_ID)}]";
-        Form1.M_State = Form1.Monitor_Data[Form1.Monitor_Display_count, 4] != (byte) 0 ? (Form1.Monitor_Data[Form1.Monitor_Display_count, 4] != (byte) 1 ? (Form1.Monitor_Data[Form1.Monitor_Display_count, 4] != (byte) 2 ? "帧头" : "V2") : "V1") : "校验和错误";
+        Form1.M_State = Form1.Monitor_Data[Form1.Monitor_Display_count, 4] != (byte) 0 ? (Form1.Monitor_Data[Form1.Monitor_Display_count, 4] != (byte) 1 ? (Form1.Monitor_Data[Form1.Monitor_Display_count, 4] != (byte) 2 ? "Frame header" : "V2") : "V1") : "Checksum error";
         Form1.M_Length = (int) Form1.Monitor_Data[Form1.Monitor_Display_count, 5];
         for (int index2 = 6; index2 < Form1.M_Length + 6; ++index2)
           Form1.M_Str = $"{Form1.M_Str}{Form1.DECstr_to_HEXstr(Form1.Monitor_Data[Form1.Monitor_Display_count, index2].ToString())} ";
         Form1.M_Check = Form1.DECstr_to_HEXstr(Form1.Monitor_Data[Form1.Monitor_Display_count, 14].ToString());
         Form1.M_Static_Save[Form1.Monitor_Display_count, 0] = Form1.Monitor_Display_count.ToString();
         Form1.M_Static_Save[Form1.Monitor_Display_count, 1] = "2";
-        Form1.M_Static_Save[Form1.Monitor_Display_count, 2] = "接收";
+        Form1.M_Static_Save[Form1.Monitor_Display_count, 2] = "Receive";
         Form1.M_Static_Save[Form1.Monitor_Display_count, 3] = Form1.Monitor_time[Form1.Monitor_Display_count, 0];
         Form1.M_Static_Save[Form1.Monitor_Display_count, 4] = Form1.M_ID;
         Form1.M_Static_Save[Form1.Monitor_Display_count, 5] = Form1.M_Length.ToString();
@@ -8355,7 +8355,7 @@ label_11:;
         FileStream fileStream = new FileStream(Form1.Save_FileName_str, FileMode.Create, FileAccess.Write);
         StreamWriter streamWriter = new StreamWriter((Stream) fileStream, Encoding.UTF8);
         Save_Task_str = "";
-        Save_Task_str = "序号,通道,方向,时间,ID,长度,数据,校验和,状态";
+        Save_Task_str = "No,Ch,Dir,Time,ID,Len,Data,CSum,Status";
         streamWriter.WriteLine(Save_Task_str);
         do
         {
@@ -8377,7 +8377,7 @@ label_11:;
         FileStream fileStream = new FileStream(Form1.Save_FileName_str, FileMode.Create, FileAccess.Write);
         StreamWriter streamWriter = new StreamWriter((Stream) fileStream, Encoding.UTF8);
         Save_Task_str = "";
-        Save_Task_str = "序号,通道,方向,时间,ID,长度,数据,校验和,状态";
+        Save_Task_str = "No,Ch,Dir,Time,ID,Len,Data,CSum,Status";
         streamWriter.WriteLine(Save_Task_str);
         do
         {
@@ -8385,7 +8385,7 @@ label_11:;
           Save_ID = Form1.DECstr_to_HEXstr(Form1.Monitor_Data[Save_Task_i, 2].ToString());
           Save_ID = $"{Save_ID}[{Form1.LIN_PID_Parity(Save_ID)}]";
           Save_State = "";
-          Save_State = Form1.Monitor_Data[Save_Task_i, 4] != (byte) 0 ? (Form1.Monitor_Data[Save_Task_i, 4] != (byte) 1 ? (Form1.Monitor_Data[Save_Task_i, 4] != (byte) 2 ? "帧头" : "V2") : "V1") : "校验和错误";
+          Save_State = Form1.Monitor_Data[Save_Task_i, 4] != (byte) 0 ? (Form1.Monitor_Data[Save_Task_i, 4] != (byte) 1 ? (Form1.Monitor_Data[Save_Task_i, 4] != (byte) 2 ? "Frame header" : "V2") : "V1") : "Checksum error";
           Save_Length = 0;
           Save_Length = (int) Form1.Monitor_Data[Save_Task_i, 5];
           Save_str = "";
@@ -8394,7 +8394,7 @@ label_11:;
           Save_Check = "";
           Save_Check = Form1.DECstr_to_HEXstr(Form1.Monitor_Data[Save_Task_i, 14].ToString());
           Save_Task_str = "";
-          Save_Task_str = $"{Save_Task_i.ToString()},2,接收,{Form1.Monitor_time[Save_Task_i, 0]},{Save_ID},{Save_Length.ToString()},{Save_str},{Save_Check},{Save_State}";
+          Save_Task_str = $"{Save_Task_i.ToString()},2,Receive,{Form1.Monitor_time[Save_Task_i, 0]},{Save_ID},{Save_Length.ToString()},{Save_str},{Save_Check},{Save_State}";
           streamWriter.WriteLine(Save_Task_str);
           ++Save_Task_i;
           Form1.Save_ProgressBar_i = Save_Task_i;
@@ -8648,8 +8648,8 @@ label_8:
       Form1.SM_Ch = Form1.Slave_Mode_Data[Form1.Slave_Display_count, 1].ToString();
       Form1.SM_ID = Form1.DECstr_to_HEXstr(Form1.Slave_Mode_Data[Form1.Slave_Display_count, 2].ToString());
       Form1.SM_ID = $"{Form1.SM_ID}[{Form1.LIN_PID_Parity(Form1.SM_ID)}]";
-      Form1.SM_Dir = Form1.Slave_Mode_Data[Form1.Slave_Display_count, 3] != (byte) 0 ? "接收" : "发送";
-      Form1.SM_State = Form1.Slave_Mode_Data[Form1.Slave_Display_count, 4] != (byte) 0 ? (Form1.Slave_Mode_Data[Form1.Slave_Display_count, 4] != (byte) 1 ? (Form1.Slave_Mode_Data[Form1.Slave_Display_count, 4] != (byte) 2 ? "帧头" : "V2") : "V1") : "校验和错误";
+      Form1.SM_Dir = Form1.Slave_Mode_Data[Form1.Slave_Display_count, 3] != (byte) 0 ? "Receive" : "Send";
+      Form1.SM_State = Form1.Slave_Mode_Data[Form1.Slave_Display_count, 4] != (byte) 0 ? (Form1.Slave_Mode_Data[Form1.Slave_Display_count, 4] != (byte) 1 ? (Form1.Slave_Mode_Data[Form1.Slave_Display_count, 4] != (byte) 2 ? "Frame header" : "V2") : "V1") : "Checksum error";
       Form1.SM_Length = (int) Form1.Slave_Mode_Data[Form1.Slave_Display_count, 5];
       for (int index = 6; index < Form1.SM_Length + 6; ++index)
         Form1.SM_Str = $"{Form1.SM_Str}{Form1.DECstr_to_HEXstr(Form1.Slave_Mode_Data[Form1.Slave_Display_count, index].ToString())} ";
@@ -8699,8 +8699,8 @@ label_8:
         Form1.SM_Ch = Form1.Slave_Mode_Data[Form1.Slave_Display_count, 1].ToString();
         Form1.SM_ID = Form1.DECstr_to_HEXstr(Form1.Slave_Mode_Data[Form1.Slave_Display_count, 2].ToString());
         Form1.SM_ID = $"{Form1.SM_ID}[{Form1.LIN_PID_Parity(Form1.SM_ID)}]";
-        Form1.SM_Dir = Form1.Slave_Mode_Data[Form1.Slave_Display_count, 3] != (byte) 0 ? "接收" : "发送";
-        Form1.SM_State = Form1.Slave_Mode_Data[Form1.Slave_Display_count, 4] != (byte) 0 ? (Form1.Slave_Mode_Data[Form1.Slave_Display_count, 4] != (byte) 1 ? (Form1.Slave_Mode_Data[Form1.Slave_Display_count, 4] != (byte) 2 ? "帧头" : "V2") : "V1") : "校验和错误";
+        Form1.SM_Dir = Form1.Slave_Mode_Data[Form1.Slave_Display_count, 3] != (byte) 0 ? "Receive" : "Send";
+        Form1.SM_State = Form1.Slave_Mode_Data[Form1.Slave_Display_count, 4] != (byte) 0 ? (Form1.Slave_Mode_Data[Form1.Slave_Display_count, 4] != (byte) 1 ? (Form1.Slave_Mode_Data[Form1.Slave_Display_count, 4] != (byte) 2 ? "Frame header" : "V2") : "V1") : "Checksum error";
         Form1.SM_Length = (int) Form1.Slave_Mode_Data[Form1.Slave_Display_count, 5];
         for (int index = 6; index < Form1.SM_Length + 6; ++index)
           Form1.SM_Str = $"{Form1.SM_Str}{Form1.DECstr_to_HEXstr(Form1.Slave_Mode_Data[Form1.Slave_Display_count, index].ToString())} ";
@@ -8742,8 +8742,8 @@ label_8:
         Form1.SM_Ch = Form1.Slave_Mode_Data[Form1.Slave_Display_count, 1].ToString();
         Form1.SM_ID = Form1.DECstr_to_HEXstr(Form1.Slave_Mode_Data[Form1.Slave_Display_count, 2].ToString());
         Form1.SM_ID = $"{Form1.SM_ID}[{Form1.LIN_PID_Parity(Form1.SM_ID)}]";
-        Form1.SM_Dir = Form1.Slave_Mode_Data[Form1.Slave_Display_count, 3] != (byte) 0 ? "接收" : "发送";
-        Form1.SM_State = Form1.Slave_Mode_Data[Form1.Slave_Display_count, 4] != (byte) 0 ? (Form1.Slave_Mode_Data[Form1.Slave_Display_count, 4] != (byte) 1 ? (Form1.Slave_Mode_Data[Form1.Slave_Display_count, 4] != (byte) 2 ? "帧头" : "V2") : "V1") : "校验和错误";
+        Form1.SM_Dir = Form1.Slave_Mode_Data[Form1.Slave_Display_count, 3] != (byte) 0 ? "Receive" : "Send";
+        Form1.SM_State = Form1.Slave_Mode_Data[Form1.Slave_Display_count, 4] != (byte) 0 ? (Form1.Slave_Mode_Data[Form1.Slave_Display_count, 4] != (byte) 1 ? (Form1.Slave_Mode_Data[Form1.Slave_Display_count, 4] != (byte) 2 ? "Frame header" : "V2") : "V1") : "Checksum error";
         Form1.SM_Length = (int) Form1.Slave_Mode_Data[Form1.Slave_Display_count, 5];
         for (int index2 = 6; index2 < Form1.SM_Length + 6; ++index2)
           Form1.SM_Str = $"{Form1.SM_Str}{Form1.DECstr_to_HEXstr(Form1.Slave_Mode_Data[Form1.Slave_Display_count, index2].ToString())} ";
@@ -8833,9 +8833,9 @@ label_8:
           Save_ID = Form1.DECstr_to_HEXstr(Form1.Slave_Mode_Data[Save_Task_i, 2].ToString());
           Save_ID = $"{Save_ID}[{Form1.LIN_PID_Parity(Save_ID)}]";
           Save_Dri = "";
-          Save_Dri = Form1.Slave_Mode_Data[Save_Task_i, 3] != (byte) 0 ? "接收" : "发送";
+          Save_Dri = Form1.Slave_Mode_Data[Save_Task_i, 3] != (byte) 0 ? "Receive" : "Send";
           Save_State = "";
-          Save_State = Form1.Slave_Mode_Data[Save_Task_i, 4] != (byte) 0 ? (Form1.Slave_Mode_Data[Save_Task_i, 4] != (byte) 1 ? (Form1.Slave_Mode_Data[Save_Task_i, 4] != (byte) 2 ? "帧头" : "V2") : "V1") : "校验和错误";
+          Save_State = Form1.Slave_Mode_Data[Save_Task_i, 4] != (byte) 0 ? (Form1.Slave_Mode_Data[Save_Task_i, 4] != (byte) 1 ? (Form1.Slave_Mode_Data[Save_Task_i, 4] != (byte) 2 ? "Frame header" : "V2") : "V1") : "Checksum error";
           Save_Length = 0;
           Save_Length = (int) Form1.Slave_Mode_Data[Save_Task_i, 5];
           Save_str = "";
@@ -9094,8 +9094,8 @@ label_9:
     Form1.SI_Ch = Form1.Single_Mode_Data[Form1.Single_Display_count, 1].ToString();
     Form1.SI_ID = Form1.DECstr_to_HEXstr(Form1.Single_Mode_Data[Form1.Single_Display_count, 2].ToString());
     Form1.SI_ID = $"{Form1.SI_ID}[{Form1.LIN_PID_Parity(Form1.SI_ID)}]";
-    Form1.SI_Dir = Form1.Single_Mode_Data[Form1.Single_Display_count, 3] != (byte) 0 ? "接收" : "发送";
-    Form1.SI_State = Form1.Single_Mode_Data[Form1.Single_Display_count, 4] != (byte) 0 ? (Form1.Single_Mode_Data[Form1.Single_Display_count, 4] != (byte) 1 ? (Form1.Single_Mode_Data[Form1.Single_Display_count, 4] != (byte) 2 ? "帧头" : "V2") : "V1") : "校验和错误";
+    Form1.SI_Dir = Form1.Single_Mode_Data[Form1.Single_Display_count, 3] != (byte) 0 ? "Receive" : "Send";
+    Form1.SI_State = Form1.Single_Mode_Data[Form1.Single_Display_count, 4] != (byte) 0 ? (Form1.Single_Mode_Data[Form1.Single_Display_count, 4] != (byte) 1 ? (Form1.Single_Mode_Data[Form1.Single_Display_count, 4] != (byte) 2 ? "Frame header" : "V2") : "V1") : "Checksum error";
     Form1.SI_Length = (int) Form1.Single_Mode_Data[Form1.Single_Display_count, 5];
     for (int index = 6; index < Form1.SI_Length + 6; ++index)
       Form1.SI_Str = $"{Form1.SI_Str}{Form1.DECstr_to_HEXstr(Form1.Single_Mode_Data[Form1.Single_Display_count, index].ToString())} ";
@@ -9182,9 +9182,9 @@ label_9:
         Save_ID = Form1.DECstr_to_HEXstr(Form1.Single_Mode_Data[Save_Task_i, 2].ToString());
         Save_ID = $"{Save_ID}[{Form1.LIN_PID_Parity(Save_ID)}]";
         Save_Dri = "";
-        Save_Dri = Form1.Single_Mode_Data[Save_Task_i, 3] != (byte) 0 ? "接收" : "发送";
+        Save_Dri = Form1.Single_Mode_Data[Save_Task_i, 3] != (byte) 0 ? "Receive" : "Send";
         Save_State = "";
-        Save_State = Form1.Single_Mode_Data[Save_Task_i, 4] != (byte) 0 ? (Form1.Single_Mode_Data[Save_Task_i, 4] != (byte) 1 ? (Form1.Single_Mode_Data[Save_Task_i, 4] != (byte) 2 ? "帧头" : "V2") : "V1") : "校验和错误";
+        Save_State = Form1.Single_Mode_Data[Save_Task_i, 4] != (byte) 0 ? (Form1.Single_Mode_Data[Save_Task_i, 4] != (byte) 1 ? (Form1.Single_Mode_Data[Save_Task_i, 4] != (byte) 2 ? "Frame header" : "V2") : "V1") : "Checksum error";
         Save_Length = 0;
         Save_Length = (int) Form1.Single_Mode_Data[Save_Task_i, 5];
         Save_str = "";
@@ -9426,8 +9426,8 @@ label_15:
         Form1.LI_Ch = Form1.List_Mode_Data[Form1.List_Display_count, 1].ToString();
         Form1.LI_ID = Form1.DECstr_to_HEXstr(Form1.List_Mode_Data[Form1.List_Display_count, 2].ToString());
         Form1.LI_ID = $"{Form1.LI_ID}[{Form1.LIN_PID_Parity(Form1.LI_ID)}]";
-        Form1.LI_Dir = Form1.List_Mode_Data[Form1.List_Display_count, 3] != (byte) 0 ? "接收" : "发送";
-        Form1.LI_State = Form1.List_Mode_Data[Form1.List_Display_count, 4] != (byte) 0 ? (Form1.List_Mode_Data[Form1.List_Display_count, 4] != (byte) 1 ? (Form1.List_Mode_Data[Form1.List_Display_count, 4] != (byte) 2 ? "帧头" : "V2") : "V1") : "校验和错误";
+        Form1.LI_Dir = Form1.List_Mode_Data[Form1.List_Display_count, 3] != (byte) 0 ? "Receive" : "Send";
+        Form1.LI_State = Form1.List_Mode_Data[Form1.List_Display_count, 4] != (byte) 0 ? (Form1.List_Mode_Data[Form1.List_Display_count, 4] != (byte) 1 ? (Form1.List_Mode_Data[Form1.List_Display_count, 4] != (byte) 2 ? "Frame header" : "V2") : "V1") : "Checksum error";
         Form1.LI_Length = (int) Form1.List_Mode_Data[Form1.List_Display_count, 5];
         for (int index = 6; index < Form1.LI_Length + 6; ++index)
           Form1.LI_Str = $"{Form1.LI_Str}{Form1.DECstr_to_HEXstr(Form1.List_Mode_Data[Form1.List_Display_count, index].ToString())} ";
@@ -9478,8 +9478,8 @@ label_15:
         Form1.LI_Ch = Form1.List_Mode_Data[Form1.List_Display_count, 1].ToString();
         Form1.LI_ID = Form1.DECstr_to_HEXstr(Form1.List_Mode_Data[Form1.List_Display_count, 2].ToString());
         Form1.LI_ID = $"{Form1.LI_ID}[{Form1.LIN_PID_Parity(Form1.LI_ID)}]";
-        Form1.LI_Dir = Form1.List_Mode_Data[Form1.List_Display_count, 3] != (byte) 0 ? "接收" : "发送";
-        Form1.LI_State = Form1.List_Mode_Data[Form1.List_Display_count, 4] != (byte) 0 ? (Form1.List_Mode_Data[Form1.List_Display_count, 4] != (byte) 1 ? (Form1.List_Mode_Data[Form1.List_Display_count, 4] != (byte) 2 ? "帧头" : "V2") : "V1") : "校验和错误";
+        Form1.LI_Dir = Form1.List_Mode_Data[Form1.List_Display_count, 3] != (byte) 0 ? "Receive" : "Send";
+        Form1.LI_State = Form1.List_Mode_Data[Form1.List_Display_count, 4] != (byte) 0 ? (Form1.List_Mode_Data[Form1.List_Display_count, 4] != (byte) 1 ? (Form1.List_Mode_Data[Form1.List_Display_count, 4] != (byte) 2 ? "Frame header" : "V2") : "V1") : "Checksum error";
         Form1.LI_Length = (int) Form1.List_Mode_Data[Form1.List_Display_count, 5];
         for (int index = 6; index < Form1.LI_Length + 6; ++index)
           Form1.LI_Str = $"{Form1.LI_Str}{Form1.DECstr_to_HEXstr(Form1.List_Mode_Data[Form1.List_Display_count, index].ToString())} ";
@@ -9521,8 +9521,8 @@ label_15:
         Form1.LI_Ch = Form1.List_Mode_Data[Form1.List_Display_count, 1].ToString();
         Form1.LI_ID = Form1.DECstr_to_HEXstr(Form1.List_Mode_Data[Form1.List_Display_count, 2].ToString());
         Form1.LI_ID = $"{Form1.LI_ID}[{Form1.LIN_PID_Parity(Form1.LI_ID)}]";
-        Form1.LI_Dir = Form1.List_Mode_Data[Form1.List_Display_count, 3] != (byte) 0 ? "接收" : "发送";
-        Form1.LI_State = Form1.List_Mode_Data[Form1.List_Display_count, 4] != (byte) 0 ? (Form1.List_Mode_Data[Form1.List_Display_count, 4] != (byte) 1 ? (Form1.List_Mode_Data[Form1.List_Display_count, 4] != (byte) 2 ? "帧头" : "V2") : "V1") : "校验和错误";
+        Form1.LI_Dir = Form1.List_Mode_Data[Form1.List_Display_count, 3] != (byte) 0 ? "Receive" : "Send";
+        Form1.LI_State = Form1.List_Mode_Data[Form1.List_Display_count, 4] != (byte) 0 ? (Form1.List_Mode_Data[Form1.List_Display_count, 4] != (byte) 1 ? (Form1.List_Mode_Data[Form1.List_Display_count, 4] != (byte) 2 ? "Frame header" : "V2") : "V1") : "Checksum error";
         Form1.LI_Length = (int) Form1.List_Mode_Data[Form1.List_Display_count, 5];
         for (int index2 = 6; index2 < Form1.LI_Length + 6; ++index2)
           Form1.LI_Str = $"{Form1.LI_Str}{Form1.DECstr_to_HEXstr(Form1.List_Mode_Data[Form1.List_Display_count, index2].ToString())} ";
@@ -9711,9 +9711,9 @@ label_15:
           Save_ID = Form1.DECstr_to_HEXstr(Form1.List_Mode_Data[Save_Task_i, 2].ToString());
           Save_ID = $"{Save_ID}[{Form1.LIN_PID_Parity(Save_ID)}]";
           Save_Dri = "";
-          Save_Dri = Form1.List_Mode_Data[Save_Task_i, 3] != (byte) 0 ? "接收" : "发送";
+          Save_Dri = Form1.List_Mode_Data[Save_Task_i, 3] != (byte) 0 ? "Receive" : "Send";
           Save_State = "";
-          Save_State = Form1.List_Mode_Data[Save_Task_i, 4] != (byte) 0 ? (Form1.List_Mode_Data[Save_Task_i, 4] != (byte) 1 ? (Form1.List_Mode_Data[Save_Task_i, 4] != (byte) 2 ? "帧头" : "V2") : "V1") : "校验和错误";
+          Save_State = Form1.List_Mode_Data[Save_Task_i, 4] != (byte) 0 ? (Form1.List_Mode_Data[Save_Task_i, 4] != (byte) 1 ? (Form1.List_Mode_Data[Save_Task_i, 4] != (byte) 2 ? "Frame header" : "V2") : "V1") : "Checksum error";
           Save_Length = 0;
           Save_Length = (int) Form1.List_Mode_Data[Save_Task_i, 5];
           Save_str = "";
@@ -9939,7 +9939,7 @@ label_8:
       {
         while (task_Send_i < 504)
         {
-          if (Form1.CheckSum_Type == "增强型校验和")
+          if (Form1.CheckSum_Type == "Enhanced CSum")
           {
             Form1.Read_Slave_Data(AUTO_ID, AUTO_Length, "V2");
             this.serialPort1.Write(Form1.Send_Frame_Data, 0, 16 /*0x10*/);
@@ -10018,7 +10018,7 @@ label_8:
     byte[] numArray = new byte[17];
     byte num1 = 0;
     uint num2 = 0;
-    this.openFileDialog1.Title = "打开文件";
+    this.openFileDialog1.Title = "Open FIle";
     this.openFileDialog1.Filter = "Hex文件|*.hex";
     this.openFileDialog1.FileName = "";
     if (this.openFileDialog1.ShowDialog() != DialogResult.OK)
@@ -10186,14 +10186,14 @@ label_8:
         Form1.BOOT_time_value = (int) Convert.ToInt16(this.qqTextBox33.Text);
         if (Form1.BOOT_time_value < 20)
         {
-          init_Configuration.Output_Message = "定时时间超出范围！";
+          init_Configuration.Output_Message = "The timer is out of range!";
           int num = (int) init_Configuration.PDF_Interface.ShowDialog();
           return;
         }
       }
       catch
       {
-        init_Configuration.Output_Message = "定时时间格式不正确！";
+        init_Configuration.Output_Message = "The timing time format is incorrect!";
         int num = (int) init_Configuration.PDF_Interface.ShowDialog();
         return;
       }
@@ -10375,7 +10375,7 @@ label_8:
             Form1.WDT_Finish = true;
             ++Form1.BOOT_Task_Data_i;
             this.prog12._setProgress((int) Form1.BOOT_Task_Data_i);
-            this.listViewNF5.Items.Add("接收到ACK应答!");
+            this.listViewNF5.Items.Add("Receive到ACK应答!");
             this.listViewNF5.Items[this.listViewNF5.Items.Count - 1].Selected = true;
             this.listViewNF5.Items[this.listViewNF5.Items.Count - 1].EnsureVisible();
             this.listViewNF5.Items[this.listViewNF5.Items.Count - 1].Selected = false;
@@ -10389,7 +10389,7 @@ label_8:
           if (Form1.NoACK_Flag1)
           {
             Form1.WDT_Finish = true;
-            this.listViewNF5.Items.Add("接收到NO ACK应答!");
+            this.listViewNF5.Items.Add("Receive到NO ACK应答!");
             this.listViewNF5.Items[this.listViewNF5.Items.Count - 1].ForeColor = Color.Red;
             this.listViewNF5.Items[this.listViewNF5.Items.Count - 1].Selected = true;
             this.listViewNF5.Items[this.listViewNF5.Items.Count - 1].EnsureVisible();
@@ -10470,7 +10470,7 @@ label_8:
             Form1.WDT_Finish = true;
             ++Form1.BOOT_Task_Data_i;
             this.prog12._setProgress((int) Form1.BOOT_Task_Data_i);
-            this.listViewNF5.Items.Add("接收到ACK应答!");
+            this.listViewNF5.Items.Add("Receive到ACK应答!");
             this.listViewNF5.Items[this.listViewNF5.Items.Count - 1].Selected = true;
             this.listViewNF5.Items[this.listViewNF5.Items.Count - 1].EnsureVisible();
             this.listViewNF5.Items[this.listViewNF5.Items.Count - 1].Selected = false;
@@ -10484,7 +10484,7 @@ label_8:
           if (Form1.NoACK_Flag2)
           {
             Form1.WDT_Finish = true;
-            this.listViewNF5.Items.Add("接收到NO ACK应答!");
+            this.listViewNF5.Items.Add("Receive到NO ACK应答!");
             this.listViewNF5.Items[this.listViewNF5.Items.Count - 1].ForeColor = Color.Red;
             this.listViewNF5.Items[this.listViewNF5.Items.Count - 1].Selected = true;
             this.listViewNF5.Items[this.listViewNF5.Items.Count - 1].EnsureVisible();
@@ -10565,7 +10565,7 @@ label_8:
             Form1.WDT_Finish = true;
             ++Form1.BOOT_Task_Data_i;
             this.prog12._setProgress((int) Form1.BOOT_Task_Data_i);
-            this.listViewNF5.Items.Add("接收到ACK应答!");
+            this.listViewNF5.Items.Add("Receive到ACK应答!");
             this.listViewNF5.Items[this.listViewNF5.Items.Count - 1].Selected = true;
             this.listViewNF5.Items[this.listViewNF5.Items.Count - 1].EnsureVisible();
             this.listViewNF5.Items[this.listViewNF5.Items.Count - 1].Selected = false;
@@ -10579,7 +10579,7 @@ label_8:
           if (Form1.NoACK_Flag3)
           {
             Form1.WDT_Finish = true;
-            this.listViewNF5.Items.Add("接收到NO ACK应答!");
+            this.listViewNF5.Items.Add("Receive到NO ACK应答!");
             this.listViewNF5.Items[this.listViewNF5.Items.Count - 1].ForeColor = Color.Red;
             this.listViewNF5.Items[this.listViewNF5.Items.Count - 1].Selected = true;
             this.listViewNF5.Items[this.listViewNF5.Items.Count - 1].EnsureVisible();
@@ -10656,7 +10656,7 @@ label_8:
           if (Form1.NoACK_Flag5)
           {
             Form1.WDT_Finish = true;
-            this.listViewNF5.Items.Add("接收到NO ACK应答!");
+            this.listViewNF5.Items.Add("Receive到NO ACK应答!");
             this.listViewNF5.Items[this.listViewNF5.Items.Count - 1].ForeColor = Color.Red;
             this.listViewNF5.Items[this.listViewNF5.Items.Count - 1].Selected = true;
             this.listViewNF5.Items[this.listViewNF5.Items.Count - 1].EnsureVisible();
@@ -10736,7 +10736,7 @@ label_8:
             Form1.WDT_Finish = true;
             ++Form1.BOOT_Task_Data_i;
             this.prog12._setProgress((int) Form1.BOOT_Task_Data_i);
-            this.listViewNF5.Items.Add("接收到ACK应答!");
+            this.listViewNF5.Items.Add("Receive到ACK应答!");
             this.listViewNF5.Items[this.listViewNF5.Items.Count - 1].Selected = true;
             this.listViewNF5.Items[this.listViewNF5.Items.Count - 1].EnsureVisible();
             this.listViewNF5.Items[this.listViewNF5.Items.Count - 1].Selected = false;
@@ -10750,7 +10750,7 @@ label_8:
           if (Form1.NoACK_Flag6)
           {
             Form1.WDT_Finish = true;
-            this.listViewNF5.Items.Add("接收到NO ACK应答!");
+            this.listViewNF5.Items.Add("Receive到NO ACK应答!");
             this.listViewNF5.Items[this.listViewNF5.Items.Count - 1].ForeColor = Color.Red;
             this.listViewNF5.Items[this.listViewNF5.Items.Count - 1].Selected = true;
             this.listViewNF5.Items[this.listViewNF5.Items.Count - 1].EnsureVisible();
@@ -10931,7 +10931,7 @@ label_9:
   {
     if (this.listViewNF6.Items.Count == 0)
     {
-      init_Configuration.Output_Message = "无数据可保存！";
+      init_Configuration.Output_Message = "No data to save!";
       int num = (int) init_Configuration.PDF_Interface.ShowDialog();
     }
     else
@@ -10939,7 +10939,7 @@ label_9:
       this.progressBarEx1.Value = 0;
       this.progressBarEx1.Maximum = this.listViewNF6.Items.Count;
       this.progressBarEx1.Text = "0%";
-      this.saveFileDialog5.Title = "另存为";
+      this.saveFileDialog5.Title = "Save As";
       this.saveFileDialog5.FileName = "Data for 1";
       this.saveFileDialog5.Filter = "CSV File(*.csv)|*.csv";
       this.saveFileDialog5.ShowHelp = false;
@@ -12914,7 +12914,7 @@ label_9:
     this.uiTreeView1.Nodes.Clear();
     Array.Clear((Array) Form1.LDF_str, 0, Form1.LDF_str.Length);
     Form1.LDF_number = 0U;
-    this.openFileDialog1.Filter = "LDF文件(*.ldf)|*.ldf";
+    this.openFileDialog1.Filter = "LDF File (*.ldf)|*.ldf";
     if (this.openFileDialog1.ShowDialog() != DialogResult.OK)
       return;
     this.uiRichTextBox1.Text = "";
@@ -12932,7 +12932,7 @@ label_9:
     }
     catch
     {
-      init_Configuration.Output_Message = "读取主机名称失败！";
+      init_Configuration.Output_Message = "Failed to read host name!";
       int num2 = (int) init_Configuration.PDF_Interface.ShowDialog();
       return;
     }
@@ -12942,7 +12942,7 @@ label_9:
     }
     catch
     {
-      init_Configuration.Output_Message = "读取从机名称失败！";
+      init_Configuration.Output_Message = "Failed to read slave name!";
       int num3 = (int) init_Configuration.PDF_Interface.ShowDialog();
       return;
     }
@@ -12952,7 +12952,7 @@ label_9:
     }
     catch
     {
-      init_Configuration.Output_Message = "读帧结构失败！";
+      init_Configuration.Output_Message = "Failed to read frame structure!";
       int num4 = (int) init_Configuration.PDF_Interface.ShowDialog();
       return;
     }
@@ -12962,7 +12962,7 @@ label_9:
     }
     catch
     {
-      init_Configuration.Output_Message = "读变量的长度及初始值失败！";
+      init_Configuration.Output_Message = "Failed to read the length and initial value of the variable!";
       int num5 = (int) init_Configuration.PDF_Interface.ShowDialog();
       return;
     }
@@ -12972,7 +12972,7 @@ label_9:
     }
     catch
     {
-      init_Configuration.Output_Message = "读取调度表失败！";
+      init_Configuration.Output_Message = "Failed to read the schedule!";
       int num6 = (int) init_Configuration.PDF_Interface.ShowDialog();
       return;
     }
@@ -12982,7 +12982,7 @@ label_9:
     }
     catch
     {
-      init_Configuration.Output_Message = "读取信号代表失败！";
+      init_Configuration.Output_Message = "Read signal means failure!";
       int num7 = (int) init_Configuration.PDF_Interface.ShowDialog();
       return;
     }
@@ -12992,17 +12992,17 @@ label_9:
     }
     catch
     {
-      init_Configuration.Output_Message = "读取信号编码类型失败！";
+      init_Configuration.Output_Message = "Failed to read signal encoding type!";
       int num8 = (int) init_Configuration.PDF_Interface.ShowDialog();
       return;
     }
-    this.uiTreeView1.Nodes.Add("基本信息");
-    this.uiTreeView1.Nodes.Add("节点名称");
-    this.uiTreeView1.Nodes.Add("主机");
-    this.uiTreeView1.Nodes.Add("从机");
-    this.uiTreeView1.Nodes.Add("调度表");
-    this.uiTreeView1.Nodes[0].Nodes.Add("LIN版本：" + this.Read_LIN_version());
-    this.uiTreeView1.Nodes[0].Nodes.Add($"波特率：{this.Read_LIN_speed().ToString()} kbps");
+    this.uiTreeView1.Nodes.Add("Basic Info");
+    this.uiTreeView1.Nodes.Add("Node Name");
+    this.uiTreeView1.Nodes.Add("Host");
+    this.uiTreeView1.Nodes.Add("Slave");
+    this.uiTreeView1.Nodes.Add("Schedule");
+    this.uiTreeView1.Nodes[0].Nodes.Add("LIN version:" + this.Read_LIN_version());
+    this.uiTreeView1.Nodes[0].Nodes.Add($"Baud rate: {this.Read_LIN_speed().ToString()} kbps");
     string str2 = "";
     for (int index = 0; (long) index < (long) Form1.Master_Nodes_number; ++index)
       this.uiTreeView1.Nodes[1].Nodes.Add(Form1.Master_Nodes[index, 0]);
@@ -13719,7 +13719,7 @@ label_9:
     this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
     this.tabPage1.Size = new System.Drawing.Size(892, 554);
     this.tabPage1.TabIndex = 0;
-    this.tabPage1.Text = "单机模式";
+    this.tabPage1.Text = "Standalone";
     this.listViewNF1.BackColor = Color.RoyalBlue;
     this.listViewNF1.BorderStyle = BorderStyle.None;
     this.listViewNF1.Columns.AddRange(new ColumnHeader[9]
@@ -13746,27 +13746,27 @@ label_9:
     this.listViewNF1.TabIndex = 12;
     this.listViewNF1.UseCompatibleStateImageBehavior = false;
     this.listViewNF1.View = View.Details;
-    this.columnHeader1.Text = "序号";
-    this.columnHeader26.Text = "通道";
+    this.columnHeader1.Text = "Serial#";
+    this.columnHeader26.Text = "Channel";
     this.columnHeader26.TextAlign = HorizontalAlignment.Center;
     this.columnHeader26.Width = 50;
-    this.columnHeader2.Text = "方向";
+    this.columnHeader2.Text = "Direction";
     this.columnHeader2.TextAlign = HorizontalAlignment.Center;
     this.columnHeader2.Width = 70;
-    this.columnHeader3.Text = "时间";
+    this.columnHeader3.Text = "Time";
     this.columnHeader3.Width = 160 /*0xA0*/;
     this.columnHeader4.Text = "ID[PID]";
     this.columnHeader4.TextAlign = HorizontalAlignment.Center;
     this.columnHeader4.Width = 80 /*0x50*/;
-    this.columnHeader5.Text = "数据长度";
+    this.columnHeader5.Text = "Data length";
     this.columnHeader5.TextAlign = HorizontalAlignment.Center;
     this.columnHeader5.Width = 70;
-    this.columnHeader6.Text = "数据(Hex)";
+    this.columnHeader6.Text = "Data (Hex)";
     this.columnHeader6.Width = 210;
-    this.columnHeader7.Text = "校验(Hex)";
+    this.columnHeader7.Text = "Check(Hex)";
     this.columnHeader7.TextAlign = HorizontalAlignment.Center;
     this.columnHeader7.Width = 80 /*0x50*/;
-    this.columnHeader8.Text = "状态";
+    this.columnHeader8.Text = "State";
     this.columnHeader8.TextAlign = HorizontalAlignment.Center;
     this.columnHeader8.Width = 80 /*0x50*/;
     ((Control) this.myPanel8).BackgroundImage = (Image) componentResourceManager.GetObject("myPanel8.BackgroundImage");
@@ -13811,7 +13811,7 @@ label_9:
     this.imageButton4.NormalImage = (Image) componentResourceManager.GetObject("imageButton4.NormalImage");
     this.imageButton4.Size = new System.Drawing.Size(69, 32 /*0x20*/);
     this.imageButton4.TabIndex = 49;
-    this.imageButton4.Text = "保存数据";
+    this.imageButton4.Text = "Save data";
     this.imageButton4.UseVisualStyleBackColor = false;
     this.imageButton4.Click += new EventHandler(this.imageButton4_Click);
     this.imageButton3.BackColor = Color.Transparent;
@@ -13828,7 +13828,7 @@ label_9:
     this.imageButton3.NormalImage = (Image) componentResourceManager.GetObject("imageButton3.NormalImage");
     this.imageButton3.Size = new System.Drawing.Size(69, 32 /*0x20*/);
     this.imageButton3.TabIndex = 47;
-    this.imageButton3.Text = "清除显示";
+    this.imageButton3.Text = "Clear";
     this.imageButton3.UseVisualStyleBackColor = false;
     this.imageButton3.Click += new EventHandler(this.imageButton3_Click);
     this.imageButton6.BackColor = Color.Transparent;
@@ -13845,7 +13845,7 @@ label_9:
     this.imageButton6.NormalImage = (Image) componentResourceManager.GetObject("imageButton6.NormalImage");
     this.imageButton6.Size = new System.Drawing.Size(69, 32 /*0x20*/);
     this.imageButton6.TabIndex = 46;
-    this.imageButton6.Text = "停止";
+    this.imageButton6.Text = "Stop";
     this.imageButton6.UseVisualStyleBackColor = false;
     this.imageButton6.Click += new EventHandler(this.imageButton6_Click);
     this.imageButton5.BackColor = Color.Transparent;
@@ -13862,7 +13862,7 @@ label_9:
     this.imageButton5.NormalImage = (Image) componentResourceManager.GetObject("imageButton5.NormalImage");
     this.imageButton5.Size = new System.Drawing.Size(69, 32 /*0x20*/);
     this.imageButton5.TabIndex = 36;
-    this.imageButton5.Text = "发送";
+    this.imageButton5.Text = "Send";
     this.imageButton5.UseVisualStyleBackColor = false;
     this.imageButton5.Click += new EventHandler(this.imageButton5_Click);
     this.qqTextBox9.BackColor = Color.White;
@@ -13910,7 +13910,7 @@ label_9:
     this.label2.Name = "label2";
     this.label2.Size = new System.Drawing.Size(118, 25);
     this.label2.TabIndex = 7;
-    this.label2.Text = "发送数据区:";
+    this.label2.Text = "Send data:";
     this.qqRadioButton4.AutoSize = true;
     this.qqRadioButton4.BackColor = Color.Transparent;
     this.qqRadioButton4.Font = new Font("宋体", 9f);
@@ -13918,7 +13918,7 @@ label_9:
     this.qqRadioButton4.Name = "qqRadioButton4";
     this.qqRadioButton4.Size = new System.Drawing.Size(71, 16 /*0x10*/);
     this.qqRadioButton4.TabIndex = 28;
-    this.qqRadioButton4.Text = "多帧发送";
+    this.qqRadioButton4.Text = "Send frames:";
     this.qqRadioButton4.UseVisualStyleBackColor = false;
     this.qqRadioButton3.AutoSize = true;
     this.qqRadioButton3.BackColor = Color.Transparent;
@@ -13929,7 +13929,7 @@ label_9:
     this.qqRadioButton3.Size = new System.Drawing.Size(71, 16 /*0x10*/);
     this.qqRadioButton3.TabIndex = 27;
     this.qqRadioButton3.TabStop = true;
-    this.qqRadioButton3.Text = "单帧发送";
+    this.qqRadioButton3.Text = "Send frame:";
     this.qqRadioButton3.UseVisualStyleBackColor = false;
     this.qqRadioButton3.CheckedChanged += new EventHandler(this.qqRadioButton3_CheckedChanged);
     this.qqTextBox10.BackColor = Color.White;
@@ -13952,7 +13952,7 @@ label_9:
     this.qqCheckBox3.Name = "qqCheckBox3";
     this.qqCheckBox3.Size = new System.Drawing.Size(54, 16 /*0x10*/);
     this.qqCheckBox3.TabIndex = 23;
-    this.qqCheckBox3.Text = "发送3";
+    this.qqCheckBox3.Text = "Send3";
     this.qqCheckBox3.UseVisualStyleBackColor = false;
     this.qqCheckBox3.CheckedChanged += new EventHandler(this.qqCheckBox3_CheckedChanged);
     this.qqTextBox1.BackColor = Color.White;
@@ -14000,7 +14000,7 @@ label_9:
     this.qqCheckBox1.Name = "qqCheckBox1";
     this.qqCheckBox1.Size = new System.Drawing.Size(54, 16 /*0x10*/);
     this.qqCheckBox1.TabIndex = 13;
-    this.qqCheckBox1.Text = "发送1";
+    this.qqCheckBox1.Text = "Send1";
     this.qqCheckBox1.UseVisualStyleBackColor = false;
     this.qqCheckBox1.CheckedChanged += new EventHandler(this.qqCheckBox1_CheckedChanged);
     this.qqTextBox7.BackColor = Color.White;
@@ -14034,7 +14034,7 @@ label_9:
     this.qqCheckBox2.Name = "qqCheckBox2";
     this.qqCheckBox2.Size = new System.Drawing.Size(54, 16 /*0x10*/);
     this.qqCheckBox2.TabIndex = 18;
-    this.qqCheckBox2.Text = "发送2";
+    this.qqCheckBox2.Text = "Send2";
     this.qqCheckBox2.UseVisualStyleBackColor = false;
     this.qqCheckBox2.CheckedChanged += new EventHandler(this.qqCheckBox2_CheckedChanged);
     this.qqTextBox5.BackColor = Color.White;
@@ -14091,7 +14091,7 @@ label_9:
     this.groupBoxEx4.Size = new System.Drawing.Size(193, 86);
     this.groupBoxEx4.TabIndex = 52;
     this.groupBoxEx4.TabStop = false;
-    this.groupBoxEx4.Text = "读取模式选择：";
+    this.groupBoxEx4.Text = "Read mode selection:";
     this.qqRadioButton5.AutoSize = true;
     this.qqRadioButton5.BackColor = Color.Transparent;
     this.qqRadioButton5.Checked = true;
@@ -14101,7 +14101,7 @@ label_9:
     this.qqRadioButton5.Size = new System.Drawing.Size(71, 16 /*0x10*/);
     this.qqRadioButton5.TabIndex = 41;
     this.qqRadioButton5.TabStop = true;
-    this.qqRadioButton5.Text = "单帧接收";
+    this.qqRadioButton5.Text = "Single frame";
     this.qqRadioButton5.UseVisualStyleBackColor = false;
     this.qqRadioButton5.CheckedChanged += new EventHandler(this.qqRadioButton5_CheckedChanged);
     this.qqRadioButton6.AutoSize = true;
@@ -14111,7 +14111,7 @@ label_9:
     this.qqRadioButton6.Name = "qqRadioButton6";
     this.qqRadioButton6.Size = new System.Drawing.Size(71, 16 /*0x10*/);
     this.qqRadioButton6.TabIndex = 42;
-    this.qqRadioButton6.Text = "多帧接收";
+    this.qqRadioButton6.Text = "Multi-frame";
     this.qqRadioButton6.UseVisualStyleBackColor = false;
     this.qqTextBox16.BackColor = Color.White;
     this.qqTextBox16.BorderStyle = BorderStyle.FixedSingle;
@@ -14163,7 +14163,7 @@ label_9:
     this.imageButton8.NormalImage = (Image) componentResourceManager.GetObject("imageButton8.NormalImage");
     this.imageButton8.Size = new System.Drawing.Size(69, 32 /*0x20*/);
     this.imageButton8.TabIndex = 48 /*0x30*/;
-    this.imageButton8.Text = "停止";
+    this.imageButton8.Text = "Stop";
     this.imageButton8.UseVisualStyleBackColor = false;
     this.imageButton8.Click += new EventHandler(this.imageButton8_Click);
     this.imageButton7.BackColor = Color.Transparent;
@@ -14180,7 +14180,7 @@ label_9:
     this.imageButton7.NormalImage = (Image) componentResourceManager.GetObject("imageButton7.NormalImage");
     this.imageButton7.Size = new System.Drawing.Size(69, 32 /*0x20*/);
     this.imageButton7.TabIndex = 47;
-    this.imageButton7.Text = "接收";
+    this.imageButton7.Text = "Receive";
     this.imageButton7.UseVisualStyleBackColor = false;
     this.imageButton7.Click += new EventHandler(this.imageButton7_Click);
     this.label3.AutoSize = true;
@@ -14192,7 +14192,7 @@ label_9:
     this.label3.Name = "label3";
     this.label3.Size = new System.Drawing.Size(118, 25);
     this.label3.TabIndex = 8;
-    this.label3.Text = "接收数据区:";
+    this.label3.Text = "Receive data area:";
     this.qqTextBox11.BackColor = Color.White;
     this.qqTextBox11.BorderStyle = BorderStyle.FixedSingle;
     this.qqTextBox11.EmptyTextTip = (string) null;
@@ -14227,7 +14227,7 @@ label_9:
     this.qqCheckBox4.Name = "qqCheckBox4";
     this.qqCheckBox4.Size = new System.Drawing.Size(54, 16 /*0x10*/);
     this.qqCheckBox4.TabIndex = 31 /*0x1F*/;
-    this.qqCheckBox4.Text = "接收1";
+    this.qqCheckBox4.Text = "Receive1";
     this.qqCheckBox4.UseVisualStyleBackColor = false;
     this.qqCheckBox4.CheckedChanged += new EventHandler(this.qqCheckBox4_CheckedChanged);
     this.qqCheckBox6.AutoSize = true;
@@ -14237,7 +14237,7 @@ label_9:
     this.qqCheckBox6.Name = "qqCheckBox6";
     this.qqCheckBox6.Size = new System.Drawing.Size(54, 16 /*0x10*/);
     this.qqCheckBox6.TabIndex = 37;
-    this.qqCheckBox6.Text = "接收3";
+    this.qqCheckBox6.Text = "Receive3";
     this.qqCheckBox6.UseVisualStyleBackColor = false;
     this.qqCheckBox6.CheckedChanged += new EventHandler(this.qqCheckBox6_CheckedChanged);
     this.qqTextBox15.BackColor = Color.White;
@@ -14271,7 +14271,7 @@ label_9:
     this.qqCheckBox5.Name = "qqCheckBox5";
     this.qqCheckBox5.Size = new System.Drawing.Size(54, 16 /*0x10*/);
     this.qqCheckBox5.TabIndex = 34;
-    this.qqCheckBox5.Text = "接收2";
+    this.qqCheckBox5.Text = "Receive2";
     this.qqCheckBox5.UseVisualStyleBackColor = false;
     this.qqCheckBox5.CheckedChanged += new EventHandler(this.qqCheckBox5_CheckedChanged);
     this.dS标签2.BackColor = SystemColors.ActiveCaption;
@@ -14281,7 +14281,7 @@ label_9:
     this.dS标签2.Name = "dS标签2";
     this.dS标签2.Size = new System.Drawing.Size(892, 140);
     this.dS标签2.TabIndex = 45;
-    this.dS标签2.Text = "帧ID(Hex):                 数据长度:                                                          接收间隔(ms):\r\n帧ID(Hex):                 数据长度:                    \r\n帧ID(Hex):                 数据长度:";
+    this.dS标签2.Text = "FrameID(Hex):             Length:                                                        Interval(ms):\r\nFrameID(Hex):             Length:                  \r\nFrameID(Hex):             Length:";
     this.dS标签2.偏移 = new System.Drawing.Point(110, 47);
     this.dS标签2.字体渲染模式 = TextRenderingHint.AntiAliasGridFit;
     this.dS标签2.行间距 = 16 /*0x10*/;
@@ -14296,7 +14296,7 @@ label_9:
     this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
     this.tabPage2.Size = new System.Drawing.Size(892, 554);
     this.tabPage2.TabIndex = 1;
-    this.tabPage2.Text = "列表模式";
+    this.tabPage2.Text = "List";
     this.listViewNF2.BackColor = Color.RoyalBlue;
     this.listViewNF2.BorderStyle = BorderStyle.None;
     this.listViewNF2.Columns.AddRange(new ColumnHeader[9]
@@ -14323,27 +14323,27 @@ label_9:
     this.listViewNF2.TabIndex = 48 /*0x30*/;
     this.listViewNF2.UseCompatibleStateImageBehavior = false;
     this.listViewNF2.View = View.Details;
-    this.columnHeader9.Text = "序号";
-    this.columnHeader10.Text = "通道";
+    this.columnHeader9.Text = "Serial#";
+    this.columnHeader10.Text = "Channel";
     this.columnHeader10.TextAlign = HorizontalAlignment.Center;
     this.columnHeader10.Width = 50;
-    this.columnHeader11.Text = "方向";
+    this.columnHeader11.Text = "Direction";
     this.columnHeader11.TextAlign = HorizontalAlignment.Center;
     this.columnHeader11.Width = 70;
-    this.columnHeader12.Text = "时间";
+    this.columnHeader12.Text = "Time";
     this.columnHeader12.Width = 160 /*0xA0*/;
     this.columnHeader13.Text = "ID[PID]";
     this.columnHeader13.TextAlign = HorizontalAlignment.Center;
     this.columnHeader13.Width = 80 /*0x50*/;
-    this.columnHeader14.Text = "数据长度";
+    this.columnHeader14.Text = "Data length";
     this.columnHeader14.TextAlign = HorizontalAlignment.Center;
     this.columnHeader14.Width = 70;
-    this.columnHeader15.Text = "数据(Hex)";
+    this.columnHeader15.Text = "Data (Hex)";
     this.columnHeader15.Width = 210;
-    this.columnHeader16.Text = "校验(Hex)";
+    this.columnHeader16.Text = "Check(Hex)";
     this.columnHeader16.TextAlign = HorizontalAlignment.Center;
     this.columnHeader16.Width = 80 /*0x50*/;
-    this.columnHeader17.Text = "状态";
+    this.columnHeader17.Text = "State";
     this.columnHeader17.TextAlign = HorizontalAlignment.Center;
     this.columnHeader17.Width = 80 /*0x50*/;
     ((Control) this.myPanel19).BackColor = SystemColors.GradientInactiveCaption;
@@ -14361,16 +14361,16 @@ label_9:
     ((Control) this.myPanel19).TabIndex = 47;
     this.label5.AutoSize = true;
     this.label5.BackColor = Color.Transparent;
-    this.label5.Font = new Font("微软雅黑", 10.5f, FontStyle.Bold, GraphicsUnit.Point, (byte) 134);
+    this.label5.Font = new Font("微软雅黑", 8f, FontStyle.Bold, GraphicsUnit.Point, (byte) 134);
     this.label5.ForeColor = Color.Black;
-    this.label5.Location = new System.Drawing.Point(34, 57);
+    this.label5.Location = new System.Drawing.Point(20, 57);
     this.label5.Name = "label5";
     this.label5.Size = new System.Drawing.Size(69, 20);
     this.label5.TabIndex = 55;
-    this.label5.Text = "帧次数：";
+    this.label5.Text = "Frame count:";
     this.qqTextBox51.BackColor = Color.White;
     this.qqTextBox51.BorderStyle = BorderStyle.FixedSingle;
-    this.qqTextBox51.EmptyTextTip = "输入0，表示无限循环";
+    this.qqTextBox51.EmptyTextTip = "Enter 0 for an infinite loop";
     this.qqTextBox51.EmptyTextTipColor = Color.DarkGray;
     this.qqTextBox51.Font = new Font("宋体", 10.5f, FontStyle.Regular, GraphicsUnit.Point, (byte) 134);
     this.qqTextBox51.Location = new System.Drawing.Point(105, 56);
@@ -14457,7 +14457,7 @@ label_9:
     this.imageButton10.NormalImage = (Image) componentResourceManager.GetObject("imageButton10.NormalImage");
     this.imageButton10.Size = new System.Drawing.Size(69, 32 /*0x20*/);
     this.imageButton10.TabIndex = 51;
-    this.imageButton10.Text = "保存数据";
+    this.imageButton10.Text = "Save data";
     this.imageButton10.UseVisualStyleBackColor = false;
     this.imageButton10.Click += new EventHandler(this.imageButton10_Click);
     this.imageButton9.BackColor = Color.Transparent;
@@ -14474,7 +14474,7 @@ label_9:
     this.imageButton9.NormalImage = (Image) componentResourceManager.GetObject("imageButton9.NormalImage");
     this.imageButton9.Size = new System.Drawing.Size(69, 32 /*0x20*/);
     this.imageButton9.TabIndex = 50;
-    this.imageButton9.Text = "清除显示";
+    this.imageButton9.Text = "Clear";
     this.imageButton9.UseVisualStyleBackColor = false;
     this.imageButton9.Click += new EventHandler(this.imageButton9_Click);
     this.groupBoxEx3.BackgroundImage = (Image) componentResourceManager.GetObject("groupBoxEx3.BackgroundImage");
@@ -14487,7 +14487,7 @@ label_9:
     this.groupBoxEx3.Size = new System.Drawing.Size(213, 68);
     this.groupBoxEx3.TabIndex = 41;
     this.groupBoxEx3.TabStop = false;
-    this.groupBoxEx3.Text = "显示模式选择：";
+    this.groupBoxEx3.Text = "Display mode:";
     this.qqRadioButton8.AutoSize = true;
     this.qqRadioButton8.BackColor = Color.Transparent;
     this.qqRadioButton8.Font = new Font("宋体", 9f);
@@ -14495,7 +14495,7 @@ label_9:
     this.qqRadioButton8.Name = "qqRadioButton8";
     this.qqRadioButton8.Size = new System.Drawing.Size(71, 16 /*0x10*/);
     this.qqRadioButton8.TabIndex = 32 /*0x20*/;
-    this.qqRadioButton8.Text = "静态显示";
+    this.qqRadioButton8.Text = "Static";
     this.qqRadioButton8.UseVisualStyleBackColor = false;
     this.qqRadioButton7.AutoSize = true;
     this.qqRadioButton7.BackColor = Color.Transparent;
@@ -14506,7 +14506,7 @@ label_9:
     this.qqRadioButton7.Size = new System.Drawing.Size(71, 16 /*0x10*/);
     this.qqRadioButton7.TabIndex = 31 /*0x1F*/;
     this.qqRadioButton7.TabStop = true;
-    this.qqRadioButton7.Text = "动态显示";
+    this.qqRadioButton7.Text = "Dynamic";
     this.qqRadioButton7.UseVisualStyleBackColor = false;
     this.qqRadioButton7.CheckedChanged += new EventHandler(this.qqRadioButton7_CheckedChanged);
     this.bar2.Location = new System.Drawing.Point(0, 529);
@@ -14549,15 +14549,15 @@ label_9:
     this.Column1.Width = 30;
     gridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleCenter;
     this.Column6.DefaultCellStyle = gridViewCellStyle2;
-    this.Column6.HeaderText = "通道";
+    this.Column6.HeaderText = "Channel";
     this.Column6.Name = "Column6";
     this.Column6.SortMode = DataGridViewColumnSortMode.NotSortable;
     this.Column6.Width = 45;
     this.Column2.DisplayStyle = DataGridViewComboBoxDisplayStyle.Nothing;
     this.Column2.DisplayStyleForCurrentCellOnly = true;
     this.Column2.FlatStyle = FlatStyle.Flat;
-    this.Column2.HeaderText = "方向";
-    this.Column2.Items.AddRange((object) "发送", (object) "接收");
+    this.Column2.HeaderText = "Direction";
+    this.Column2.Items.AddRange((object) "Send", (object) "Receive");
     this.Column2.Name = "Column2";
     this.Column2.Width = 85;
     gridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
@@ -14566,19 +14566,19 @@ label_9:
     this.Column3.Name = "Column3";
     this.Column3.SortMode = DataGridViewColumnSortMode.NotSortable;
     this.Column3.Width = 60;
-    this.Column4.HeaderText = "数据(Hex)";
+    this.Column4.HeaderText = "Data (Hex)";
     this.Column4.Name = "Column4";
     this.Column4.SortMode = DataGridViewColumnSortMode.NotSortable;
     this.Column4.Width = 225;
     gridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleCenter;
     this.Column7.DefaultCellStyle = gridViewCellStyle4;
-    this.Column7.HeaderText = "长度";
+    this.Column7.HeaderText = "Length";
     this.Column7.Name = "Column7";
     this.Column7.SortMode = DataGridViewColumnSortMode.NotSortable;
     this.Column7.Width = 65;
     gridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleCenter;
     this.Column5.DefaultCellStyle = gridViewCellStyle5;
-    this.Column5.HeaderText = "帧间隔(ms)";
+    this.Column5.HeaderText = "Frame interval (ms)";
     this.Column5.Name = "Column5";
     this.Column5.SortMode = DataGridViewColumnSortMode.NotSortable;
     this.Column5.Width = 88;
@@ -14600,7 +14600,7 @@ label_9:
     this.label39.Name = "label39";
     this.label39.Size = new System.Drawing.Size(84, 20);
     this.label39.TabIndex = 9;
-    this.label39.Text = "参数设置：";
+    this.label39.Text = "Parameter settings:";
     this.tabPage3.BackColor = SystemColors.ActiveCaption;
     this.tabPage3.Controls.Add((Control) this.listViewNF3);
     this.tabPage3.Controls.Add((Control) this.myPanel1);
@@ -14611,7 +14611,7 @@ label_9:
     this.tabPage3.Name = "tabPage3";
     this.tabPage3.Size = new System.Drawing.Size(892, 554);
     this.tabPage3.TabIndex = 6;
-    this.tabPage3.Text = "从机模式";
+    this.tabPage3.Text = "Slave";
     this.listViewNF3.BackColor = Color.RoyalBlue;
     this.listViewNF3.BorderStyle = BorderStyle.None;
     this.listViewNF3.Columns.AddRange(new ColumnHeader[9]
@@ -14638,27 +14638,27 @@ label_9:
     this.listViewNF3.TabIndex = 53;
     this.listViewNF3.UseCompatibleStateImageBehavior = false;
     this.listViewNF3.View = View.Details;
-    this.columnHeader18.Text = "序号";
-    this.columnHeader19.Text = "通道";
+    this.columnHeader18.Text = "Serial#";
+    this.columnHeader19.Text = "Channel";
     this.columnHeader19.TextAlign = HorizontalAlignment.Center;
     this.columnHeader19.Width = 50;
-    this.columnHeader20.Text = "方向";
+    this.columnHeader20.Text = "Direction";
     this.columnHeader20.TextAlign = HorizontalAlignment.Center;
     this.columnHeader20.Width = 70;
-    this.columnHeader21.Text = "时间";
+    this.columnHeader21.Text = "Time";
     this.columnHeader21.Width = 160 /*0xA0*/;
     this.columnHeader22.Text = "ID[PID]";
     this.columnHeader22.TextAlign = HorizontalAlignment.Center;
     this.columnHeader22.Width = 80 /*0x50*/;
-    this.columnHeader23.Text = "数据长度";
+    this.columnHeader23.Text = "Data length";
     this.columnHeader23.TextAlign = HorizontalAlignment.Center;
     this.columnHeader23.Width = 70;
-    this.columnHeader24.Text = "数据(Hex)";
+    this.columnHeader24.Text = "Data (Hex)";
     this.columnHeader24.Width = 210;
-    this.columnHeader25.Text = "校验(Hex)";
+    this.columnHeader25.Text = "Check(Hex)";
     this.columnHeader25.TextAlign = HorizontalAlignment.Center;
     this.columnHeader25.Width = 80 /*0x50*/;
-    this.columnHeader27.Text = "状态";
+    this.columnHeader27.Text = "State";
     this.columnHeader27.TextAlign = HorizontalAlignment.Center;
     this.columnHeader27.Width = 80 /*0x50*/;
     ((Control) this.myPanel1).BackColor = SystemColors.GradientInactiveCaption;
@@ -14749,7 +14749,7 @@ label_9:
     this.imageButton12.NormalImage = (Image) componentResourceManager.GetObject("imageButton12.NormalImage");
     this.imageButton12.Size = new System.Drawing.Size(69, 32 /*0x20*/);
     this.imageButton12.TabIndex = 51;
-    this.imageButton12.Text = "保存数据";
+    this.imageButton12.Text = "Save data";
     this.imageButton12.UseVisualStyleBackColor = false;
     this.imageButton12.Click += new EventHandler(this.imageButton12_Click);
     this.imageButton11.BackColor = Color.Transparent;
@@ -14766,7 +14766,7 @@ label_9:
     this.imageButton11.NormalImage = (Image) componentResourceManager.GetObject("imageButton11.NormalImage");
     this.imageButton11.Size = new System.Drawing.Size(69, 32 /*0x20*/);
     this.imageButton11.TabIndex = 50;
-    this.imageButton11.Text = "清除显示";
+    this.imageButton11.Text = "Clear";
     this.imageButton11.UseVisualStyleBackColor = false;
     this.imageButton11.Click += new EventHandler(this.imageButton11_Click);
     this.groupBoxEx1.BackgroundImage = (Image) componentResourceManager.GetObject("groupBoxEx1.BackgroundImage");
@@ -14779,7 +14779,7 @@ label_9:
     this.groupBoxEx1.Size = new System.Drawing.Size(213, 68);
     this.groupBoxEx1.TabIndex = 41;
     this.groupBoxEx1.TabStop = false;
-    this.groupBoxEx1.Text = "显示模式选择：";
+    this.groupBoxEx1.Text = "Display mode:";
     this.qqRadioButton10.AutoSize = true;
     this.qqRadioButton10.BackColor = Color.Transparent;
     this.qqRadioButton10.Font = new Font("宋体", 9f);
@@ -14787,7 +14787,7 @@ label_9:
     this.qqRadioButton10.Name = "qqRadioButton10";
     this.qqRadioButton10.Size = new System.Drawing.Size(71, 16 /*0x10*/);
     this.qqRadioButton10.TabIndex = 32 /*0x20*/;
-    this.qqRadioButton10.Text = "静态显示";
+    this.qqRadioButton10.Text = "Static";
     this.qqRadioButton10.UseVisualStyleBackColor = false;
     this.qqRadioButton9.AutoSize = true;
     this.qqRadioButton9.BackColor = Color.Transparent;
@@ -14798,7 +14798,7 @@ label_9:
     this.qqRadioButton9.Size = new System.Drawing.Size(71, 16 /*0x10*/);
     this.qqRadioButton9.TabIndex = 31 /*0x1F*/;
     this.qqRadioButton9.TabStop = true;
-    this.qqRadioButton9.Text = "动态显示";
+    this.qqRadioButton9.Text = "Dynamic";
     this.qqRadioButton9.UseVisualStyleBackColor = false;
     this.qqRadioButton9.CheckedChanged += new EventHandler(this.qqRadioButton9_CheckedChanged);
     this.bar3.Location = new System.Drawing.Point(0, 529);
@@ -14841,15 +14841,15 @@ label_9:
     this.dataGridViewCheckBoxColumn1.Width = 30;
     gridViewCellStyle7.Alignment = DataGridViewContentAlignment.MiddleCenter;
     this.dataGridViewTextBoxColumn1.DefaultCellStyle = gridViewCellStyle7;
-    this.dataGridViewTextBoxColumn1.HeaderText = "通道";
+    this.dataGridViewTextBoxColumn1.HeaderText = "Channel";
     this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
     this.dataGridViewTextBoxColumn1.SortMode = DataGridViewColumnSortMode.NotSortable;
     this.dataGridViewTextBoxColumn1.Width = 45;
     this.dataGridViewComboBoxColumn1.DisplayStyle = DataGridViewComboBoxDisplayStyle.Nothing;
     this.dataGridViewComboBoxColumn1.DisplayStyleForCurrentCellOnly = true;
     this.dataGridViewComboBoxColumn1.FlatStyle = FlatStyle.Flat;
-    this.dataGridViewComboBoxColumn1.HeaderText = "方向";
-    this.dataGridViewComboBoxColumn1.Items.AddRange((object) "发送", (object) "接收");
+    this.dataGridViewComboBoxColumn1.HeaderText = "Direction";
+    this.dataGridViewComboBoxColumn1.Items.AddRange((object) "Send", (object) "Receive");
     this.dataGridViewComboBoxColumn1.Name = "dataGridViewComboBoxColumn1";
     this.dataGridViewComboBoxColumn1.Width = 85;
     gridViewCellStyle8.Alignment = DataGridViewContentAlignment.MiddleLeft;
@@ -14858,13 +14858,13 @@ label_9:
     this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
     this.dataGridViewTextBoxColumn2.SortMode = DataGridViewColumnSortMode.NotSortable;
     this.dataGridViewTextBoxColumn2.Width = 60;
-    this.dataGridViewTextBoxColumn3.HeaderText = "数据(Hex)";
+    this.dataGridViewTextBoxColumn3.HeaderText = "Data (Hex)";
     this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
     this.dataGridViewTextBoxColumn3.SortMode = DataGridViewColumnSortMode.NotSortable;
     this.dataGridViewTextBoxColumn3.Width = 225;
     gridViewCellStyle9.Alignment = DataGridViewContentAlignment.MiddleLeft;
     this.dataGridViewTextBoxColumn4.DefaultCellStyle = gridViewCellStyle9;
-    this.dataGridViewTextBoxColumn4.HeaderText = "长度";
+    this.dataGridViewTextBoxColumn4.HeaderText = "Length";
     this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
     this.dataGridViewTextBoxColumn4.SortMode = DataGridViewColumnSortMode.NotSortable;
     this.dataGridViewTextBoxColumn4.Width = 65;
@@ -14873,8 +14873,8 @@ label_9:
     this.dataGridViewTextBoxColumn5.DisplayStyle = DataGridViewComboBoxDisplayStyle.Nothing;
     this.dataGridViewTextBoxColumn5.DisplayStyleForCurrentCellOnly = true;
     this.dataGridViewTextBoxColumn5.FlatStyle = FlatStyle.Flat;
-    this.dataGridViewTextBoxColumn5.HeaderText = "校验和类型";
-    this.dataGridViewTextBoxColumn5.Items.AddRange((object) "增强型校验和", (object) "标准型校验和");
+    this.dataGridViewTextBoxColumn5.HeaderText = "CSum Type";
+    this.dataGridViewTextBoxColumn5.Items.AddRange((object) "Enhanced CSum", (object) "Standard CSum");
     this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
     this.dataGridViewTextBoxColumn5.Resizable = DataGridViewTriState.True;
     this.dataGridViewTextBoxColumn5.Width = 88;
@@ -14896,7 +14896,7 @@ label_9:
     this.label4.Name = "label4";
     this.label4.Size = new System.Drawing.Size(84, 20);
     this.label4.TabIndex = 9;
-    this.label4.Text = "参数设置：";
+    this.label4.Text = "Parameter settings:";
     this.tabPage4.BackColor = SystemColors.ActiveCaption;
     this.tabPage4.Controls.Add((Control) this.myPanel15);
     this.tabPage4.Controls.Add((Control) this.myPanel14);
@@ -14905,7 +14905,7 @@ label_9:
     this.tabPage4.Name = "tabPage4";
     this.tabPage4.Size = new System.Drawing.Size(892, 554);
     this.tabPage4.TabIndex = 2;
-    this.tabPage4.Text = "监听模式";
+    this.tabPage4.Text = "Monitoring";
     ((Control) this.myPanel15).BackColor = SystemColors.ActiveCaption;
     ((Control) this.myPanel15).BackgroundImageLayout = ImageLayout.Stretch;
     ((Control) this.myPanel15).Controls.Add((Control) this.dS按钮6);
@@ -14989,7 +14989,7 @@ label_9:
     this.groupBoxEx2.Size = new System.Drawing.Size(213, 68);
     this.groupBoxEx2.TabIndex = 40;
     this.groupBoxEx2.TabStop = false;
-    this.groupBoxEx2.Text = "显示模式选择：";
+    this.groupBoxEx2.Text = "Display mode:";
     this.qqRadioButton14.AutoSize = true;
     this.qqRadioButton14.BackColor = Color.Transparent;
     this.qqRadioButton14.Font = new Font("宋体", 9f);
@@ -14997,7 +14997,7 @@ label_9:
     this.qqRadioButton14.Name = "qqRadioButton14";
     this.qqRadioButton14.Size = new System.Drawing.Size(71, 16 /*0x10*/);
     this.qqRadioButton14.TabIndex = 32 /*0x20*/;
-    this.qqRadioButton14.Text = "静态显示";
+    this.qqRadioButton14.Text = "Static";
     this.qqRadioButton14.UseVisualStyleBackColor = false;
     this.qqRadioButton13.AutoSize = true;
     this.qqRadioButton13.BackColor = Color.Transparent;
@@ -15008,7 +15008,7 @@ label_9:
     this.qqRadioButton13.Size = new System.Drawing.Size(71, 16 /*0x10*/);
     this.qqRadioButton13.TabIndex = 31 /*0x1F*/;
     this.qqRadioButton13.TabStop = true;
-    this.qqRadioButton13.Text = "动态显示";
+    this.qqRadioButton13.Text = "Dynamic";
     this.qqRadioButton13.UseVisualStyleBackColor = false;
     this.qqRadioButton13.CheckedChanged += new EventHandler(this.qqRadioButton13_CheckedChanged);
     this.groupBoxEx5.BorderColor = Color.Maroon;
@@ -15019,7 +15019,7 @@ label_9:
     this.groupBoxEx5.Size = new System.Drawing.Size(213, 68);
     this.groupBoxEx5.TabIndex = 39;
     this.groupBoxEx5.TabStop = false;
-    this.groupBoxEx5.Text = "监听模式选择：";
+    this.groupBoxEx5.Text = "Monitoring mode:";
     this.qqRadioButton12.AutoSize = true;
     this.qqRadioButton12.BackColor = Color.Transparent;
     this.qqRadioButton12.Font = new Font("宋体", 9f);
@@ -15027,7 +15027,7 @@ label_9:
     this.qqRadioButton12.Name = "qqRadioButton12";
     this.qqRadioButton12.Size = new System.Drawing.Size(71, 16 /*0x10*/);
     this.qqRadioButton12.TabIndex = 34;
-    this.qqRadioButton12.Text = "总线监听";
+    this.qqRadioButton12.Text = "Bus Monitor";
     this.qqRadioButton12.UseVisualStyleBackColor = false;
     this.qqRadioButton11.AutoSize = true;
     this.qqRadioButton11.BackColor = Color.Transparent;
@@ -15038,7 +15038,7 @@ label_9:
     this.qqRadioButton11.Size = new System.Drawing.Size(59, 16 /*0x10*/);
     this.qqRadioButton11.TabIndex = 33;
     this.qqRadioButton11.TabStop = true;
-    this.qqRadioButton11.Text = "固定ID";
+    this.qqRadioButton11.Text = "Fixed ID";
     this.qqRadioButton11.UseVisualStyleBackColor = false;
     this.qqRadioButton11.CheckedChanged += new EventHandler(this.qqRadioButton11_CheckedChanged_1);
     this.label38.AutoSize = true;
@@ -15050,7 +15050,7 @@ label_9:
     this.label38.Name = "label38";
     this.label38.Size = new System.Drawing.Size(172, 25);
     this.label38.TabIndex = 8;
-    this.label38.Text = "监听参数设置区：";
+    this.label38.Text = "Monitoring config:";
     ((Control) this.myPanel14).BackColor = SystemColors.ActiveCaption;
     ((Control) this.myPanel14).BackgroundImage = (Image) componentResourceManager.GetObject("myPanel14.BackgroundImage");
     ((Control) this.myPanel14).BackgroundImageLayout = ImageLayout.Stretch;
@@ -15100,7 +15100,7 @@ label_9:
     this.imageButton14.NormalImage = (Image) componentResourceManager.GetObject("imageButton14.NormalImage");
     this.imageButton14.Size = new System.Drawing.Size(69, 32 /*0x20*/);
     this.imageButton14.TabIndex = 53;
-    this.imageButton14.Text = "保存数据";
+    this.imageButton14.Text = "Save data";
     this.imageButton14.UseVisualStyleBackColor = false;
     this.imageButton14.Click += new EventHandler(this.imageButton14_Click);
     this.imageButton13.BackColor = Color.Transparent;
@@ -15117,7 +15117,7 @@ label_9:
     this.imageButton13.NormalImage = (Image) componentResourceManager.GetObject("imageButton13.NormalImage");
     this.imageButton13.Size = new System.Drawing.Size(69, 32 /*0x20*/);
     this.imageButton13.TabIndex = 52;
-    this.imageButton13.Text = "清除显示";
+    this.imageButton13.Text = "Clear";
     this.imageButton13.UseVisualStyleBackColor = false;
     this.imageButton13.Click += new EventHandler(this.imageButton13_Click);
     this.qqTextBox29.BackColor = Color.White;
@@ -15339,7 +15339,7 @@ label_9:
     this.label16.Name = "label16";
     this.label16.Size = new System.Drawing.Size(154, 25);
     this.label16.TabIndex = 8;
-    this.label16.Text = "固定ID设置区：";
+    this.label16.Text = "Fixed ID config:";
     this.qqTextBox19.BackColor = Color.White;
     this.qqTextBox19.BorderStyle = BorderStyle.FixedSingle;
     this.qqTextBox19.EmptyTextTip = (string) null;
@@ -15410,27 +15410,27 @@ label_9:
     this.listViewNF4.TabIndex = 49;
     this.listViewNF4.UseCompatibleStateImageBehavior = false;
     this.listViewNF4.View = View.Details;
-    this.columnHeader28.Text = "序号";
-    this.columnHeader29.Text = "通道";
+    this.columnHeader28.Text = "Serial#";
+    this.columnHeader29.Text = "Channel";
     this.columnHeader29.TextAlign = HorizontalAlignment.Center;
     this.columnHeader29.Width = 50;
-    this.columnHeader30.Text = "方向";
+    this.columnHeader30.Text = "Direction";
     this.columnHeader30.TextAlign = HorizontalAlignment.Center;
     this.columnHeader30.Width = 70;
-    this.columnHeader31.Text = "时间";
+    this.columnHeader31.Text = "Time";
     this.columnHeader31.Width = 160 /*0xA0*/;
     this.columnHeader32.Text = "ID[PID]";
     this.columnHeader32.TextAlign = HorizontalAlignment.Center;
     this.columnHeader32.Width = 80 /*0x50*/;
-    this.columnHeader33.Text = "数据长度";
+    this.columnHeader33.Text = "Data length";
     this.columnHeader33.TextAlign = HorizontalAlignment.Center;
     this.columnHeader33.Width = 70;
-    this.columnHeader34.Text = "数据(Hex)";
+    this.columnHeader34.Text = "Data (Hex)";
     this.columnHeader34.Width = 210;
-    this.columnHeader35.Text = "校验(Hex)";
+    this.columnHeader35.Text = "Check(Hex)";
     this.columnHeader35.TextAlign = HorizontalAlignment.Center;
     this.columnHeader35.Width = 80 /*0x50*/;
-    this.columnHeader36.Text = "状态";
+    this.columnHeader36.Text = "State";
     this.columnHeader36.TextAlign = HorizontalAlignment.Center;
     this.columnHeader36.Width = 80 /*0x50*/;
     this.tabPage5.BackColor = Color.DarkSalmon;
@@ -15452,7 +15452,7 @@ label_9:
     this.tabPage5.Name = "tabPage5";
     this.tabPage5.Size = new System.Drawing.Size(892, 554);
     this.tabPage5.TabIndex = 7;
-    this.tabPage5.Text = "离线模式";
+    this.tabPage5.Text = "Offline";
     ((DataGridView) this.dataGridViewX7).AllowUserToDeleteRows = false;
     ((DataGridView) this.dataGridViewX7).BackgroundColor = SystemColors.ActiveCaption;
     ((DataGridView) this.dataGridViewX7).ClipboardCopyMode = DataGridViewClipboardCopyMode.Disable;
@@ -15490,22 +15490,22 @@ label_9:
     gridViewCellStyle13.NullValue = (object) false;
     this.dataGridViewCheckBoxColumn6.DefaultCellStyle = gridViewCellStyle13;
     this.dataGridViewCheckBoxColumn6.FillWeight = 500f;
-    this.dataGridViewCheckBoxColumn6.HeaderText = "从机4";
+    this.dataGridViewCheckBoxColumn6.HeaderText = "Slave4";
     this.dataGridViewCheckBoxColumn6.MinimumWidth = 10;
     this.dataGridViewCheckBoxColumn6.Name = "dataGridViewCheckBoxColumn6";
     this.dataGridViewCheckBoxColumn6.Width = 50;
     gridViewCellStyle14.Alignment = DataGridViewContentAlignment.MiddleLeft;
     gridViewCellStyle14.Font = new Font("微软雅黑", 12f, FontStyle.Regular, GraphicsUnit.Point, (byte) 134);
     this.dataGridViewTextBoxColumn23.DefaultCellStyle = gridViewCellStyle14;
-    this.dataGridViewTextBoxColumn23.HeaderText = "通道";
+    this.dataGridViewTextBoxColumn23.HeaderText = "Channel";
     this.dataGridViewTextBoxColumn23.Name = "dataGridViewTextBoxColumn23";
     this.dataGridViewTextBoxColumn23.SortMode = DataGridViewColumnSortMode.NotSortable;
     this.dataGridViewTextBoxColumn23.Width = 75;
     this.dataGridViewComboBoxColumn9.DisplayStyle = DataGridViewComboBoxDisplayStyle.Nothing;
     this.dataGridViewComboBoxColumn9.DisplayStyleForCurrentCellOnly = true;
     this.dataGridViewComboBoxColumn9.FlatStyle = FlatStyle.Flat;
-    this.dataGridViewComboBoxColumn9.HeaderText = "方向";
-    this.dataGridViewComboBoxColumn9.Items.AddRange((object) "发送", (object) "接收");
+    this.dataGridViewComboBoxColumn9.HeaderText = "Direction";
+    this.dataGridViewComboBoxColumn9.Items.AddRange((object) "Send", (object) "Receive");
     this.dataGridViewComboBoxColumn9.Name = "dataGridViewComboBoxColumn9";
     this.dataGridViewComboBoxColumn9.Width = 90;
     gridViewCellStyle15.Alignment = DataGridViewContentAlignment.MiddleLeft;
@@ -15514,13 +15514,13 @@ label_9:
     this.dataGridViewTextBoxColumn24.Name = "dataGridViewTextBoxColumn24";
     this.dataGridViewTextBoxColumn24.SortMode = DataGridViewColumnSortMode.NotSortable;
     this.dataGridViewTextBoxColumn24.Width = 108;
-    this.dataGridViewTextBoxColumn25.HeaderText = "数据(Hex)";
+    this.dataGridViewTextBoxColumn25.HeaderText = "Data (Hex)";
     this.dataGridViewTextBoxColumn25.Name = "dataGridViewTextBoxColumn25";
     this.dataGridViewTextBoxColumn25.SortMode = DataGridViewColumnSortMode.NotSortable;
     this.dataGridViewTextBoxColumn25.Width = 300;
     gridViewCellStyle16.Alignment = DataGridViewContentAlignment.MiddleLeft;
     this.dataGridViewTextBoxColumn26.DefaultCellStyle = gridViewCellStyle16;
-    this.dataGridViewTextBoxColumn26.HeaderText = "长度";
+    this.dataGridViewTextBoxColumn26.HeaderText = "Length";
     this.dataGridViewTextBoxColumn26.Name = "dataGridViewTextBoxColumn26";
     this.dataGridViewTextBoxColumn26.SortMode = DataGridViewColumnSortMode.NotSortable;
     this.dataGridViewTextBoxColumn26.Width = 95;
@@ -15529,8 +15529,8 @@ label_9:
     this.dataGridViewComboBoxColumn10.DisplayStyle = DataGridViewComboBoxDisplayStyle.Nothing;
     this.dataGridViewComboBoxColumn10.DisplayStyleForCurrentCellOnly = true;
     this.dataGridViewComboBoxColumn10.FlatStyle = FlatStyle.Flat;
-    this.dataGridViewComboBoxColumn10.HeaderText = "校验和类型";
-    this.dataGridViewComboBoxColumn10.Items.AddRange((object) "增强型校验和", (object) "标准型校验和");
+    this.dataGridViewComboBoxColumn10.HeaderText = "CSum Type";
+    this.dataGridViewComboBoxColumn10.Items.AddRange((object) "Enhanced CSum", (object) "Standard CSum");
     this.dataGridViewComboBoxColumn10.Name = "dataGridViewComboBoxColumn10";
     this.dataGridViewComboBoxColumn10.Resizable = DataGridViewTriState.True;
     this.dataGridViewComboBoxColumn10.Width = 140;
@@ -15571,22 +15571,22 @@ label_9:
     gridViewCellStyle20.NullValue = (object) false;
     this.dataGridViewCheckBoxColumn5.DefaultCellStyle = gridViewCellStyle20;
     this.dataGridViewCheckBoxColumn5.FillWeight = 500f;
-    this.dataGridViewCheckBoxColumn5.HeaderText = "从机3";
+    this.dataGridViewCheckBoxColumn5.HeaderText = "Slave 3";
     this.dataGridViewCheckBoxColumn5.MinimumWidth = 10;
     this.dataGridViewCheckBoxColumn5.Name = "dataGridViewCheckBoxColumn5";
     this.dataGridViewCheckBoxColumn5.Width = 50;
     gridViewCellStyle21.Alignment = DataGridViewContentAlignment.MiddleLeft;
     gridViewCellStyle21.Font = new Font("微软雅黑", 12f, FontStyle.Regular, GraphicsUnit.Point, (byte) 134);
     this.dataGridViewTextBoxColumn19.DefaultCellStyle = gridViewCellStyle21;
-    this.dataGridViewTextBoxColumn19.HeaderText = "通道";
+    this.dataGridViewTextBoxColumn19.HeaderText = "Channel";
     this.dataGridViewTextBoxColumn19.Name = "dataGridViewTextBoxColumn19";
     this.dataGridViewTextBoxColumn19.SortMode = DataGridViewColumnSortMode.NotSortable;
     this.dataGridViewTextBoxColumn19.Width = 75;
     this.dataGridViewComboBoxColumn7.DisplayStyle = DataGridViewComboBoxDisplayStyle.Nothing;
     this.dataGridViewComboBoxColumn7.DisplayStyleForCurrentCellOnly = true;
     this.dataGridViewComboBoxColumn7.FlatStyle = FlatStyle.Flat;
-    this.dataGridViewComboBoxColumn7.HeaderText = "方向";
-    this.dataGridViewComboBoxColumn7.Items.AddRange((object) "发送", (object) "接收");
+    this.dataGridViewComboBoxColumn7.HeaderText = "Direction";
+    this.dataGridViewComboBoxColumn7.Items.AddRange((object) "Send", (object) "Receive");
     this.dataGridViewComboBoxColumn7.Name = "dataGridViewComboBoxColumn7";
     this.dataGridViewComboBoxColumn7.Width = 90;
     gridViewCellStyle22.Alignment = DataGridViewContentAlignment.MiddleLeft;
@@ -15595,13 +15595,13 @@ label_9:
     this.dataGridViewTextBoxColumn20.Name = "dataGridViewTextBoxColumn20";
     this.dataGridViewTextBoxColumn20.SortMode = DataGridViewColumnSortMode.NotSortable;
     this.dataGridViewTextBoxColumn20.Width = 108;
-    this.dataGridViewTextBoxColumn21.HeaderText = "数据(Hex)";
+    this.dataGridViewTextBoxColumn21.HeaderText = "Data (Hex)";
     this.dataGridViewTextBoxColumn21.Name = "dataGridViewTextBoxColumn21";
     this.dataGridViewTextBoxColumn21.SortMode = DataGridViewColumnSortMode.NotSortable;
     this.dataGridViewTextBoxColumn21.Width = 300;
     gridViewCellStyle23.Alignment = DataGridViewContentAlignment.MiddleLeft;
     this.dataGridViewTextBoxColumn22.DefaultCellStyle = gridViewCellStyle23;
-    this.dataGridViewTextBoxColumn22.HeaderText = "长度";
+    this.dataGridViewTextBoxColumn22.HeaderText = "Length";
     this.dataGridViewTextBoxColumn22.Name = "dataGridViewTextBoxColumn22";
     this.dataGridViewTextBoxColumn22.SortMode = DataGridViewColumnSortMode.NotSortable;
     this.dataGridViewTextBoxColumn22.Width = 95;
@@ -15610,8 +15610,8 @@ label_9:
     this.dataGridViewComboBoxColumn8.DisplayStyle = DataGridViewComboBoxDisplayStyle.Nothing;
     this.dataGridViewComboBoxColumn8.DisplayStyleForCurrentCellOnly = true;
     this.dataGridViewComboBoxColumn8.FlatStyle = FlatStyle.Flat;
-    this.dataGridViewComboBoxColumn8.HeaderText = "校验和类型";
-    this.dataGridViewComboBoxColumn8.Items.AddRange((object) "增强型校验和", (object) "标准型校验和");
+    this.dataGridViewComboBoxColumn8.HeaderText = "CSum Type";
+    this.dataGridViewComboBoxColumn8.Items.AddRange((object) "Enhanced CSum", (object) "Standard CSum");
     this.dataGridViewComboBoxColumn8.Name = "dataGridViewComboBoxColumn8";
     this.dataGridViewComboBoxColumn8.Resizable = DataGridViewTriState.True;
     this.dataGridViewComboBoxColumn8.Width = 140;
@@ -15652,22 +15652,22 @@ label_9:
     gridViewCellStyle27.NullValue = (object) false;
     this.dataGridViewCheckBoxColumn4.DefaultCellStyle = gridViewCellStyle27;
     this.dataGridViewCheckBoxColumn4.FillWeight = 500f;
-    this.dataGridViewCheckBoxColumn4.HeaderText = "从机2";
+    this.dataGridViewCheckBoxColumn4.HeaderText = "Slave2";
     this.dataGridViewCheckBoxColumn4.MinimumWidth = 10;
     this.dataGridViewCheckBoxColumn4.Name = "dataGridViewCheckBoxColumn4";
     this.dataGridViewCheckBoxColumn4.Width = 50;
     gridViewCellStyle28.Alignment = DataGridViewContentAlignment.MiddleLeft;
     gridViewCellStyle28.Font = new Font("微软雅黑", 12f, FontStyle.Regular, GraphicsUnit.Point, (byte) 134);
     this.dataGridViewTextBoxColumn15.DefaultCellStyle = gridViewCellStyle28;
-    this.dataGridViewTextBoxColumn15.HeaderText = "通道";
+    this.dataGridViewTextBoxColumn15.HeaderText = "Channel";
     this.dataGridViewTextBoxColumn15.Name = "dataGridViewTextBoxColumn15";
     this.dataGridViewTextBoxColumn15.SortMode = DataGridViewColumnSortMode.NotSortable;
     this.dataGridViewTextBoxColumn15.Width = 75;
     this.dataGridViewComboBoxColumn5.DisplayStyle = DataGridViewComboBoxDisplayStyle.Nothing;
     this.dataGridViewComboBoxColumn5.DisplayStyleForCurrentCellOnly = true;
     this.dataGridViewComboBoxColumn5.FlatStyle = FlatStyle.Flat;
-    this.dataGridViewComboBoxColumn5.HeaderText = "方向";
-    this.dataGridViewComboBoxColumn5.Items.AddRange((object) "发送", (object) "接收");
+    this.dataGridViewComboBoxColumn5.HeaderText = "Direction";
+    this.dataGridViewComboBoxColumn5.Items.AddRange((object) "Send", (object) "Receive");
     this.dataGridViewComboBoxColumn5.Name = "dataGridViewComboBoxColumn5";
     this.dataGridViewComboBoxColumn5.Width = 90;
     gridViewCellStyle29.Alignment = DataGridViewContentAlignment.MiddleLeft;
@@ -15676,13 +15676,13 @@ label_9:
     this.dataGridViewTextBoxColumn16.Name = "dataGridViewTextBoxColumn16";
     this.dataGridViewTextBoxColumn16.SortMode = DataGridViewColumnSortMode.NotSortable;
     this.dataGridViewTextBoxColumn16.Width = 108;
-    this.dataGridViewTextBoxColumn17.HeaderText = "数据(Hex)";
+    this.dataGridViewTextBoxColumn17.HeaderText = "Data (Hex)";
     this.dataGridViewTextBoxColumn17.Name = "dataGridViewTextBoxColumn17";
     this.dataGridViewTextBoxColumn17.SortMode = DataGridViewColumnSortMode.NotSortable;
     this.dataGridViewTextBoxColumn17.Width = 300;
     gridViewCellStyle30.Alignment = DataGridViewContentAlignment.MiddleLeft;
     this.dataGridViewTextBoxColumn18.DefaultCellStyle = gridViewCellStyle30;
-    this.dataGridViewTextBoxColumn18.HeaderText = "长度";
+    this.dataGridViewTextBoxColumn18.HeaderText = "Length";
     this.dataGridViewTextBoxColumn18.Name = "dataGridViewTextBoxColumn18";
     this.dataGridViewTextBoxColumn18.SortMode = DataGridViewColumnSortMode.NotSortable;
     this.dataGridViewTextBoxColumn18.Width = 95;
@@ -15691,8 +15691,8 @@ label_9:
     this.dataGridViewComboBoxColumn6.DisplayStyle = DataGridViewComboBoxDisplayStyle.Nothing;
     this.dataGridViewComboBoxColumn6.DisplayStyleForCurrentCellOnly = true;
     this.dataGridViewComboBoxColumn6.FlatStyle = FlatStyle.Flat;
-    this.dataGridViewComboBoxColumn6.HeaderText = "校验和类型";
-    this.dataGridViewComboBoxColumn6.Items.AddRange((object) "增强型校验和", (object) "标准型校验和");
+    this.dataGridViewComboBoxColumn6.HeaderText = "CSum Type";
+    this.dataGridViewComboBoxColumn6.Items.AddRange((object) "Enhanced CSum", (object) "Standard CSum");
     this.dataGridViewComboBoxColumn6.Name = "dataGridViewComboBoxColumn6";
     this.dataGridViewComboBoxColumn6.Resizable = DataGridViewTriState.True;
     this.dataGridViewComboBoxColumn6.Width = 140;
@@ -15733,22 +15733,22 @@ label_9:
     gridViewCellStyle34.NullValue = (object) false;
     this.dataGridViewCheckBoxColumn3.DefaultCellStyle = gridViewCellStyle34;
     this.dataGridViewCheckBoxColumn3.FillWeight = 500f;
-    this.dataGridViewCheckBoxColumn3.HeaderText = "从机1";
+    this.dataGridViewCheckBoxColumn3.HeaderText = "Slave1";
     this.dataGridViewCheckBoxColumn3.MinimumWidth = 10;
     this.dataGridViewCheckBoxColumn3.Name = "dataGridViewCheckBoxColumn3";
     this.dataGridViewCheckBoxColumn3.Width = 50;
     gridViewCellStyle35.Alignment = DataGridViewContentAlignment.MiddleLeft;
     gridViewCellStyle35.Font = new Font("微软雅黑", 12f, FontStyle.Regular, GraphicsUnit.Point, (byte) 134);
     this.dataGridViewTextBoxColumn11.DefaultCellStyle = gridViewCellStyle35;
-    this.dataGridViewTextBoxColumn11.HeaderText = "通道";
+    this.dataGridViewTextBoxColumn11.HeaderText = "Channel";
     this.dataGridViewTextBoxColumn11.Name = "dataGridViewTextBoxColumn11";
     this.dataGridViewTextBoxColumn11.SortMode = DataGridViewColumnSortMode.NotSortable;
     this.dataGridViewTextBoxColumn11.Width = 75;
     this.dataGridViewComboBoxColumn3.DisplayStyle = DataGridViewComboBoxDisplayStyle.Nothing;
     this.dataGridViewComboBoxColumn3.DisplayStyleForCurrentCellOnly = true;
     this.dataGridViewComboBoxColumn3.FlatStyle = FlatStyle.Flat;
-    this.dataGridViewComboBoxColumn3.HeaderText = "方向";
-    this.dataGridViewComboBoxColumn3.Items.AddRange((object) "发送", (object) "接收");
+    this.dataGridViewComboBoxColumn3.HeaderText = "Direction";
+    this.dataGridViewComboBoxColumn3.Items.AddRange((object) "Send", (object) "Receive");
     this.dataGridViewComboBoxColumn3.Name = "dataGridViewComboBoxColumn3";
     this.dataGridViewComboBoxColumn3.Width = 90;
     gridViewCellStyle36.Alignment = DataGridViewContentAlignment.MiddleLeft;
@@ -15757,13 +15757,13 @@ label_9:
     this.dataGridViewTextBoxColumn12.Name = "dataGridViewTextBoxColumn12";
     this.dataGridViewTextBoxColumn12.SortMode = DataGridViewColumnSortMode.NotSortable;
     this.dataGridViewTextBoxColumn12.Width = 108;
-    this.dataGridViewTextBoxColumn13.HeaderText = "数据(Hex)";
+    this.dataGridViewTextBoxColumn13.HeaderText = "Data (Hex)";
     this.dataGridViewTextBoxColumn13.Name = "dataGridViewTextBoxColumn13";
     this.dataGridViewTextBoxColumn13.SortMode = DataGridViewColumnSortMode.NotSortable;
     this.dataGridViewTextBoxColumn13.Width = 300;
     gridViewCellStyle37.Alignment = DataGridViewContentAlignment.MiddleLeft;
     this.dataGridViewTextBoxColumn14.DefaultCellStyle = gridViewCellStyle37;
-    this.dataGridViewTextBoxColumn14.HeaderText = "长度";
+    this.dataGridViewTextBoxColumn14.HeaderText = "Length";
     this.dataGridViewTextBoxColumn14.Name = "dataGridViewTextBoxColumn14";
     this.dataGridViewTextBoxColumn14.SortMode = DataGridViewColumnSortMode.NotSortable;
     this.dataGridViewTextBoxColumn14.Width = 95;
@@ -15772,8 +15772,8 @@ label_9:
     this.dataGridViewComboBoxColumn4.DisplayStyle = DataGridViewComboBoxDisplayStyle.Nothing;
     this.dataGridViewComboBoxColumn4.DisplayStyleForCurrentCellOnly = true;
     this.dataGridViewComboBoxColumn4.FlatStyle = FlatStyle.Flat;
-    this.dataGridViewComboBoxColumn4.HeaderText = "校验和类型";
-    this.dataGridViewComboBoxColumn4.Items.AddRange((object) "增强型校验和", (object) "标准型校验和");
+    this.dataGridViewComboBoxColumn4.HeaderText = "CSum Type";
+    this.dataGridViewComboBoxColumn4.Items.AddRange((object) "Enhanced CSum", (object) "Standard CSum");
     this.dataGridViewComboBoxColumn4.Name = "dataGridViewComboBoxColumn4";
     this.dataGridViewComboBoxColumn4.Resizable = DataGridViewTriState.True;
     this.dataGridViewComboBoxColumn4.Width = 140;
@@ -15791,7 +15791,7 @@ label_9:
     this.myButton5.NormalImage = (Image) componentResourceManager.GetObject("myButton5.NormalImage");
     this.myButton5.Size = new System.Drawing.Size(154, 104);
     this.myButton5.TabIndex = 67;
-    this.myButton5.Text = "烧录配置参数";
+    this.myButton5.Text = "Burning Config";
     this.myButton5.UseVisualStyleBackColor = false;
     this.myButton5.Click += new EventHandler(this.myButton5_Click);
     this.groupBoxEx7.BackgroundImage = (Image) componentResourceManager.GetObject("groupBoxEx7.BackgroundImage");
@@ -15810,7 +15810,7 @@ label_9:
     this.groupBoxEx7.Size = new System.Drawing.Size(263, 179);
     this.groupBoxEx7.TabIndex = 66;
     this.groupBoxEx7.TabStop = false;
-    this.groupBoxEx7.Text = "从机ID(HEX)：";
+    this.groupBoxEx7.Text = "SlaveID(HEX)：";
     this.groupBoxEx7.Visible = false;
     this.qqTextBox55.BackColor = Color.White;
     this.qqTextBox55.BorderStyle = BorderStyle.FixedSingle;
@@ -15870,7 +15870,7 @@ label_9:
     this.dS标签22.Name = "dS标签22";
     this.dS标签22.Size = new System.Drawing.Size(70, 29);
     this.dS标签22.TabIndex = 70;
-    this.dS标签22.Text = "从机4-ID:";
+    this.dS标签22.Text = "Slave4-ID:";
     this.dS标签22.偏移 = new System.Drawing.Point(0, 5);
     this.dS标签21.BackColor = Color.Transparent;
     this.dS标签21.Font = new Font("微软雅黑", 9f, FontStyle.Regular, GraphicsUnit.Point, (byte) 134);
@@ -15878,7 +15878,7 @@ label_9:
     this.dS标签21.Name = "dS标签21";
     this.dS标签21.Size = new System.Drawing.Size(70, 29);
     this.dS标签21.TabIndex = 68;
-    this.dS标签21.Text = "从机3-ID:";
+    this.dS标签21.Text = "Slave3-ID:";
     this.dS标签21.偏移 = new System.Drawing.Point(0, 5);
     this.dS标签20.BackColor = Color.Transparent;
     this.dS标签20.Font = new Font("微软雅黑", 9f, FontStyle.Regular, GraphicsUnit.Point, (byte) 134);
@@ -15886,7 +15886,7 @@ label_9:
     this.dS标签20.Name = "dS标签20";
     this.dS标签20.Size = new System.Drawing.Size(70, 29);
     this.dS标签20.TabIndex = 66;
-    this.dS标签20.Text = "从机2-ID:";
+    this.dS标签20.Text = "Slave2-ID:";
     this.dS标签20.偏移 = new System.Drawing.Point(0, 5);
     this.dS标签19.BackColor = Color.Transparent;
     this.dS标签19.Font = new Font("微软雅黑", 9f, FontStyle.Regular, GraphicsUnit.Point, (byte) 134);
@@ -15894,7 +15894,7 @@ label_9:
     this.dS标签19.Name = "dS标签19";
     this.dS标签19.Size = new System.Drawing.Size(70, 29);
     this.dS标签19.TabIndex = 64 /*0x40*/;
-    this.dS标签19.Text = "从机1-ID:";
+    this.dS标签19.Text = "Slave1-ID:";
     this.dS标签19.偏移 = new System.Drawing.Point(0, 5);
     this.dS标签18.BackColor = Color.Transparent;
     this.dS标签18.Font = new Font("微软雅黑", 12f, FontStyle.Regular, GraphicsUnit.Point, (byte) 134);
@@ -15902,7 +15902,7 @@ label_9:
     this.dS标签18.Name = "dS标签18";
     this.dS标签18.Size = new System.Drawing.Size(133, 34);
     this.dS标签18.TabIndex = 63 /*0x3F*/;
-    this.dS标签18.Text = "离线模式选择：";
+    this.dS标签18.Text = "Offline mode:";
     this.dS标签18.偏移 = new System.Drawing.Point(0, 5);
     this.comboBox2.DropDownStyle = ComboBoxStyle.DropDownList;
     this.comboBox2.FlatStyle = FlatStyle.Flat;
@@ -15911,7 +15911,7 @@ label_9:
     this.comboBox2.FormattingEnabled = true;
     this.comboBox2.Items.AddRange(new object[1]
     {
-      (object) "主机"
+      (object) "Host"
     });
     this.comboBox2.Location = new System.Drawing.Point(156, 379);
     this.comboBox2.Name = "comboBox2";
@@ -15929,7 +15929,7 @@ label_9:
     this.groupBoxEx6.Size = new System.Drawing.Size(115, 179);
     this.groupBoxEx6.TabIndex = 65;
     this.groupBoxEx6.TabStop = false;
-    this.groupBoxEx6.Text = "从机使能选择：";
+    this.groupBoxEx6.Text = "Slave enable:";
     this.groupBoxEx6.Visible = false;
     this.qqCheckBox25.AutoSize = true;
     this.qqCheckBox25.BackColor = Color.Transparent;
@@ -15938,7 +15938,7 @@ label_9:
     this.qqCheckBox25.Name = "qqCheckBox25";
     this.qqCheckBox25.Size = new System.Drawing.Size(54, 16 /*0x10*/);
     this.qqCheckBox25.TabIndex = 17;
-    this.qqCheckBox25.Text = "从机4";
+    this.qqCheckBox25.Text = "Slave4";
     this.qqCheckBox25.UseVisualStyleBackColor = false;
     this.qqCheckBox24.AutoSize = true;
     this.qqCheckBox24.BackColor = Color.Transparent;
@@ -15947,7 +15947,7 @@ label_9:
     this.qqCheckBox24.Name = "qqCheckBox24";
     this.qqCheckBox24.Size = new System.Drawing.Size(54, 16 /*0x10*/);
     this.qqCheckBox24.TabIndex = 16 /*0x10*/;
-    this.qqCheckBox24.Text = "从机3";
+    this.qqCheckBox24.Text = "Slave3";
     this.qqCheckBox24.UseVisualStyleBackColor = false;
     this.qqCheckBox23.AutoSize = true;
     this.qqCheckBox23.BackColor = Color.Transparent;
@@ -15956,7 +15956,7 @@ label_9:
     this.qqCheckBox23.Name = "qqCheckBox23";
     this.qqCheckBox23.Size = new System.Drawing.Size(54, 16 /*0x10*/);
     this.qqCheckBox23.TabIndex = 15;
-    this.qqCheckBox23.Text = "从机2";
+    this.qqCheckBox23.Text = "Slave2";
     this.qqCheckBox23.UseVisualStyleBackColor = false;
     this.qqCheckBox22.AutoSize = true;
     this.qqCheckBox22.BackColor = Color.Transparent;
@@ -15967,7 +15967,7 @@ label_9:
     this.qqCheckBox22.Name = "qqCheckBox22";
     this.qqCheckBox22.Size = new System.Drawing.Size(54, 16 /*0x10*/);
     this.qqCheckBox22.TabIndex = 14;
-    this.qqCheckBox22.Text = "从机1";
+    this.qqCheckBox22.Text = "Slave1";
     this.qqCheckBox22.UseVisualStyleBackColor = false;
     this.dS标签3.BackColor = Color.Transparent;
     this.dS标签3.Font = new Font("微软雅黑", 12f, FontStyle.Regular, GraphicsUnit.Point, (byte) 134);
@@ -15975,7 +15975,7 @@ label_9:
     this.dS标签3.Name = "dS标签3";
     this.dS标签3.Size = new System.Drawing.Size(133, 34);
     this.dS标签3.TabIndex = 62;
-    this.dS标签3.Text = "定时时间(ms)：";
+    this.dS标签3.Text = "Time (ms):";
     this.dS标签3.偏移 = new System.Drawing.Point(0, 5);
     this.dS数字输入框3.Font = new Font("微软雅黑", 12f, FontStyle.Regular, GraphicsUnit.Point, (byte) 134);
     this.dS数字输入框3.Location = new System.Drawing.Point(156, 447);
@@ -15998,7 +15998,7 @@ label_9:
     this.dS标签4.Name = "dS标签4";
     this.dS标签4.Size = new System.Drawing.Size(133, 34);
     this.dS标签4.TabIndex = 58;
-    this.dS标签4.Text = "语音音量大小：";
+    this.dS标签4.Text = "Volume:";
     this.dS标签4.Visible = false;
     this.dS标签4.偏移 = new System.Drawing.Point(0, 5);
     this.dS容器1.BackColor = SystemColors.ScrollBar;
@@ -16037,7 +16037,7 @@ label_9:
     this.tabPage11.Padding = new System.Windows.Forms.Padding(3);
     this.tabPage11.Size = new System.Drawing.Size(884, 307);
     this.tabPage11.TabIndex = 0;
-    this.tabPage11.Text = "主机";
+    this.tabPage11.Text = "Host";
     ((DataGridView) this.dataGridViewX3).AllowUserToDeleteRows = false;
     ((DataGridView) this.dataGridViewX3).BackgroundColor = SystemColors.ActiveCaption;
     ((DataGridView) this.dataGridViewX3).ClipboardCopyMode = DataGridViewClipboardCopyMode.Disable;
@@ -16074,22 +16074,22 @@ label_9:
     gridViewCellStyle41.NullValue = (object) false;
     this.dataGridViewCheckBoxColumn2.DefaultCellStyle = gridViewCellStyle41;
     this.dataGridViewCheckBoxColumn2.FillWeight = 500f;
-    this.dataGridViewCheckBoxColumn2.HeaderText = "主机";
+    this.dataGridViewCheckBoxColumn2.HeaderText = "Host";
     this.dataGridViewCheckBoxColumn2.MinimumWidth = 10;
     this.dataGridViewCheckBoxColumn2.Name = "dataGridViewCheckBoxColumn2";
     this.dataGridViewCheckBoxColumn2.Width = 40;
     gridViewCellStyle42.Alignment = DataGridViewContentAlignment.MiddleLeft;
     gridViewCellStyle42.Font = new Font("微软雅黑", 12f, FontStyle.Regular, GraphicsUnit.Point, (byte) 134);
     this.dataGridViewTextBoxColumn6.DefaultCellStyle = gridViewCellStyle42;
-    this.dataGridViewTextBoxColumn6.HeaderText = "通道";
+    this.dataGridViewTextBoxColumn6.HeaderText = "Channel";
     this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
     this.dataGridViewTextBoxColumn6.SortMode = DataGridViewColumnSortMode.NotSortable;
     this.dataGridViewTextBoxColumn6.Width = 75;
     this.dataGridViewComboBoxColumn2.DisplayStyle = DataGridViewComboBoxDisplayStyle.Nothing;
     this.dataGridViewComboBoxColumn2.DisplayStyleForCurrentCellOnly = true;
     this.dataGridViewComboBoxColumn2.FlatStyle = FlatStyle.Flat;
-    this.dataGridViewComboBoxColumn2.HeaderText = "方向";
-    this.dataGridViewComboBoxColumn2.Items.AddRange((object) "发送", (object) "接收");
+    this.dataGridViewComboBoxColumn2.HeaderText = "Direction";
+    this.dataGridViewComboBoxColumn2.Items.AddRange((object) "Send", (object) "Receive");
     this.dataGridViewComboBoxColumn2.Name = "dataGridViewComboBoxColumn2";
     this.dataGridViewComboBoxColumn2.Width = 90;
     gridViewCellStyle43.Alignment = DataGridViewContentAlignment.MiddleLeft;
@@ -16098,13 +16098,13 @@ label_9:
     this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
     this.dataGridViewTextBoxColumn7.SortMode = DataGridViewColumnSortMode.NotSortable;
     this.dataGridViewTextBoxColumn7.Width = 108;
-    this.dataGridViewTextBoxColumn8.HeaderText = "数据(Hex)";
+    this.dataGridViewTextBoxColumn8.HeaderText = "Data (Hex)";
     this.dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
     this.dataGridViewTextBoxColumn8.SortMode = DataGridViewColumnSortMode.NotSortable;
     this.dataGridViewTextBoxColumn8.Width = 300;
     gridViewCellStyle44.Alignment = DataGridViewContentAlignment.MiddleLeft;
     this.dataGridViewTextBoxColumn9.DefaultCellStyle = gridViewCellStyle44;
-    this.dataGridViewTextBoxColumn9.HeaderText = "长度";
+    this.dataGridViewTextBoxColumn9.HeaderText = "Length";
     this.dataGridViewTextBoxColumn9.Name = "dataGridViewTextBoxColumn9";
     this.dataGridViewTextBoxColumn9.SortMode = DataGridViewColumnSortMode.NotSortable;
     this.dataGridViewTextBoxColumn9.Width = 95;
@@ -16113,8 +16113,8 @@ label_9:
     this.dataGridViewTextBoxColumn10.DisplayStyle = DataGridViewComboBoxDisplayStyle.Nothing;
     this.dataGridViewTextBoxColumn10.DisplayStyleForCurrentCellOnly = true;
     this.dataGridViewTextBoxColumn10.FlatStyle = FlatStyle.Flat;
-    this.dataGridViewTextBoxColumn10.HeaderText = "校验和类型";
-    this.dataGridViewTextBoxColumn10.Items.AddRange((object) "增强型校验和", (object) "标准型校验和");
+    this.dataGridViewTextBoxColumn10.HeaderText = "CSum Type";
+    this.dataGridViewTextBoxColumn10.Items.AddRange((object) "Enhanced CSum", (object) "Standard CSum");
     this.dataGridViewTextBoxColumn10.Name = "dataGridViewTextBoxColumn10";
     this.dataGridViewTextBoxColumn10.Resizable = DataGridViewTriState.True;
     this.dataGridViewTextBoxColumn10.Width = 150;
@@ -16137,7 +16137,7 @@ label_9:
     this.tabPage6.Name = "tabPage6";
     this.tabPage6.Size = new System.Drawing.Size(892, 554);
     this.tabPage6.TabIndex = 3;
-    this.tabPage6.Text = "BOOT升级";
+    this.tabPage6.Text = "BOOT Upgrade";
     this.qqTextBox49.BackColor = Color.White;
     this.qqTextBox49.BorderStyle = BorderStyle.FixedSingle;
     this.qqTextBox49.EmptyTextTip = (string) null;
@@ -16169,7 +16169,7 @@ label_9:
     this.dS标签16.Name = "dS标签16";
     this.dS标签16.Size = new System.Drawing.Size(470, 29);
     this.dS标签16.TabIndex = 68;
-    this.dS标签16.Text = "起始地址:                                            结束地址:   ";
+    this.dS标签16.Text = "Start                                            End     ";
     this.dS标签16.偏移 = new System.Drawing.Point(0, 5);
     this.dS按钮12.BackColor = Color.Transparent;
     this.dS按钮12.BackgroundImage = (Image) componentResourceManager.GetObject("dS按钮12.BackgroundImage");
@@ -16270,7 +16270,7 @@ label_9:
     this.dS标签6.Name = "dS标签6";
     this.dS标签6.Size = new System.Drawing.Size(256 /*0x0100*/, 29);
     this.dS标签6.TabIndex = 59;
-    this.dS标签6.Text = "主机ID:       从机ID:       周期(ms):";
+    this.dS标签6.Text = "MasterID:   SlaveID:    Period(ms):";
     this.dS标签6.偏移 = new System.Drawing.Point(0, 5);
     this.dS按钮9.BackColor = Color.Transparent;
     this.dS按钮9.BackgroundImage = (Image) componentResourceManager.GetObject("dS按钮9.BackgroundImage");
@@ -16282,14 +16282,14 @@ label_9:
     this.dS按钮9.Name = "dS按钮9";
     this.dS按钮9.Size = new System.Drawing.Size(66, 29);
     this.dS按钮9.TabIndex = 58;
-    this.dS按钮9.Text = "打开文件";
+    this.dS按钮9.Text = "Open FIle";
     this.dS按钮9.图像 = (Bitmap) null;
     this.dS按钮9.异形透明度采样百分比 = 0.1f;
     进度条10.指示进度 = 0.0f;
     进度条10.进度条颜色 = Color.DodgerBlue;
     this.dS按钮9.指示进度条 = 进度条10;
     this.dS按钮9.文字描边 = Color.Transparent;
-    this.dS按钮9.文本 = "打开文件";
+    this.dS按钮9.文本 = "Open FIle";
     this.dS按钮9.禁用时透明度 = 0.3f;
     this.dS按钮9.自动尺寸扩展 = new System.Drawing.Size(20, 20);
     this.dS按钮9.自定义图像.按下 = (Bitmap) null;
@@ -16379,7 +16379,7 @@ label_9:
     this.label17.Name = "label17";
     this.label17.Size = new System.Drawing.Size(96 /*0x60*/, 20);
     this.label17.TabIndex = 53;
-    this.label17.Text = "打开通信协议:";
+    this.label17.Text = "Open proto:";
     this.tabPage7.BackColor = Color.DarkSalmon;
     this.tabPage7.Controls.Add((Control) this.qqTextBox48);
     this.tabPage7.Controls.Add((Control) this.qqTextBox47);
@@ -16401,7 +16401,7 @@ label_9:
     this.tabPage7.Name = "tabPage7";
     this.tabPage7.Size = new System.Drawing.Size(892, 554);
     this.tabPage7.TabIndex = 4;
-    this.tabPage7.Text = "开发者选项";
+    this.tabPage7.Text = "Dev opts";
     this.qqTextBox48.BackColor = Color.White;
     this.qqTextBox48.BorderStyle = BorderStyle.FixedSingle;
     this.qqTextBox48.EmptyTextTip = (string) null;
@@ -16487,7 +16487,7 @@ label_9:
     this.dS标签15.Name = "dS标签15";
     this.dS标签15.Size = new System.Drawing.Size(235, 35);
     this.dS标签15.TabIndex = 70;
-    this.dS标签15.Text = "发送状态:  0/0";
+    this.dS标签15.Text = "Sent:  0/0";
     this.dS标签15.偏移 = new System.Drawing.Point(0, 5);
     this.qqTextBox44.BackColor = Color.White;
     this.qqTextBox44.BorderStyle = BorderStyle.FixedSingle;
@@ -16508,7 +16508,7 @@ label_9:
     this.dS标签14.Name = "dS标签14";
     this.dS标签14.Size = new System.Drawing.Size(449, 112 /*0x70*/);
     this.dS标签14.TabIndex = 68;
-    this.dS标签14.Text = "定时发送间隔(ms)：                          回放次数：\r\n\r\n屏蔽发送ID：    ";
+    this.dS标签14.Text = "Interval(ms)：                        Playback：\r\n\r\nBlocked sender ID：    ";
     this.dS标签14.偏移 = new System.Drawing.Point(0, 5);
     this.dS按钮14.BackColor = Color.Transparent;
     this.dS按钮14.BackgroundImage = (Image) componentResourceManager.GetObject("dS按钮14.BackgroundImage");
@@ -16587,7 +16587,7 @@ label_9:
     this.myButton1.NormalImage = (Image) componentResourceManager.GetObject("myButton1.NormalImage");
     this.myButton1.Size = new System.Drawing.Size(128 /*0x80*/, 100);
     this.myButton1.TabIndex = 55;
-    this.myButton1.Text = "导入数据";
+    this.myButton1.Text = "Import";
     this.myButton1.UseVisualStyleBackColor = false;
     this.myButton1.Click += new EventHandler(this.myButton1_Click);
     this.dS标签13.BackColor = Color.Transparent;
@@ -16595,9 +16595,9 @@ label_9:
     this.dS标签13.Location = new System.Drawing.Point(27, 383);
     this.dS标签13.Margin = new System.Windows.Forms.Padding(0);
     this.dS标签13.Name = "dS标签13";
-    this.dS标签13.Size = new System.Drawing.Size(128 /*0x80*/, 35);
+    this.dS标签13.Size = new System.Drawing.Size(300 /*0x80*/, 35);
     this.dS标签13.TabIndex = 2;
-    this.dS标签13.Text = "数据回放区:";
+    this.dS标签13.Text = "Playback management:";
     this.dS标签13.偏移 = new System.Drawing.Point(0, 5);
     this.dS容器4.BackColor = SystemColors.ActiveCaption;
     this.dS容器4.Controls.Add((Control) this.dS标签12);
@@ -16625,13 +16625,13 @@ label_9:
     this.dS容器4.边框颜色 = Color.Empty;
     this.dS容器4.透明度 = 1f;
     this.dS标签12.BackColor = Color.Transparent;
-    this.dS标签12.Font = new Font("微软雅黑", 14.25f, FontStyle.Bold, GraphicsUnit.Point, (byte) 134);
+    this.dS标签12.Font = new Font("微软雅黑", 10f, FontStyle.Bold, GraphicsUnit.Point, (byte) 134);
     this.dS标签12.Location = new System.Drawing.Point(769, 63 /*0x3F*/);
     this.dS标签12.Margin = new System.Windows.Forms.Padding(0);
     this.dS标签12.Name = "dS标签12";
-    this.dS标签12.Size = new System.Drawing.Size(90, 35);
+    this.dS标签12.Size = new System.Drawing.Size(180, 35);
     this.dS标签12.TabIndex = 69;
-    this.dS标签12.Text = "启动唤醒";
+    this.dS标签12.Text = "Start Wake-up";
     this.dS标签12.偏移 = new System.Drawing.Point(0, 5);
     this.dS按钮13.BackColor = Color.Transparent;
     this.dS按钮13.BackgroundImage = (Image) componentResourceManager.GetObject("dS按钮13.BackgroundImage");
@@ -16728,7 +16728,7 @@ label_9:
     this.dS标签11.Name = "dS标签11";
     this.dS标签11.Size = new System.Drawing.Size(724, 74);
     this.dS标签11.TabIndex = 67;
-    this.dS标签11.Text = "\r\n\r\n\r\n\r\n\r\n\r\n\r\n帧ID：           数据：                                            长度：             PID:              校验和：\r\n\r\n\r\n\r\n\r\n\r\n";
+    this.dS标签11.Text = "\r\n\r\n\r\n\r\n\r\n\r\n\r\nFrameID：        Data：                                         Length：             PID:               CSum：\r\n\r\n\r\n\r\n\r\n\r\n";
     this.dS标签11.偏移 = new System.Drawing.Point(0, 5);
     this.imageButton17.BackColor = Color.Transparent;
     this.imageButton17.BackgroundImageLayout = ImageLayout.Center;
@@ -16744,7 +16744,7 @@ label_9:
     this.imageButton17.NormalImage = (Image) componentResourceManager.GetObject("imageButton17.NormalImage");
     this.imageButton17.Size = new System.Drawing.Size(102, 37);
     this.imageButton17.TabIndex = 54;
-    this.imageButton17.Text = "发送睡眠命令";
+    this.imageButton17.Text = "Send sleep\ncommand";
     this.imageButton17.UseVisualStyleBackColor = false;
     this.imageButton17.Click += new EventHandler(this.imageButton17_Click);
     this.dS标签9.BackColor = Color.Transparent;
@@ -16752,9 +16752,9 @@ label_9:
     this.dS标签9.Location = new System.Drawing.Point(27, 5);
     this.dS标签9.Margin = new System.Windows.Forms.Padding(0);
     this.dS标签9.Name = "dS标签9";
-    this.dS标签9.Size = new System.Drawing.Size(128 /*0x80*/, 35);
+    this.dS标签9.Size = new System.Drawing.Size(300 /*0x80*/, 35);
     this.dS标签9.TabIndex = 1;
-    this.dS标签9.Text = "网络管理区:";
+    this.dS标签9.Text = "Network management:";
     this.dS标签9.偏移 = new System.Drawing.Point(0, 5);
     this.dS容器3.BackColor = Color.FromArgb(224 /*0xE0*/, 224 /*0xE0*/, 224 /*0xE0*/);
     this.dS容器3.Controls.Add((Control) this.qqTextBox38);
@@ -16849,7 +16849,7 @@ label_9:
     this.dS标签8.Name = "dS标签8";
     this.dS标签8.Size = new System.Drawing.Size(724, 74);
     this.dS标签8.TabIndex = 60;
-    this.dS标签8.Text = "\r\n\r\n\r\n\r\n\r\n\r\n\r\n帧ID：           数据：                                            长度：             PID:              校验和：\r\n\r\n\r\n\r\n\r\n\r\n";
+    this.dS标签8.Text = "\r\n\r\n\r\n\r\n\r\n\r\n\r\nFrameID：       Data：                                          Length：         PID:              CSum：\r\n\r\n\r\n\r\n\r\n\r\n";
     this.dS标签8.偏移 = new System.Drawing.Point(0, 5);
     this.imageButton16.BackColor = Color.Transparent;
     this.imageButton16.BackgroundImageLayout = ImageLayout.Center;
@@ -16865,7 +16865,7 @@ label_9:
     this.imageButton16.NormalImage = (Image) componentResourceManager.GetObject("imageButton16.NormalImage");
     this.imageButton16.Size = new System.Drawing.Size(102, 37);
     this.imageButton16.TabIndex = 54;
-    this.imageButton16.Text = "计算参数";
+    this.imageButton16.Text = "Calculation\nParameters";
     this.imageButton16.UseVisualStyleBackColor = false;
     this.imageButton16.Click += new EventHandler(this.imageButton16_Click);
     this.imageButton15.BackColor = Color.Transparent;
@@ -16882,7 +16882,7 @@ label_9:
     this.imageButton15.NormalImage = (Image) componentResourceManager.GetObject("imageButton15.NormalImage");
     this.imageButton15.Size = new System.Drawing.Size(102, 37);
     this.imageButton15.TabIndex = 53;
-    this.imageButton15.Text = "自动识别从机";
+    this.imageButton15.Text = "Autodetect\nslaves";
     this.imageButton15.UseVisualStyleBackColor = false;
     this.imageButton15.Click += new EventHandler(this.imageButton15_Click);
     this.dS标签7.BackColor = Color.Transparent;
@@ -16890,9 +16890,9 @@ label_9:
     this.dS标签7.Location = new System.Drawing.Point(27, 1);
     this.dS标签7.Margin = new System.Windows.Forms.Padding(0);
     this.dS标签7.Name = "dS标签7";
-    this.dS标签7.Size = new System.Drawing.Size(128 /*0x80*/, 35);
+    this.dS标签7.Size = new System.Drawing.Size(300 /*0x80*/, 35);
     this.dS标签7.TabIndex = 0;
-    this.dS标签7.Text = "通信参数区:";
+    this.dS标签7.Text = "Communication params:";
     this.dS标签7.偏移 = new System.Drawing.Point(0, 5);
     this.tabPage8.BackColor = SystemColors.ActiveCaption;
     this.tabPage8.Controls.Add((Control) this.imageButton19);
@@ -16903,7 +16903,7 @@ label_9:
     this.tabPage8.Name = "tabPage8";
     this.tabPage8.Size = new System.Drawing.Size(892, 554);
     this.tabPage8.TabIndex = 5;
-    this.tabPage8.Text = "关于";
+    this.tabPage8.Text = "About";
     this.imageButton19.BackColor = Color.Transparent;
     this.imageButton19.BackgroundImageLayout = ImageLayout.Center;
     this.imageButton19.DownImage = (Image) componentResourceManager.GetObject("imageButton19.DownImage");
@@ -16918,7 +16918,7 @@ label_9:
     this.imageButton19.NormalImage = (Image) componentResourceManager.GetObject("imageButton19.NormalImage");
     this.imageButton19.Size = new System.Drawing.Size(102, 37);
     this.imageButton19.TabIndex = 53;
-    this.imageButton19.Text = "安装驱动";
+    this.imageButton19.Text = "Install Driver";
     this.imageButton19.UseVisualStyleBackColor = false;
     this.imageButton19.Visible = false;
     this.imageButton19.Click += new EventHandler(this.imageButton19_Click);
@@ -16936,7 +16936,7 @@ label_9:
     this.imageButton18.NormalImage = (Image) componentResourceManager.GetObject("imageButton18.NormalImage");
     this.imageButton18.Size = new System.Drawing.Size(102, 37);
     this.imageButton18.TabIndex = 52;
-    this.imageButton18.Text = "软件升级";
+    this.imageButton18.Text = "Software Upgrade";
     this.imageButton18.UseVisualStyleBackColor = false;
     this.imageButton18.Visible = false;
     this.imageButton18.Click += new EventHandler(this.imageButton18_Click);
@@ -16946,7 +16946,7 @@ label_9:
     this.dS标签10.Name = "dS标签10";
     this.dS标签10.Size = new System.Drawing.Size(519, 132);
     this.dS标签10.TabIndex = 1;
-    this.dS标签10.Text = "LINTest-MI\r\n版本号 : 1.0.5\r\n微信号 :  15007692250         QQ:781764513\r\n欢迎返馈BUG，请帮助我们进步！";
+    this.dS标签10.Text = "LINTest-MI\r\nVersion : 1.0.5\r\nWeChat ID :  15007692250         QQ:781764513\r\nYou are welcome to report BUGs, please help us improve！";
     this.dS标签10.偏移 = new System.Drawing.Point(0, 5);
     this.dS容器5.BackColor = SystemColors.GradientInactiveCaption;
     this.dS容器5.Controls.Add((Control) this.label23);
@@ -16974,7 +16974,7 @@ label_9:
     this.label23.Name = "label23";
     this.label23.Size = new System.Drawing.Size(237, 21);
     this.label23.TabIndex = 11;
-    this.label23.Text = "让   科   技   不   断   创   新";
+    this.label23.Text = "Let technology continue to innovate";
     this.label22.AutoSize = true;
     this.label22.BackColor = Color.Transparent;
     this.label22.Font = new Font("微软雅黑", 21.75f, FontStyle.Bold, GraphicsUnit.Point, (byte) 134);
@@ -17016,7 +17016,7 @@ label_9:
     this.tabPage9.Name = "tabPage9";
     this.tabPage9.Size = new System.Drawing.Size(892, 554);
     this.tabPage9.TabIndex = 0;
-    this.tabPage9.Text = "波特率识别";
+    this.tabPage9.Text = "Baud rate detection";
     this.dS按钮16.BackColor = Color.Transparent;
     this.dS按钮16.BackgroundImage = (Image) componentResourceManager.GetObject("dS按钮16.BackgroundImage");
     this.dS按钮16.Cursor = Cursors.Default;
@@ -17094,7 +17094,7 @@ label_9:
     this.myButton2.NormalImage = (Image) componentResourceManager.GetObject("myButton2.NormalImage");
     this.myButton2.Size = new System.Drawing.Size(92, 45);
     this.myButton2.TabIndex = 66;
-    this.myButton2.Text = "保存数据";
+    this.myButton2.Text = "Save data";
     this.myButton2.UseVisualStyleBackColor = false;
     this.myButton2.Click += new EventHandler(this.myButton2_Click_1);
     this.myButton3.BackColor = Color.Transparent;
@@ -17111,7 +17111,7 @@ label_9:
     this.myButton3.NormalImage = (Image) componentResourceManager.GetObject("myButton3.NormalImage");
     this.myButton3.Size = new System.Drawing.Size(92, 45);
     this.myButton3.TabIndex = 65;
-    this.myButton3.Text = "清除显示";
+    this.myButton3.Text = "Clear";
     this.myButton3.UseVisualStyleBackColor = false;
     this.myButton3.Click += new EventHandler(this.myButton3_Click);
     ((Control) this.bar6).AccessibleDescription = "bar5 (bar5)";
@@ -17148,7 +17148,7 @@ label_9:
     this.listViewNF7.TabIndex = 63 /*0x3F*/;
     this.listViewNF7.UseCompatibleStateImageBehavior = false;
     this.listViewNF7.View = View.Details;
-    this.columnHeader38.Text = "序号";
+    this.columnHeader38.Text = "Serial#";
     this.columnHeader38.Width = 50;
     this.columnHeader39.Text = "波特率(bps)";
     this.columnHeader39.Width = 100;
@@ -17220,7 +17220,7 @@ label_9:
     this.listViewNF6.TabIndex = 14;
     this.listViewNF6.UseCompatibleStateImageBehavior = false;
     this.listViewNF6.View = View.Details;
-    this.columnHeader47.Text = "序号";
+    this.columnHeader47.Text = "Serial#";
     this.columnHeader47.Width = 70;
     this.columnHeader48.Text = "波特率(bps)";
     this.columnHeader48.Width = 120;
@@ -17236,7 +17236,7 @@ label_9:
     this.tabPage10.Name = "tabPage10";
     this.tabPage10.Size = new System.Drawing.Size(892, 554);
     this.tabPage10.TabIndex = 8;
-    this.tabPage10.Text = "LDF解析";
+    this.tabPage10.Text = "LDF Parsing";
     this.uiTitlePanel3.Controls.Add((Control) this.uiTreeView1);
     this.uiTitlePanel3.Font = new Font("微软雅黑", 12f);
     this.uiTitlePanel3.ForeColor = Color.White;
@@ -17292,7 +17292,7 @@ label_9:
     this.listView1.UseCompatibleStateImageBehavior = false;
     this.listView1.View = View.Details;
     this.listView1.MouseClick += new MouseEventHandler(this.listView1_MouseClick);
-    this.columnHeader42.Text = "序号";
+    this.columnHeader42.Text = "Serial#";
     this.columnHeader42.Width = 50;
     this.columnHeader43.Text = "信号描述";
     this.columnHeader43.Width = 200;
@@ -18453,7 +18453,7 @@ label_9:
     this.qqRadioButton2.Name = "qqRadioButton2";
     this.qqRadioButton2.Size = new System.Drawing.Size(95, 16 /*0x10*/);
     this.qqRadioButton2.TabIndex = 51;
-    this.qqRadioButton2.Text = "标准型校验和";
+    this.qqRadioButton2.Text = "Standard CSum";
     this.qqRadioButton2.UseVisualStyleBackColor = false;
     this.qqRadioButton1.AutoSize = true;
     this.qqRadioButton1.BackColor = Color.Transparent;
@@ -18464,7 +18464,7 @@ label_9:
     this.qqRadioButton1.Size = new System.Drawing.Size(95, 16 /*0x10*/);
     this.qqRadioButton1.TabIndex = 50;
     this.qqRadioButton1.TabStop = true;
-    this.qqRadioButton1.Text = "增强型校验和";
+    this.qqRadioButton1.Text = "Enhanced CSum";
     this.qqRadioButton1.UseVisualStyleBackColor = false;
     this.qqRadioButton1.CheckedChanged += new EventHandler(this.qqRadioButton1_CheckedChanged);
     this.imageButton1.BackColor = Color.Transparent;
@@ -18481,7 +18481,7 @@ label_9:
     this.imageButton1.NormalImage = (Image) componentResourceManager.GetObject("imageButton1.NormalImage");
     this.imageButton1.Size = new System.Drawing.Size(69, 32 /*0x20*/);
     this.imageButton1.TabIndex = 49;
-    this.imageButton1.Text = "搜索设备";
+    this.imageButton1.Text = "Search";
     this.imageButton1.UseVisualStyleBackColor = false;
     this.imageButton1.Click += new EventHandler(this.imageButton1_Click);
     this.progressBarEx1.BackgroundPainter = (IProgressBackgroundPainter) this.greenGradientBackgroundPainter1;
@@ -18525,7 +18525,7 @@ label_9:
     this.label1.Name = "label1";
     this.label1.Size = new System.Drawing.Size(76, 20);
     this.label1.TabIndex = 6;
-    this.label1.Text = "LIN波特率:";
+    this.label1.Text = "Baudrate:";
     this.comboBox1.DropDownStyle = ComboBoxStyle.DropDownList;
     this.comboBox1.FlatStyle = FlatStyle.Flat;
     this.comboBox1.Font = new Font("微软雅黑", 9f, FontStyle.Regular, GraphicsUnit.Point, (byte) 134);
@@ -18554,25 +18554,25 @@ label_9:
     this.myToolBar1.ForeColor = Color.White;
     myToolItem1.Image = (Image) componentResourceManager.GetObject("myToolItem1.Image");
     myToolItem1.Tag = (object) null;
-    myToolItem1.Text = "单机模式";
+    myToolItem1.Text = "Standalone";
     myToolItem2.Image = (Image) componentResourceManager.GetObject("myToolItem2.Image");
     myToolItem2.Tag = (object) null;
-    myToolItem2.Text = "列表模式";
+    myToolItem2.Text = "List";
     myToolItem3.Image = (Image) componentResourceManager.GetObject("myToolItem3.Image");
     myToolItem3.Tag = (object) null;
-    myToolItem3.Text = "从机模式";
+    myToolItem3.Text = "Slave";
     myToolItem4.Image = (Image) componentResourceManager.GetObject("myToolItem4.Image");
     myToolItem4.Tag = (object) null;
-    myToolItem4.Text = "监听模式";
+    myToolItem4.Text = "Monitoring";
     myToolItem5.Image = (Image) componentResourceManager.GetObject("myToolItem5.Image");
     myToolItem5.Tag = (object) null;
-    myToolItem5.Text = "开发者选项";
+    myToolItem5.Text = "Dev opts";
     myToolItem6.Image = (Image) componentResourceManager.GetObject("myToolItem6.Image");
     myToolItem6.Tag = (object) null;
-    myToolItem6.Text = "离线模式";
+    myToolItem6.Text = "Offline";
     myToolItem7.Image = (Image) componentResourceManager.GetObject("myToolItem7.Image");
     myToolItem7.Tag = (object) null;
-    myToolItem7.Text = "关于";
+    myToolItem7.Text = "About";
     this.myToolBar1.Items.Add(myToolItem1);
     this.myToolBar1.Items.Add(myToolItem2);
     this.myToolBar1.Items.Add(myToolItem3);
